@@ -5,8 +5,8 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="17a01f444302494b9af90a9c84273fc2" Name="Diagram1" >
-        <EntityTypeShape EntityType="ScmDB.scSupplier" Width="1.5" PointX="9.25" PointY="3.25" />
-        <EntityTypeShape EntityType="ScmDB.scItem" Width="1.5" PointX="5" PointY="2.875" />
+        <EntityTypeShape EntityType="ScmDB.scSupplier" Width="1.5" PointX="9.875" PointY="3.25" />
+        <EntityTypeShape EntityType="ScmDB.scItem" Width="1.5" PointX="5" PointY="4.125" />
         <EntityTypeShape EntityType="ScmDB.scUom" Width="1.5" PointX="5.75" PointY="0.5" />
         <EntityTypeShape EntityType="ScmDB.scType" Width="1.5" PointX="4.125" PointY="0.5" />
         <AssociationConnector Association="ScmDB.scUomscItem" />
@@ -14,17 +14,23 @@
         <EntityTypeShape EntityType="ScmDB.scStorage" Width="1.5" PointX="0.5" PointY="0.5" />
         <EntityTypeShape EntityType="ScmDB.scStoreBin" Width="1.5" PointX="0.5" PointY="2.75" />
         <AssociationConnector Association="ScmDB.scStoragescStoreBin" />
-        <EntityTypeShape EntityType="ScmDB.scItemSupplier" Width="1.5" PointX="7.125" PointY="3.5" />
+        <EntityTypeShape EntityType="ScmDB.scItemSupplier" Width="1.5" PointX="8" PointY="3.25" />
         <AssociationConnector Association="ScmDB.scItemscItemSupplier" />
         <AssociationConnector Association="ScmDB.scSupplierscItemSupplier" />
-        <EntityTypeShape EntityType="ScmDB.scItemQty" Width="1.5" PointX="2.875" PointY="2.875" />
-        <AssociationConnector Association="ScmDB.scItemscItemQty" />
-        <EntityTypeShape EntityType="ScmDB.scRcvHdr" Width="1.5" PointX="8.75" PointY="7.375" />
-        <EntityTypeShape EntityType="ScmDB.scRcvDtl" Width="1.5" PointX="5" PointY="7" />
+        <EntityTypeShape EntityType="ScmDB.scRcvHdr" Width="1.5" PointX="3.5" PointY="10" />
+        <EntityTypeShape EntityType="ScmDB.scRcvDtl" Width="1.5" PointX="3.375" PointY="12.625" />
         <AssociationConnector Association="ScmDB.scRcvHdrscRcvDtl" />
         <AssociationConnector Association="ScmDB.scItemscRcvDtl" />
         <AssociationConnector Association="ScmDB.scSupplierscRcvHdr" />
         <AssociationConnector Association="ScmDB.scStoreBinscRcvDtl" />
+        <EntityTypeShape EntityType="ScmDB.scPoHdr" Width="1.5" PointX="8.25" PointY="6.5" />
+        <EntityTypeShape EntityType="ScmDB.scPoDtl" Width="1.5" PointX="6.125" PointY="8.125" />
+        <AssociationConnector Association="ScmDB.scPoHdrscPoDtl" />
+        <AssociationConnector Association="ScmDB.scSupplierscPoHdr" />
+        <AssociationConnector Association="ScmDB.scItemscPoDtl" />
+        <AssociationConnector Association="ScmDB.scUomscPoDtl" />
+        <AssociationConnector Association="ScmDB.scUomscItemSupplier" />
+        <AssociationConnector Association="ScmDB.scPoDtlscRcvDtl" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
