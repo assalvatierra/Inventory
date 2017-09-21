@@ -84,6 +84,52 @@
             <End Role="scPoDtl" EntitySet="scPoDtls" />
             <End Role="scRcvDtl" EntitySet="scRcvDtls" />
           </AssociationSet>
+          <EntitySet Name="resMenus" EntityType="ScmDB.resMenu" />
+          <EntitySet Name="resRecipes" EntityType="ScmDB.resRecipe" />
+          <EntitySet Name="resIngredients1" EntityType="ScmDB.resIngredient" />
+          <AssociationSet Name="resReciperesIngredients" Association="ScmDB.resReciperesIngredients">
+            <End Role="resRecipe" EntitySet="resRecipes" />
+            <End Role="resIngredients" EntitySet="resIngredients1" />
+          </AssociationSet>
+          <AssociationSet Name="scItemresIngredients" Association="ScmDB.scItemresIngredients">
+            <End Role="scItem" EntitySet="scItems" />
+            <End Role="resIngredients" EntitySet="resIngredients1" />
+          </AssociationSet>
+          <EntitySet Name="resMenuItems1" EntityType="ScmDB.resMenuItem" />
+          <AssociationSet Name="resMenuresMenuItems" Association="ScmDB.resMenuresMenuItems">
+            <End Role="resMenu" EntitySet="resMenus" />
+            <End Role="resMenuItems" EntitySet="resMenuItems1" />
+          </AssociationSet>
+          <AssociationSet Name="resReciperesMenuItem" Association="ScmDB.resReciperesMenuItem">
+            <End Role="resRecipe" EntitySet="resRecipes" />
+            <End Role="resMenuItem" EntitySet="resMenuItems1" />
+          </AssociationSet>
+          <EntitySet Name="resOrderHdrs" EntityType="ScmDB.resOrderHdr" />
+          <EntitySet Name="resCustomers" EntityType="ScmDB.resCustomer" />
+          <AssociationSet Name="resCustomerresOrderHdr" Association="ScmDB.resCustomerresOrderHdr">
+            <End Role="resCustomer" EntitySet="resCustomers" />
+            <End Role="resOrderHdr" EntitySet="resOrderHdrs" />
+          </AssociationSet>
+          <EntitySet Name="resOrderDtls" EntityType="ScmDB.resOrderDtl" />
+          <AssociationSet Name="resOrderHdrresOrderDtl" Association="ScmDB.resOrderHdrresOrderDtl">
+            <End Role="resOrderHdr" EntitySet="resOrderHdrs" />
+            <End Role="resOrderDtl" EntitySet="resOrderDtls" />
+          </AssociationSet>
+          <EntitySet Name="resCategories" EntityType="ScmDB.resCategory" />
+          <EntitySet Name="resMenuCategories" EntityType="ScmDB.resMenuCategory" />
+          <AssociationSet Name="resCategoryresMenuCategory" Association="ScmDB.resCategoryresMenuCategory">
+            <End Role="resCategory" EntitySet="resCategories" />
+            <End Role="resMenuCategory" EntitySet="resMenuCategories" />
+          </AssociationSet>
+          <AssociationSet Name="resMenuresMenuCategory" Association="ScmDB.resMenuresMenuCategory">
+            <End Role="resMenu" EntitySet="resMenus" />
+            <End Role="resMenuCategory" EntitySet="resMenuCategories" />
+          </AssociationSet>
+          <AssociationSet Name="resMenuresOrderDtl" Association="ScmDB.resMenuresOrderDtl">
+            <End Role="resMenu" EntitySet="resMenus" />
+            <End Role="resOrderDtl" EntitySet="resOrderDtls" />
+          </AssociationSet>
+          <EntitySet Name="resItems" EntityType="ScmDB.resItem" />
         </EntityContainer>
         <EntityType Name="scSupplier">
           <Key>
@@ -108,6 +154,7 @@
           <NavigationProperty Name="scItemSuppliers" Relationship="ScmDB.scItemscItemSupplier" FromRole="scItem" ToRole="scItemSupplier" />
           <NavigationProperty Name="scRcvDtls" Relationship="ScmDB.scItemscRcvDtl" FromRole="scItem" ToRole="scRcvDtl" />
           <NavigationProperty Name="scPoDtls" Relationship="ScmDB.scItemscPoDtl" FromRole="scItem" ToRole="scPoDtl" />
+          <NavigationProperty Name="resIngredients" Relationship="ScmDB.scItemresIngredients" FromRole="scItem" ToRole="resIngredients" />
         </EntityType>
         <EntityType Name="scUom">
           <Key>
@@ -169,6 +216,8 @@
           <Property Name="scStorageId" Type="Int32" Nullable="false" />
           <Property Name="Code" Type="String" Nullable="false" />
           <NavigationProperty Name="scRcvDtls" Relationship="ScmDB.scStoreBinscRcvDtl" FromRole="scStoreBin" ToRole="scRcvDtl" />
+          <Property Name="PostedQty" Type="String" Nullable="false" />
+          <Property Name="PostedDate" Type="String" Nullable="false" />
         </EntityType>
         <Association Name="scStoragescStoreBin">
           <End Type="ScmDB.scStorage" Role="scStorage" Multiplicity="1" />
@@ -390,6 +439,218 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="resMenu">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" />
+          <NavigationProperty Name="resMenuItems" Relationship="ScmDB.resMenuresMenuItems" FromRole="resMenu" ToRole="resMenuItems" />
+          <Property Name="Description" Type="String" Nullable="false" />
+          <Property Name="Price" Type="String" Nullable="false" />
+          <Property Name="barcode" Type="String" Nullable="false" />
+          <NavigationProperty Name="resMenuCategories" Relationship="ScmDB.resMenuresMenuCategory" FromRole="resMenu" ToRole="resMenuCategory" />
+          <NavigationProperty Name="resOrderDtls" Relationship="ScmDB.resMenuresOrderDtl" FromRole="resMenu" ToRole="resOrderDtl" />
+        </EntityType>
+        <EntityType Name="resRecipe">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" />
+          <NavigationProperty Name="resIngredients" Relationship="ScmDB.resReciperesIngredients" FromRole="resRecipe" ToRole="resIngredients" />
+          <Property Name="Duration" Type="String" Nullable="false" />
+          <Property Name="NoOfServing" Type="String" Nullable="false" />
+          <NavigationProperty Name="resMenuItems" Relationship="ScmDB.resReciperesMenuItem" FromRole="resRecipe" ToRole="resMenuItem" />
+        </EntityType>
+        <EntityType Name="resIngredient">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="resRecipe" Relationship="ScmDB.resReciperesIngredients" FromRole="resIngredients" ToRole="resRecipe" />
+          <Property Name="resRecipeId" Type="Int32" Nullable="false" />
+          <Property Name="Qty" Type="String" Nullable="false" />
+          <NavigationProperty Name="scItem" Relationship="ScmDB.scItemresIngredients" FromRole="resIngredients" ToRole="scItem" />
+          <Property Name="scItemId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <Association Name="resReciperesIngredients">
+          <End Type="ScmDB.resRecipe" Role="resRecipe" Multiplicity="1" />
+          <End Type="ScmDB.resIngredient" Role="resIngredients" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="resRecipe">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="resIngredients">
+              <PropertyRef Name="resRecipeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="scItemresIngredients">
+          <End Type="ScmDB.scItem" Role="scItem" Multiplicity="1" />
+          <End Type="ScmDB.resIngredient" Role="resIngredients" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="scItem">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="resIngredients">
+              <PropertyRef Name="scItemId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="resMenuItem">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="resMenu" Relationship="ScmDB.resMenuresMenuItems" FromRole="resMenuItems" ToRole="resMenu" />
+          <Property Name="resMenuId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="resRecipe" Relationship="ScmDB.resReciperesMenuItem" FromRole="resMenuItem" ToRole="resRecipe" />
+          <Property Name="resRecipeId" Type="Int32" Nullable="false" />
+          <Property Name="ServingRequired" Type="String" Nullable="false" />
+        </EntityType>
+        <Association Name="resMenuresMenuItems">
+          <End Type="ScmDB.resMenu" Role="resMenu" Multiplicity="1" />
+          <End Type="ScmDB.resMenuItem" Role="resMenuItems" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="resMenu">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="resMenuItems">
+              <PropertyRef Name="resMenuId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="resReciperesMenuItem">
+          <End Type="ScmDB.resRecipe" Role="resRecipe" Multiplicity="1" />
+          <End Type="ScmDB.resMenuItem" Role="resMenuItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="resRecipe">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="resMenuItem">
+              <PropertyRef Name="resRecipeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="resOrderHdr">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="dtOrder" Type="String" Nullable="false" />
+          <NavigationProperty Name="resCustomer" Relationship="ScmDB.resCustomerresOrderHdr" FromRole="resOrderHdr" ToRole="resCustomer" />
+          <Property Name="resCustomerId" Type="Int32" Nullable="false" />
+          <Property Name="Remarks" Type="String" Nullable="false" />
+          <NavigationProperty Name="resOrderDtls" Relationship="ScmDB.resOrderHdrresOrderDtl" FromRole="resOrderHdr" ToRole="resOrderDtl" />
+        </EntityType>
+        <EntityType Name="resCustomer">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" />
+          <NavigationProperty Name="resOrderHdrs" Relationship="ScmDB.resCustomerresOrderHdr" FromRole="resCustomer" ToRole="resOrderHdr" />
+        </EntityType>
+        <Association Name="resCustomerresOrderHdr">
+          <End Type="ScmDB.resCustomer" Role="resCustomer" Multiplicity="1" />
+          <End Type="ScmDB.resOrderHdr" Role="resOrderHdr" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="resCustomer">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="resOrderHdr">
+              <PropertyRef Name="resCustomerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="resOrderDtl">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="resOrderHdr" Relationship="ScmDB.resOrderHdrresOrderDtl" FromRole="resOrderDtl" ToRole="resOrderHdr" />
+          <Property Name="resOrderHdrId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="resMenu" Relationship="ScmDB.resMenuresOrderDtl" FromRole="resOrderDtl" ToRole="resMenu" />
+          <Property Name="resMenuId" Type="Int32" Nullable="false" />
+          <Property Name="Qty" Type="String" Nullable="false" />
+          <Property Name="UnitPrice" Type="String" Nullable="false" />
+        </EntityType>
+        <Association Name="resOrderHdrresOrderDtl">
+          <End Type="ScmDB.resOrderHdr" Role="resOrderHdr" Multiplicity="1" />
+          <End Type="ScmDB.resOrderDtl" Role="resOrderDtl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="resOrderHdr">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="resOrderDtl">
+              <PropertyRef Name="resOrderHdrId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="resCategory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CatName" Type="String" Nullable="false" />
+          <NavigationProperty Name="resMenuCategories" Relationship="ScmDB.resCategoryresMenuCategory" FromRole="resCategory" ToRole="resMenuCategory" />
+        </EntityType>
+        <EntityType Name="resMenuCategory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="resCategory" Relationship="ScmDB.resCategoryresMenuCategory" FromRole="resMenuCategory" ToRole="resCategory" />
+          <Property Name="resCategoryId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="resMenu" Relationship="ScmDB.resMenuresMenuCategory" FromRole="resMenuCategory" ToRole="resMenu" />
+          <Property Name="resMenuId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <Association Name="resCategoryresMenuCategory">
+          <End Type="ScmDB.resCategory" Role="resCategory" Multiplicity="1" />
+          <End Type="ScmDB.resMenuCategory" Role="resMenuCategory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="resCategory">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="resMenuCategory">
+              <PropertyRef Name="resCategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="resMenuresMenuCategory">
+          <End Type="ScmDB.resMenu" Role="resMenu" Multiplicity="1" />
+          <End Type="ScmDB.resMenuCategory" Role="resMenuCategory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="resMenu">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="resMenuCategory">
+              <PropertyRef Name="resMenuId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="resMenuresOrderDtl">
+          <End Type="ScmDB.resMenu" Role="resMenu" Multiplicity="1" />
+          <End Type="ScmDB.resOrderDtl" Role="resOrderDtl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="resMenu">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="resOrderDtl">
+              <PropertyRef Name="resMenuId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="resItem">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Description" Type="String" Nullable="false" />
+          <Property Name="Price" Type="String" Nullable="false" />
+          <Property Name="barcode" Type="String" Nullable="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
