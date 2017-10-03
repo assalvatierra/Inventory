@@ -26,5 +26,12 @@ namespace scm.Controllers
 
             return View();
         }
+
+
+        public ActionResult MasterFiles()
+        {
+            return View();
+        }
+
     }
 }

@@ -200,16 +200,105 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\scItemsController.cs" />
+    <Compile Include="Controllers\scStoragesController.cs" />
+    <Compile Include="Controllers\scTypesController.cs" />
+    <Compile Include="Controllers\scUomsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\resCategory.cs">
+      <DependentUpon>ScmDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\resCustomer.cs">
+      <DependentUpon>ScmDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\resIngredient.cs">
+      <DependentUpon>ScmDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\resItem.cs">
+      <DependentUpon>ScmDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\resMenu.cs">
+      <DependentUpon>ScmDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\resMenuCategory.cs">
+      <DependentUpon>ScmDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\resMenuItem.cs">
+      <DependentUpon>ScmDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\resOrderDtl.cs">
+      <DependentUpon>ScmDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\resOrderHdr.cs">
+      <DependentUpon>ScmDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\resPreparation.cs">
+      <DependentUpon>ScmDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\resPrepMaterial.cs">
+      <DependentUpon>ScmDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\resRecipe.cs">
+      <DependentUpon>ScmDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\scInvOutDtl.cs">
+      <DependentUpon>ScmDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\scInvOutHdr.cs">
+      <DependentUpon>ScmDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\scItem.cs">
+      <DependentUpon>ScmDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\scItemSupplier.cs">
+      <DependentUpon>ScmDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ScmDB.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ScmDB.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ScmDB.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ScmDB.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\ScmDB.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>ScmDB.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\scPoDtl.cs">
+      <DependentUpon>ScmDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\scPoHdr.cs">
+      <DependentUpon>ScmDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\scRcvDtl.cs">
+      <DependentUpon>ScmDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\scRcvHdr.cs">
+      <DependentUpon>ScmDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\scStorage.cs">
+      <DependentUpon>ScmDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\scStoreBin.cs">
+      <DependentUpon>ScmDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\scSupplier.cs">
+      <DependentUpon>ScmDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\scType.cs">
+      <DependentUpon>ScmDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\scUom.cs">
+      <DependentUpon>ScmDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -221,6 +310,17 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Models\ScmDB.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>ScmDB.Context.cs</LastGenOutput>
+      <DependentUpon>ScmDB.edmx</DependentUpon>
+    </Content>
+    <Content Include="Models\ScmDB.edmx.sql" />
+    <Content Include="Models\ScmDB.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>ScmDB.cs</LastGenOutput>
+      <DependentUpon>ScmDB.edmx</DependentUpon>
+    </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">
@@ -279,6 +379,27 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Home\MasterFiles.cshtml" />
+    <Content Include="Views\scItems\Create.cshtml" />
+    <Content Include="Views\scItems\Delete.cshtml" />
+    <Content Include="Views\scItems\Details.cshtml" />
+    <Content Include="Views\scItems\Edit.cshtml" />
+    <Content Include="Views\scItems\Index.cshtml" />
+    <Content Include="Views\scTypes\Create.cshtml" />
+    <Content Include="Views\scTypes\Delete.cshtml" />
+    <Content Include="Views\scTypes\Details.cshtml" />
+    <Content Include="Views\scTypes\Edit.cshtml" />
+    <Content Include="Views\scTypes\Index.cshtml" />
+    <Content Include="Views\scStorages\Create.cshtml" />
+    <Content Include="Views\scStorages\Delete.cshtml" />
+    <Content Include="Views\scStorages\Details.cshtml" />
+    <Content Include="Views\scStorages\Edit.cshtml" />
+    <Content Include="Views\scStorages\Index.cshtml" />
+    <Content Include="Views\scUoms\Create.cshtml" />
+    <Content Include="Views\scUoms\Delete.cshtml" />
+    <Content Include="Views\scUoms\Details.cshtml" />
+    <Content Include="Views\scUoms\Edit.cshtml" />
+    <Content Include="Views\scUoms\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -290,6 +411,9 @@
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

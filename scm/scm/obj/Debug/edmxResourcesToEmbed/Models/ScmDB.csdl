@@ -1,0 +1,927 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="ScmDB" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+  <EntityContainer Name="ScmDBContainer" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="scSuppliers" EntityType="ScmDB.scSupplier" />
+    <EntitySet Name="scItems" EntityType="ScmDB.scItem" />
+    <EntitySet Name="scUoms" EntityType="ScmDB.scUom" />
+    <EntitySet Name="scTypes" EntityType="ScmDB.scType" />
+    <AssociationSet Name="scUomscItem" Association="ScmDB.scUomscItem">
+      <End Role="scUom" EntitySet="scUoms" />
+      <End Role="scItem" EntitySet="scItems" />
+    </AssociationSet>
+    <AssociationSet Name="scTypescItem" Association="ScmDB.scTypescItem">
+      <End Role="scType" EntitySet="scTypes" />
+      <End Role="scItem" EntitySet="scItems" />
+    </AssociationSet>
+    <EntitySet Name="scStorages" EntityType="ScmDB.scStorage" />
+    <EntitySet Name="scStoreBins" EntityType="ScmDB.scStoreBin" />
+    <AssociationSet Name="scStoragescStoreBin" Association="ScmDB.scStoragescStoreBin">
+      <End Role="scStorage" EntitySet="scStorages" />
+      <End Role="scStoreBin" EntitySet="scStoreBins" />
+    </AssociationSet>
+    <EntitySet Name="scItemSuppliers" EntityType="ScmDB.scItemSupplier" />
+    <AssociationSet Name="scItemscItemSupplier" Association="ScmDB.scItemscItemSupplier">
+      <End Role="scItem" EntitySet="scItems" />
+      <End Role="scItemSupplier" EntitySet="scItemSuppliers" />
+    </AssociationSet>
+    <AssociationSet Name="scSupplierscItemSupplier" Association="ScmDB.scSupplierscItemSupplier">
+      <End Role="scSupplier" EntitySet="scSuppliers" />
+      <End Role="scItemSupplier" EntitySet="scItemSuppliers" />
+    </AssociationSet>
+    <EntitySet Name="scRcvHdrs" EntityType="ScmDB.scRcvHdr" />
+    <EntitySet Name="scRcvDtls" EntityType="ScmDB.scRcvDtl" />
+    <AssociationSet Name="scRcvHdrscRcvDtl" Association="ScmDB.scRcvHdrscRcvDtl">
+      <End Role="scRcvHdr" EntitySet="scRcvHdrs" />
+      <End Role="scRcvDtl" EntitySet="scRcvDtls" />
+    </AssociationSet>
+    <AssociationSet Name="scItemscRcvDtl" Association="ScmDB.scItemscRcvDtl">
+      <End Role="scItem" EntitySet="scItems" />
+      <End Role="scRcvDtl" EntitySet="scRcvDtls" />
+    </AssociationSet>
+    <AssociationSet Name="scSupplierscRcvHdr" Association="ScmDB.scSupplierscRcvHdr">
+      <End Role="scSupplier" EntitySet="scSuppliers" />
+      <End Role="scRcvHdr" EntitySet="scRcvHdrs" />
+    </AssociationSet>
+    <AssociationSet Name="scStoreBinscRcvDtl" Association="ScmDB.scStoreBinscRcvDtl">
+      <End Role="scStoreBin" EntitySet="scStoreBins" />
+      <End Role="scRcvDtl" EntitySet="scRcvDtls" />
+    </AssociationSet>
+    <EntitySet Name="scPoHdrs" EntityType="ScmDB.scPoHdr" />
+    <EntitySet Name="scPoDtls" EntityType="ScmDB.scPoDtl" />
+    <AssociationSet Name="scPoHdrscPoDtl" Association="ScmDB.scPoHdrscPoDtl">
+      <End Role="scPoHdr" EntitySet="scPoHdrs" />
+      <End Role="scPoDtl" EntitySet="scPoDtls" />
+    </AssociationSet>
+    <AssociationSet Name="scSupplierscPoHdr" Association="ScmDB.scSupplierscPoHdr">
+      <End Role="scSupplier" EntitySet="scSuppliers" />
+      <End Role="scPoHdr" EntitySet="scPoHdrs" />
+    </AssociationSet>
+    <AssociationSet Name="scItemscPoDtl" Association="ScmDB.scItemscPoDtl">
+      <End Role="scItem" EntitySet="scItems" />
+      <End Role="scPoDtl" EntitySet="scPoDtls" />
+    </AssociationSet>
+    <AssociationSet Name="scUomscPoDtl" Association="ScmDB.scUomscPoDtl">
+      <End Role="scUom" EntitySet="scUoms" />
+      <End Role="scPoDtl" EntitySet="scPoDtls" />
+    </AssociationSet>
+    <AssociationSet Name="scUomscItemSupplier" Association="ScmDB.scUomscItemSupplier">
+      <End Role="scUom" EntitySet="scUoms" />
+      <End Role="scItemSupplier" EntitySet="scItemSuppliers" />
+    </AssociationSet>
+    <AssociationSet Name="scPoDtlscRcvDtl" Association="ScmDB.scPoDtlscRcvDtl">
+      <End Role="scPoDtl" EntitySet="scPoDtls" />
+      <End Role="scRcvDtl" EntitySet="scRcvDtls" />
+    </AssociationSet>
+    <EntitySet Name="resMenus" EntityType="ScmDB.resMenu" />
+    <EntitySet Name="resRecipes" EntityType="ScmDB.resRecipe" />
+    <EntitySet Name="resIngredients1" EntityType="ScmDB.resIngredient" />
+    <AssociationSet Name="resReciperesIngredients" Association="ScmDB.resReciperesIngredients">
+      <End Role="resRecipe" EntitySet="resRecipes" />
+      <End Role="resIngredients" EntitySet="resIngredients1" />
+    </AssociationSet>
+    <AssociationSet Name="scItemresIngredients" Association="ScmDB.scItemresIngredients">
+      <End Role="scItem" EntitySet="scItems" />
+      <End Role="resIngredients" EntitySet="resIngredients1" />
+    </AssociationSet>
+    <EntitySet Name="resMenuItems1" EntityType="ScmDB.resMenuItem" />
+    <AssociationSet Name="resMenuresMenuItems" Association="ScmDB.resMenuresMenuItems">
+      <End Role="resMenu" EntitySet="resMenus" />
+      <End Role="resMenuItems" EntitySet="resMenuItems1" />
+    </AssociationSet>
+    <AssociationSet Name="resReciperesMenuItem" Association="ScmDB.resReciperesMenuItem">
+      <End Role="resRecipe" EntitySet="resRecipes" />
+      <End Role="resMenuItem" EntitySet="resMenuItems1" />
+    </AssociationSet>
+    <EntitySet Name="resOrderHdrs" EntityType="ScmDB.resOrderHdr" />
+    <EntitySet Name="resCustomers" EntityType="ScmDB.resCustomer" />
+    <AssociationSet Name="resCustomerresOrderHdr" Association="ScmDB.resCustomerresOrderHdr">
+      <End Role="resCustomer" EntitySet="resCustomers" />
+      <End Role="resOrderHdr" EntitySet="resOrderHdrs" />
+    </AssociationSet>
+    <EntitySet Name="resOrderDtls" EntityType="ScmDB.resOrderDtl" />
+    <AssociationSet Name="resOrderHdrresOrderDtl" Association="ScmDB.resOrderHdrresOrderDtl">
+      <End Role="resOrderHdr" EntitySet="resOrderHdrs" />
+      <End Role="resOrderDtl" EntitySet="resOrderDtls" />
+    </AssociationSet>
+    <EntitySet Name="resCategories" EntityType="ScmDB.resCategory" />
+    <EntitySet Name="resMenuCategories" EntityType="ScmDB.resMenuCategory" />
+    <AssociationSet Name="resCategoryresMenuCategory" Association="ScmDB.resCategoryresMenuCategory">
+      <End Role="resCategory" EntitySet="resCategories" />
+      <End Role="resMenuCategory" EntitySet="resMenuCategories" />
+    </AssociationSet>
+    <AssociationSet Name="resMenuresMenuCategory" Association="ScmDB.resMenuresMenuCategory">
+      <End Role="resMenu" EntitySet="resMenus" />
+      <End Role="resMenuCategory" EntitySet="resMenuCategories" />
+    </AssociationSet>
+    <AssociationSet Name="resMenuresOrderDtl" Association="ScmDB.resMenuresOrderDtl">
+      <End Role="resMenu" EntitySet="resMenus" />
+      <End Role="resOrderDtl" EntitySet="resOrderDtls" />
+    </AssociationSet>
+    <EntitySet Name="resItems" EntityType="ScmDB.resItem" />
+    <AssociationSet Name="scItemresItem" Association="ScmDB.scItemresItem">
+      <End Role="scItem" EntitySet="scItems" />
+      <End Role="resItem" EntitySet="resItems" />
+    </AssociationSet>
+    <AssociationSet Name="resItemresOrderDtl" Association="ScmDB.resItemresOrderDtl">
+      <End Role="resItem" EntitySet="resItems" />
+      <End Role="resOrderDtl" EntitySet="resOrderDtls" />
+    </AssociationSet>
+    <EntitySet Name="scInvOutHdrs" EntityType="ScmDB.scInvOutHdr" />
+    <EntitySet Name="scInvOutDtls" EntityType="ScmDB.scInvOutDtl" />
+    <AssociationSet Name="scInvOutHdrscInvOutDtl" Association="ScmDB.scInvOutHdrscInvOutDtl">
+      <End Role="scInvOutHdr" EntitySet="scInvOutHdrs" />
+      <End Role="scInvOutDtl" EntitySet="scInvOutDtls" />
+    </AssociationSet>
+    <AssociationSet Name="scItemscInvOutDtl" Association="ScmDB.scItemscInvOutDtl">
+      <End Role="scItem" EntitySet="scItems" />
+      <End Role="scInvOutDtl" EntitySet="scInvOutDtls" />
+    </AssociationSet>
+    <AssociationSet Name="scStoreBinscInvOutDtl" Association="ScmDB.scStoreBinscInvOutDtl">
+      <End Role="scStoreBin" EntitySet="scStoreBins" />
+      <End Role="scInvOutDtl" EntitySet="scInvOutDtls" />
+    </AssociationSet>
+    <AssociationSet Name="resOrderDtlscInvOutDtl" Association="ScmDB.resOrderDtlscInvOutDtl">
+      <End Role="resOrderDtl" EntitySet="resOrderDtls" />
+      <End Role="scInvOutDtl" EntitySet="scInvOutDtls" />
+    </AssociationSet>
+    <EntitySet Name="resPreparations" EntityType="ScmDB.resPreparation" />
+    <EntitySet Name="resPrepMaterials" EntityType="ScmDB.resPrepMaterial" />
+    <AssociationSet Name="resPreparationresPreparationDtl" Association="ScmDB.resPreparationresPreparationDtl">
+      <End Role="resPreparation" EntitySet="resPreparations" />
+      <End Role="resPreparationDtl" EntitySet="resPrepMaterials" />
+    </AssociationSet>
+    <AssociationSet Name="resReciperesPreparation" Association="ScmDB.resReciperesPreparation">
+      <End Role="resRecipe" EntitySet="resRecipes" />
+      <End Role="resPreparation" EntitySet="resPreparations" />
+    </AssociationSet>
+    <AssociationSet Name="scItemresPreparationDtl" Association="ScmDB.scItemresPreparationDtl">
+      <End Role="scItem" EntitySet="scItems" />
+      <End Role="resPreparationDtl" EntitySet="resPrepMaterials" />
+    </AssociationSet>
+    <AssociationSet Name="scStoreBinresPreparationDtl" Association="ScmDB.scStoreBinresPreparationDtl">
+      <End Role="scStoreBin" EntitySet="scStoreBins" />
+      <End Role="resPreparationDtl" EntitySet="resPrepMaterials" />
+    </AssociationSet>
+    <AssociationSet Name="scItemresPreparation" Association="ScmDB.scItemresPreparation">
+      <End Role="scItem" EntitySet="scItems" />
+      <End Role="resPreparation" EntitySet="resPreparations" />
+    </AssociationSet>
+    <AssociationSet Name="scStoreBinresPreparation" Association="ScmDB.scStoreBinresPreparation">
+      <End Role="scStoreBin" EntitySet="scStoreBins" />
+      <End Role="resPreparation" EntitySet="resPreparations" />
+    </AssociationSet>
+    <AssociationSet Name="scItemscStoreBin" Association="ScmDB.scItemscStoreBin">
+      <End Role="scItem" EntitySet="scItems" />
+      <End Role="scStoreBin" EntitySet="scStoreBins" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="scSupplier">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="80" />
+    <NavigationProperty Name="scItemSuppliers" Relationship="ScmDB.scSupplierscItemSupplier" FromRole="scSupplier" ToRole="scItemSupplier" />
+    <NavigationProperty Name="scRcvHdrs" Relationship="ScmDB.scSupplierscRcvHdr" FromRole="scSupplier" ToRole="scRcvHdr" />
+    <NavigationProperty Name="scPoHdrs" Relationship="ScmDB.scSupplierscPoHdr" FromRole="scSupplier" ToRole="scPoHdr" />
+  </EntityType>
+  <EntityType Name="scItem">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="80" />
+    <NavigationProperty Name="scUom" Relationship="ScmDB.scUomscItem" FromRole="scItem" ToRole="scUom" />
+    <NavigationProperty Name="scType" Relationship="ScmDB.scTypescItem" FromRole="scItem" ToRole="scType" />
+    <Property Name="scTypeId" Type="Int32" Nullable="false" />
+    <Property Name="scUomId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="scItemSuppliers" Relationship="ScmDB.scItemscItemSupplier" FromRole="scItem" ToRole="scItemSupplier" />
+    <NavigationProperty Name="scRcvDtls" Relationship="ScmDB.scItemscRcvDtl" FromRole="scItem" ToRole="scRcvDtl" />
+    <NavigationProperty Name="scPoDtls" Relationship="ScmDB.scItemscPoDtl" FromRole="scItem" ToRole="scPoDtl" />
+    <NavigationProperty Name="resIngredients" Relationship="ScmDB.scItemresIngredients" FromRole="scItem" ToRole="resIngredients" />
+    <NavigationProperty Name="resItems" Relationship="ScmDB.scItemresItem" FromRole="scItem" ToRole="resItem" />
+    <Property Name="Expirydays" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="scInvOutDtls" Relationship="ScmDB.scItemscInvOutDtl" FromRole="scItem" ToRole="scInvOutDtl" />
+    <NavigationProperty Name="resPreparationDtls" Relationship="ScmDB.scItemresPreparationDtl" FromRole="scItem" ToRole="resPreparationDtl" />
+    <NavigationProperty Name="resPreparations" Relationship="ScmDB.scItemresPreparation" FromRole="scItem" ToRole="resPreparation" />
+    <NavigationProperty Name="scStoreBins" Relationship="ScmDB.scItemscStoreBin" FromRole="scItem" ToRole="scStoreBin" />
+  </EntityType>
+  <EntityType Name="scUom">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Unit" Type="String" Nullable="false" MaxLength="10" />
+    <Property Name="Desc" Type="String" Nullable="false" MaxLength="80" />
+    <NavigationProperty Name="scItems" Relationship="ScmDB.scUomscItem" FromRole="scUom" ToRole="scItem" />
+    <NavigationProperty Name="scPoDtls" Relationship="ScmDB.scUomscPoDtl" FromRole="scUom" ToRole="scPoDtl" />
+    <NavigationProperty Name="scItemSuppliers" Relationship="ScmDB.scUomscItemSupplier" FromRole="scUom" ToRole="scItemSupplier" />
+  </EntityType>
+  <EntityType Name="scType">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Type" Type="String" Nullable="false" MaxLength="80" />
+    <NavigationProperty Name="scItems" Relationship="ScmDB.scTypescItem" FromRole="scType" ToRole="scItem" />
+  </EntityType>
+  <Association Name="scUomscItem">
+    <End Type="ScmDB.scUom" Role="scUom" Multiplicity="1" />
+    <End Type="ScmDB.scItem" Role="scItem" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="scUom">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="scItem">
+        <PropertyRef Name="scUomId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="scTypescItem">
+    <End Type="ScmDB.scType" Role="scType" Multiplicity="1" />
+    <End Type="ScmDB.scItem" Role="scItem" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="scType">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="scItem">
+        <PropertyRef Name="scTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="scStorage">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="80" />
+    <NavigationProperty Name="scStoreBins" Relationship="ScmDB.scStoragescStoreBin" FromRole="scStorage" ToRole="scStoreBin" />
+  </EntityType>
+  <EntityType Name="scStoreBin">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <NavigationProperty Name="scStorage" Relationship="ScmDB.scStoragescStoreBin" FromRole="scStoreBin" ToRole="scStorage" />
+    <Property Name="scStorageId" Type="Int32" Nullable="false" />
+    <Property Name="Code" Type="String" Nullable="false" />
+    <NavigationProperty Name="scRcvDtls" Relationship="ScmDB.scStoreBinscRcvDtl" FromRole="scStoreBin" ToRole="scRcvDtl" />
+    <Property Name="PostedQty" Type="Decimal" Nullable="false" />
+    <Property Name="PostedDate" Type="DateTime" Nullable="false" />
+    <Property Name="ExpiryDate" Type="DateTime" Nullable="false" />
+    <NavigationProperty Name="scInvOutDtls" Relationship="ScmDB.scStoreBinscInvOutDtl" FromRole="scStoreBin" ToRole="scInvOutDtl" />
+    <NavigationProperty Name="resPreparationDtls" Relationship="ScmDB.scStoreBinresPreparationDtl" FromRole="scStoreBin" ToRole="resPreparationDtl" />
+    <NavigationProperty Name="resPreparations" Relationship="ScmDB.scStoreBinresPreparation" FromRole="scStoreBin" ToRole="resPreparation" />
+    <NavigationProperty Name="scItem" Relationship="ScmDB.scItemscStoreBin" FromRole="scStoreBin" ToRole="scItem" />
+    <Property Name="scItemId" Type="Int32" Nullable="false" />
+    <Property Name="BinStatus" Type="String" Nullable="false" MaxLength="5" />
+  </EntityType>
+  <Association Name="scStoragescStoreBin">
+    <End Type="ScmDB.scStorage" Role="scStorage" Multiplicity="1" />
+    <End Type="ScmDB.scStoreBin" Role="scStoreBin" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="scStorage">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="scStoreBin">
+        <PropertyRef Name="scStorageId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="scItemSupplier">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <NavigationProperty Name="scItem" Relationship="ScmDB.scItemscItemSupplier" FromRole="scItemSupplier" ToRole="scItem" />
+    <Property Name="scItemId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="scSupplier" Relationship="ScmDB.scSupplierscItemSupplier" FromRole="scItemSupplier" ToRole="scSupplier" />
+    <Property Name="scSupplierId" Type="Int32" Nullable="false" />
+    <Property Name="Leadtime" Type="Int32" Nullable="false" />
+    <Property Name="UnitPrice" Type="Decimal" Nullable="false" />
+    <NavigationProperty Name="scUom" Relationship="ScmDB.scUomscItemSupplier" FromRole="scItemSupplier" ToRole="scUom" />
+    <Property Name="scUomId" Type="Int32" Nullable="false" />
+  </EntityType>
+  <Association Name="scItemscItemSupplier">
+    <End Type="ScmDB.scItem" Role="scItem" Multiplicity="1" />
+    <End Type="ScmDB.scItemSupplier" Role="scItemSupplier" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="scItem">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="scItemSupplier">
+        <PropertyRef Name="scItemId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="scSupplierscItemSupplier">
+    <End Type="ScmDB.scSupplier" Role="scSupplier" Multiplicity="1" />
+    <End Type="ScmDB.scItemSupplier" Role="scItemSupplier" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="scSupplier">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="scItemSupplier">
+        <PropertyRef Name="scSupplierId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="scRcvHdr">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="dtRcv" Type="DateTime" Nullable="false" />
+    <NavigationProperty Name="scRcvDtls" Relationship="ScmDB.scRcvHdrscRcvDtl" FromRole="scRcvHdr" ToRole="scRcvDtl" />
+    <NavigationProperty Name="scSupplier" Relationship="ScmDB.scSupplierscRcvHdr" FromRole="scRcvHdr" ToRole="scSupplier" />
+    <Property Name="scSupplierId" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="scRcvDtl">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <NavigationProperty Name="scRcvHdr" Relationship="ScmDB.scRcvHdrscRcvDtl" FromRole="scRcvDtl" ToRole="scRcvHdr" />
+    <Property Name="scRcvHdrId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="scItem" Relationship="ScmDB.scItemscRcvDtl" FromRole="scRcvDtl" ToRole="scItem" />
+    <Property Name="scItemId" Type="Int32" Nullable="false" />
+    <Property Name="Qty" Type="Decimal" Nullable="false" />
+    <NavigationProperty Name="scStoreBin" Relationship="ScmDB.scStoreBinscRcvDtl" FromRole="scRcvDtl" ToRole="scStoreBin" />
+    <Property Name="scStoreBinId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="scPoDtl" Relationship="ScmDB.scPoDtlscRcvDtl" FromRole="scRcvDtl" ToRole="scPoDtl" />
+    <Property Name="scPoDtlId" Type="Int32" Nullable="false" />
+  </EntityType>
+  <Association Name="scRcvHdrscRcvDtl">
+    <End Type="ScmDB.scRcvHdr" Role="scRcvHdr" Multiplicity="1" />
+    <End Type="ScmDB.scRcvDtl" Role="scRcvDtl" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="scRcvHdr">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="scRcvDtl">
+        <PropertyRef Name="scRcvHdrId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="scItemscRcvDtl">
+    <End Type="ScmDB.scItem" Role="scItem" Multiplicity="1" />
+    <End Type="ScmDB.scRcvDtl" Role="scRcvDtl" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="scItem">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="scRcvDtl">
+        <PropertyRef Name="scItemId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="scSupplierscRcvHdr">
+    <End Type="ScmDB.scSupplier" Role="scSupplier" Multiplicity="1" />
+    <End Type="ScmDB.scRcvHdr" Role="scRcvHdr" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="scSupplier">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="scRcvHdr">
+        <PropertyRef Name="scSupplierId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="scStoreBinscRcvDtl">
+    <End Type="ScmDB.scStoreBin" Role="scStoreBin" Multiplicity="1" />
+    <End Type="ScmDB.scRcvDtl" Role="scRcvDtl" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="scStoreBin">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="scRcvDtl">
+        <PropertyRef Name="scStoreBinId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="scPoHdr">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="dtPo" Type="DateTime" Nullable="false" />
+    <NavigationProperty Name="scPoDtls" Relationship="ScmDB.scPoHdrscPoDtl" FromRole="scPoHdr" ToRole="scPoDtl" />
+    <NavigationProperty Name="scSupplier" Relationship="ScmDB.scSupplierscPoHdr" FromRole="scPoHdr" ToRole="scSupplier" />
+    <Property Name="scSupplierId" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="scPoDtl">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <NavigationProperty Name="scPoHdr" Relationship="ScmDB.scPoHdrscPoDtl" FromRole="scPoDtl" ToRole="scPoHdr" />
+    <Property Name="scPoHdrId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="scItem" Relationship="ScmDB.scItemscPoDtl" FromRole="scPoDtl" ToRole="scItem" />
+    <Property Name="scItemId" Type="Int32" Nullable="false" />
+    <Property Name="Qty" Type="Decimal" Nullable="false" />
+    <Property Name="UnitPrice" Type="Decimal" Nullable="false" />
+    <NavigationProperty Name="scUom" Relationship="ScmDB.scUomscPoDtl" FromRole="scPoDtl" ToRole="scUom" />
+    <Property Name="scUomId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="scRcvDtls" Relationship="ScmDB.scPoDtlscRcvDtl" FromRole="scPoDtl" ToRole="scRcvDtl" />
+  </EntityType>
+  <Association Name="scPoHdrscPoDtl">
+    <End Type="ScmDB.scPoHdr" Role="scPoHdr" Multiplicity="1" />
+    <End Type="ScmDB.scPoDtl" Role="scPoDtl" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="scPoHdr">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="scPoDtl">
+        <PropertyRef Name="scPoHdrId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="scSupplierscPoHdr">
+    <End Type="ScmDB.scSupplier" Role="scSupplier" Multiplicity="1" />
+    <End Type="ScmDB.scPoHdr" Role="scPoHdr" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="scSupplier">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="scPoHdr">
+        <PropertyRef Name="scSupplierId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="scItemscPoDtl">
+    <End Type="ScmDB.scItem" Role="scItem" Multiplicity="1" />
+    <End Type="ScmDB.scPoDtl" Role="scPoDtl" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="scItem">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="scPoDtl">
+        <PropertyRef Name="scItemId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="scUomscPoDtl">
+    <End Type="ScmDB.scUom" Role="scUom" Multiplicity="1" />
+    <End Type="ScmDB.scPoDtl" Role="scPoDtl" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="scUom">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="scPoDtl">
+        <PropertyRef Name="scUomId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="scUomscItemSupplier">
+    <End Type="ScmDB.scUom" Role="scUom" Multiplicity="1" />
+    <End Type="ScmDB.scItemSupplier" Role="scItemSupplier" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="scUom">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="scItemSupplier">
+        <PropertyRef Name="scUomId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="scPoDtlscRcvDtl">
+    <End Type="ScmDB.scPoDtl" Role="scPoDtl" Multiplicity="1" />
+    <End Type="ScmDB.scRcvDtl" Role="scRcvDtl" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="scPoDtl">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="scRcvDtl">
+        <PropertyRef Name="scPoDtlId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="resMenu">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="80" />
+    <NavigationProperty Name="resMenuItems" Relationship="ScmDB.resMenuresMenuItems" FromRole="resMenu" ToRole="resMenuItems" />
+    <Property Name="Description" Type="String" Nullable="true" MaxLength="250" />
+    <Property Name="Price" Type="Decimal" Nullable="false" />
+    <Property Name="barcode" Type="String" Nullable="true" />
+    <NavigationProperty Name="resMenuCategories" Relationship="ScmDB.resMenuresMenuCategory" FromRole="resMenu" ToRole="resMenuCategory" />
+    <NavigationProperty Name="resOrderDtls" Relationship="ScmDB.resMenuresOrderDtl" FromRole="resMenu" ToRole="resOrderDtl" />
+  </EntityType>
+  <EntityType Name="resRecipe">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="80" />
+    <NavigationProperty Name="resIngredients" Relationship="ScmDB.resReciperesIngredients" FromRole="resRecipe" ToRole="resIngredients" />
+    <Property Name="Duration" Type="Int32" Nullable="false" />
+    <Property Name="NoOfServing" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="resMenuItems" Relationship="ScmDB.resReciperesMenuItem" FromRole="resRecipe" ToRole="resMenuItem" />
+    <NavigationProperty Name="resPreparations" Relationship="ScmDB.resReciperesPreparation" FromRole="resRecipe" ToRole="resPreparation" />
+  </EntityType>
+  <EntityType Name="resIngredient">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <NavigationProperty Name="resRecipe" Relationship="ScmDB.resReciperesIngredients" FromRole="resIngredients" ToRole="resRecipe" />
+    <Property Name="resRecipeId" Type="Int32" Nullable="false" />
+    <Property Name="Qty" Type="Decimal" Nullable="false" />
+    <NavigationProperty Name="scItem" Relationship="ScmDB.scItemresIngredients" FromRole="resIngredients" ToRole="scItem" />
+    <Property Name="scItemId" Type="Int32" Nullable="false" />
+  </EntityType>
+  <Association Name="resReciperesIngredients">
+    <End Type="ScmDB.resRecipe" Role="resRecipe" Multiplicity="1" />
+    <End Type="ScmDB.resIngredient" Role="resIngredients" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="resRecipe">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="resIngredients">
+        <PropertyRef Name="resRecipeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="scItemresIngredients">
+    <End Type="ScmDB.scItem" Role="scItem" Multiplicity="1" />
+    <End Type="ScmDB.resIngredient" Role="resIngredients" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="scItem">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="resIngredients">
+        <PropertyRef Name="scItemId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="resMenuItem">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <NavigationProperty Name="resMenu" Relationship="ScmDB.resMenuresMenuItems" FromRole="resMenuItems" ToRole="resMenu" />
+    <Property Name="resMenuId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="resRecipe" Relationship="ScmDB.resReciperesMenuItem" FromRole="resMenuItem" ToRole="resRecipe" />
+    <Property Name="resRecipeId" Type="Int32" Nullable="false" />
+    <Property Name="ServingRequired" Type="Int32" Nullable="false" />
+  </EntityType>
+  <Association Name="resMenuresMenuItems">
+    <End Type="ScmDB.resMenu" Role="resMenu" Multiplicity="1" />
+    <End Type="ScmDB.resMenuItem" Role="resMenuItems" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="resMenu">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="resMenuItems">
+        <PropertyRef Name="resMenuId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="resReciperesMenuItem">
+    <End Type="ScmDB.resRecipe" Role="resRecipe" Multiplicity="1" />
+    <End Type="ScmDB.resMenuItem" Role="resMenuItem" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="resRecipe">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="resMenuItem">
+        <PropertyRef Name="resRecipeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="resOrderHdr">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="resCustomerId" Type="Int32" Nullable="false" />
+    <Property Name="dtOrder" Type="DateTime" Nullable="false" />
+    <NavigationProperty Name="resCustomer" Relationship="ScmDB.resCustomerresOrderHdr" FromRole="resOrderHdr" ToRole="resCustomer" />
+    <Property Name="Remarks" Type="String" Nullable="true" MaxLength="250" />
+    <NavigationProperty Name="resOrderDtls" Relationship="ScmDB.resOrderHdrresOrderDtl" FromRole="resOrderHdr" ToRole="resOrderDtl" />
+  </EntityType>
+  <EntityType Name="resCustomer">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="80" />
+    <NavigationProperty Name="resOrderHdrs" Relationship="ScmDB.resCustomerresOrderHdr" FromRole="resCustomer" ToRole="resOrderHdr" />
+  </EntityType>
+  <Association Name="resCustomerresOrderHdr">
+    <End Type="ScmDB.resCustomer" Role="resCustomer" Multiplicity="1" />
+    <End Type="ScmDB.resOrderHdr" Role="resOrderHdr" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="resCustomer">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="resOrderHdr">
+        <PropertyRef Name="resCustomerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="resOrderDtl">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <NavigationProperty Name="resOrderHdr" Relationship="ScmDB.resOrderHdrresOrderDtl" FromRole="resOrderDtl" ToRole="resOrderHdr" />
+    <Property Name="resOrderHdrId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="resMenu" Relationship="ScmDB.resMenuresOrderDtl" FromRole="resOrderDtl" ToRole="resMenu" />
+    <Property Name="resMenuId" Type="Int32" Nullable="true" />
+    <Property Name="resItemId" Type="Int32" Nullable="true" />
+    <Property Name="Qty" Type="Int32" Nullable="false" />
+    <Property Name="UnitPrice" Type="Decimal" Nullable="false" />
+    <NavigationProperty Name="resItem" Relationship="ScmDB.resItemresOrderDtl" FromRole="resOrderDtl" ToRole="resItem" />
+    <NavigationProperty Name="scInvOutDtls" Relationship="ScmDB.resOrderDtlscInvOutDtl" FromRole="resOrderDtl" ToRole="scInvOutDtl" />
+  </EntityType>
+  <Association Name="resOrderHdrresOrderDtl">
+    <End Type="ScmDB.resOrderHdr" Role="resOrderHdr" Multiplicity="1" />
+    <End Type="ScmDB.resOrderDtl" Role="resOrderDtl" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="resOrderHdr">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="resOrderDtl">
+        <PropertyRef Name="resOrderHdrId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="resCategory">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CatName" Type="String" Nullable="false" MaxLength="80" />
+    <NavigationProperty Name="resMenuCategories" Relationship="ScmDB.resCategoryresMenuCategory" FromRole="resCategory" ToRole="resMenuCategory" />
+  </EntityType>
+  <EntityType Name="resMenuCategory">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <NavigationProperty Name="resCategory" Relationship="ScmDB.resCategoryresMenuCategory" FromRole="resMenuCategory" ToRole="resCategory" />
+    <Property Name="resCategoryId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="resMenu" Relationship="ScmDB.resMenuresMenuCategory" FromRole="resMenuCategory" ToRole="resMenu" />
+    <Property Name="resMenuId" Type="Int32" Nullable="false" />
+  </EntityType>
+  <Association Name="resCategoryresMenuCategory">
+    <End Type="ScmDB.resCategory" Role="resCategory" Multiplicity="1" />
+    <End Type="ScmDB.resMenuCategory" Role="resMenuCategory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="resCategory">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="resMenuCategory">
+        <PropertyRef Name="resCategoryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="resMenuresMenuCategory">
+    <End Type="ScmDB.resMenu" Role="resMenu" Multiplicity="1" />
+    <End Type="ScmDB.resMenuCategory" Role="resMenuCategory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="resMenu">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="resMenuCategory">
+        <PropertyRef Name="resMenuId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="resMenuresOrderDtl">
+    <End Type="ScmDB.resMenu" Role="resMenu" Multiplicity="0..1" />
+    <End Type="ScmDB.resOrderDtl" Role="resOrderDtl" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="resMenu">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="resOrderDtl">
+        <PropertyRef Name="resMenuId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="resItem">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="scItemId" Type="Int32" Nullable="false" />
+    <Property Name="Description" Type="String" Nullable="false" MaxLength="250" />
+    <Property Name="Price" Type="Decimal" Nullable="false" />
+    <Property Name="barcode" Type="String" Nullable="true" MaxLength="80" />
+    <NavigationProperty Name="scItem" Relationship="ScmDB.scItemresItem" FromRole="resItem" ToRole="scItem" />
+    <Property Name="resQty" Type="Decimal" Nullable="false" />
+    <NavigationProperty Name="resOrderDtls" Relationship="ScmDB.resItemresOrderDtl" FromRole="resItem" ToRole="resOrderDtl" />
+  </EntityType>
+  <Association Name="scItemresItem">
+    <End Type="ScmDB.scItem" Role="scItem" Multiplicity="1" />
+    <End Type="ScmDB.resItem" Role="resItem" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="scItem">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="resItem">
+        <PropertyRef Name="scItemId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="resItemresOrderDtl">
+    <End Type="ScmDB.resItem" Role="resItem" Multiplicity="0..1" />
+    <End Type="ScmDB.resOrderDtl" Role="resOrderDtl" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="resItem">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="resOrderDtl">
+        <PropertyRef Name="resItemId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="scInvOutHdr">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <NavigationProperty Name="scInvOutDtls" Relationship="ScmDB.scInvOutHdrscInvOutDtl" FromRole="scInvOutHdr" ToRole="scInvOutDtl" />
+    <Property Name="dtOut" Type="DateTime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="scInvOutDtl">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <NavigationProperty Name="scInvOutHdr" Relationship="ScmDB.scInvOutHdrscInvOutDtl" FromRole="scInvOutDtl" ToRole="scInvOutHdr" />
+    <Property Name="scInvOutHdrId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="scItem" Relationship="ScmDB.scItemscInvOutDtl" FromRole="scInvOutDtl" ToRole="scItem" />
+    <Property Name="scItemId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="scStoreBin" Relationship="ScmDB.scStoreBinscInvOutDtl" FromRole="scInvOutDtl" ToRole="scStoreBin" />
+    <Property Name="scStoreBinId" Type="Int32" Nullable="false" />
+    <Property Name="Qty" Type="Decimal" Nullable="false" />
+    <NavigationProperty Name="resOrderDtl" Relationship="ScmDB.resOrderDtlscInvOutDtl" FromRole="scInvOutDtl" ToRole="resOrderDtl" />
+    <Property Name="resOrderDtlId" Type="Int32" Nullable="true" />
+  </EntityType>
+  <Association Name="scInvOutHdrscInvOutDtl">
+    <End Type="ScmDB.scInvOutHdr" Role="scInvOutHdr" Multiplicity="1" />
+    <End Type="ScmDB.scInvOutDtl" Role="scInvOutDtl" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="scInvOutHdr">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="scInvOutDtl">
+        <PropertyRef Name="scInvOutHdrId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="scItemscInvOutDtl">
+    <End Type="ScmDB.scItem" Role="scItem" Multiplicity="1" />
+    <End Type="ScmDB.scInvOutDtl" Role="scInvOutDtl" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="scItem">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="scInvOutDtl">
+        <PropertyRef Name="scItemId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="scStoreBinscInvOutDtl">
+    <End Type="ScmDB.scStoreBin" Role="scStoreBin" Multiplicity="1" />
+    <End Type="ScmDB.scInvOutDtl" Role="scInvOutDtl" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="scStoreBin">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="scInvOutDtl">
+        <PropertyRef Name="scStoreBinId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="resOrderDtlscInvOutDtl">
+    <End Type="ScmDB.resOrderDtl" Role="resOrderDtl" Multiplicity="0..1" />
+    <End Type="ScmDB.scInvOutDtl" Role="scInvOutDtl" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="resOrderDtl">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="scInvOutDtl">
+        <PropertyRef Name="resOrderDtlId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="resPreparation">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="dtPrepared" Type="String" Nullable="false" />
+    <NavigationProperty Name="resPreparationDtls" Relationship="ScmDB.resPreparationresPreparationDtl" FromRole="resPreparation" ToRole="resPreparationDtl" />
+    <NavigationProperty Name="resRecipe" Relationship="ScmDB.resReciperesPreparation" FromRole="resPreparation" ToRole="resRecipe" />
+    <Property Name="resRecipeId" Type="Int32" Nullable="false" />
+    <Property Name="resQty" Type="Decimal" Nullable="false" />
+    <Property Name="itemty" Type="Decimal" Nullable="false" />
+    <NavigationProperty Name="scItem" Relationship="ScmDB.scItemresPreparation" FromRole="resPreparation" ToRole="scItem" />
+    <Property Name="scItemId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="scStoreBin" Relationship="ScmDB.scStoreBinresPreparation" FromRole="resPreparation" ToRole="scStoreBin" />
+    <Property Name="scStoreBinId" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="resPrepMaterial">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <NavigationProperty Name="resPreparation" Relationship="ScmDB.resPreparationresPreparationDtl" FromRole="resPreparationDtl" ToRole="resPreparation" />
+    <Property Name="resPreparationId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="scItem" Relationship="ScmDB.scItemresPreparationDtl" FromRole="resPreparationDtl" ToRole="scItem" />
+    <Property Name="scItemId" Type="Int32" Nullable="false" />
+    <Property Name="Qty" Type="Decimal" Nullable="false" />
+    <NavigationProperty Name="scStoreBin" Relationship="ScmDB.scStoreBinresPreparationDtl" FromRole="resPreparationDtl" ToRole="scStoreBin" />
+    <Property Name="scStoreBinId" Type="Int32" Nullable="false" />
+  </EntityType>
+  <Association Name="resPreparationresPreparationDtl">
+    <End Type="ScmDB.resPreparation" Role="resPreparation" Multiplicity="1" />
+    <End Type="ScmDB.resPrepMaterial" Role="resPreparationDtl" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="resPreparation">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="resPreparationDtl">
+        <PropertyRef Name="resPreparationId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="resReciperesPreparation">
+    <End Type="ScmDB.resRecipe" Role="resRecipe" Multiplicity="1" />
+    <End Type="ScmDB.resPreparation" Role="resPreparation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="resRecipe">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="resPreparation">
+        <PropertyRef Name="resRecipeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="scItemresPreparationDtl">
+    <End Type="ScmDB.scItem" Role="scItem" Multiplicity="1" />
+    <End Type="ScmDB.resPrepMaterial" Role="resPreparationDtl" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="scItem">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="resPreparationDtl">
+        <PropertyRef Name="scItemId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="scStoreBinresPreparationDtl">
+    <End Type="ScmDB.scStoreBin" Role="scStoreBin" Multiplicity="1" />
+    <End Type="ScmDB.resPrepMaterial" Role="resPreparationDtl" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="scStoreBin">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="resPreparationDtl">
+        <PropertyRef Name="scStoreBinId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="scItemresPreparation">
+    <End Type="ScmDB.scItem" Role="scItem" Multiplicity="1" />
+    <End Type="ScmDB.resPreparation" Role="resPreparation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="scItem">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="resPreparation">
+        <PropertyRef Name="scItemId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="scStoreBinresPreparation">
+    <End Type="ScmDB.scStoreBin" Role="scStoreBin" Multiplicity="1" />
+    <End Type="ScmDB.resPreparation" Role="resPreparation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="scStoreBin">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="resPreparation">
+        <PropertyRef Name="scStoreBinId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="scItemscStoreBin">
+    <End Type="ScmDB.scItem" Role="scItem" Multiplicity="1" />
+    <End Type="ScmDB.scStoreBin" Role="scStoreBin" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="scItem">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="scStoreBin">
+        <PropertyRef Name="scItemId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>
