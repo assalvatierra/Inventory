@@ -186,6 +186,7 @@
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="80" />
+    <Property Name="Remarks" Type="nvarchar" Nullable="true" MaxLength="250" />
   </EntityType>
   <EntityType Name="scItems">
     <Key>
@@ -1043,6 +1044,7 @@
           <NavigationProperty Name="scItemSuppliers" Relationship="ScmDB.scSupplierscItemSupplier" FromRole="scSupplier" ToRole="scItemSupplier" />
           <NavigationProperty Name="scRcvHdrs" Relationship="ScmDB.scSupplierscRcvHdr" FromRole="scSupplier" ToRole="scRcvHdr" />
           <NavigationProperty Name="scPoHdrs" Relationship="ScmDB.scSupplierscPoHdr" FromRole="scSupplier" ToRole="scPoHdr" />
+          <Property Name="Remarks" Type="String" Nullable="true" MaxLength="250" />
         </EntityType>
         <EntityType Name="scItem">
           <Key>
@@ -1794,6 +1796,7 @@
         <MappingFragment StoreEntitySet="scSuppliers">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Remarks" ColumnName="Remarks" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 10/03/2017 14:47:25
+-- Date Created: 10/04/2017 12:58:46
 -- Generated from EDMX file: D:\Data\Real\Apps\GitHub\Inventory\scm\scm\Models\ScmDB.edmx
 -- --------------------------------------------------
 
@@ -17,11 +17,197 @@ GO
 -- Dropping existing FOREIGN KEY constraints
 -- --------------------------------------------------
 
+IF OBJECT_ID(N'[dbo].[FK_scUomscItem]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[scItems] DROP CONSTRAINT [FK_scUomscItem];
+GO
+IF OBJECT_ID(N'[dbo].[FK_scTypescItem]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[scItems] DROP CONSTRAINT [FK_scTypescItem];
+GO
+IF OBJECT_ID(N'[dbo].[FK_scStoragescStoreBin]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[scStoreBins] DROP CONSTRAINT [FK_scStoragescStoreBin];
+GO
+IF OBJECT_ID(N'[dbo].[FK_scItemscItemSupplier]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[scItemSuppliers] DROP CONSTRAINT [FK_scItemscItemSupplier];
+GO
+IF OBJECT_ID(N'[dbo].[FK_scSupplierscItemSupplier]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[scItemSuppliers] DROP CONSTRAINT [FK_scSupplierscItemSupplier];
+GO
+IF OBJECT_ID(N'[dbo].[FK_scRcvHdrscRcvDtl]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[scRcvDtls] DROP CONSTRAINT [FK_scRcvHdrscRcvDtl];
+GO
+IF OBJECT_ID(N'[dbo].[FK_scItemscRcvDtl]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[scRcvDtls] DROP CONSTRAINT [FK_scItemscRcvDtl];
+GO
+IF OBJECT_ID(N'[dbo].[FK_scSupplierscRcvHdr]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[scRcvHdrs] DROP CONSTRAINT [FK_scSupplierscRcvHdr];
+GO
+IF OBJECT_ID(N'[dbo].[FK_scStoreBinscRcvDtl]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[scRcvDtls] DROP CONSTRAINT [FK_scStoreBinscRcvDtl];
+GO
+IF OBJECT_ID(N'[dbo].[FK_scPoHdrscPoDtl]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[scPoDtls] DROP CONSTRAINT [FK_scPoHdrscPoDtl];
+GO
+IF OBJECT_ID(N'[dbo].[FK_scSupplierscPoHdr]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[scPoHdrs] DROP CONSTRAINT [FK_scSupplierscPoHdr];
+GO
+IF OBJECT_ID(N'[dbo].[FK_scItemscPoDtl]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[scPoDtls] DROP CONSTRAINT [FK_scItemscPoDtl];
+GO
+IF OBJECT_ID(N'[dbo].[FK_scUomscPoDtl]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[scPoDtls] DROP CONSTRAINT [FK_scUomscPoDtl];
+GO
+IF OBJECT_ID(N'[dbo].[FK_scUomscItemSupplier]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[scItemSuppliers] DROP CONSTRAINT [FK_scUomscItemSupplier];
+GO
+IF OBJECT_ID(N'[dbo].[FK_scPoDtlscRcvDtl]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[scRcvDtls] DROP CONSTRAINT [FK_scPoDtlscRcvDtl];
+GO
+IF OBJECT_ID(N'[dbo].[FK_resReciperesIngredients]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[resIngredients1] DROP CONSTRAINT [FK_resReciperesIngredients];
+GO
+IF OBJECT_ID(N'[dbo].[FK_scItemresIngredients]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[resIngredients1] DROP CONSTRAINT [FK_scItemresIngredients];
+GO
+IF OBJECT_ID(N'[dbo].[FK_resMenuresMenuItems]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[resMenuItems1] DROP CONSTRAINT [FK_resMenuresMenuItems];
+GO
+IF OBJECT_ID(N'[dbo].[FK_resReciperesMenuItem]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[resMenuItems1] DROP CONSTRAINT [FK_resReciperesMenuItem];
+GO
+IF OBJECT_ID(N'[dbo].[FK_resCustomerresOrderHdr]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[resOrderHdrs] DROP CONSTRAINT [FK_resCustomerresOrderHdr];
+GO
+IF OBJECT_ID(N'[dbo].[FK_resOrderHdrresOrderDtl]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[resOrderDtls] DROP CONSTRAINT [FK_resOrderHdrresOrderDtl];
+GO
+IF OBJECT_ID(N'[dbo].[FK_resCategoryresMenuCategory]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[resMenuCategories] DROP CONSTRAINT [FK_resCategoryresMenuCategory];
+GO
+IF OBJECT_ID(N'[dbo].[FK_resMenuresMenuCategory]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[resMenuCategories] DROP CONSTRAINT [FK_resMenuresMenuCategory];
+GO
+IF OBJECT_ID(N'[dbo].[FK_resMenuresOrderDtl]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[resOrderDtls] DROP CONSTRAINT [FK_resMenuresOrderDtl];
+GO
+IF OBJECT_ID(N'[dbo].[FK_scItemresItem]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[resItems] DROP CONSTRAINT [FK_scItemresItem];
+GO
+IF OBJECT_ID(N'[dbo].[FK_resItemresOrderDtl]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[resOrderDtls] DROP CONSTRAINT [FK_resItemresOrderDtl];
+GO
+IF OBJECT_ID(N'[dbo].[FK_scInvOutHdrscInvOutDtl]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[scInvOutDtls] DROP CONSTRAINT [FK_scInvOutHdrscInvOutDtl];
+GO
+IF OBJECT_ID(N'[dbo].[FK_scItemscInvOutDtl]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[scInvOutDtls] DROP CONSTRAINT [FK_scItemscInvOutDtl];
+GO
+IF OBJECT_ID(N'[dbo].[FK_scStoreBinscInvOutDtl]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[scInvOutDtls] DROP CONSTRAINT [FK_scStoreBinscInvOutDtl];
+GO
+IF OBJECT_ID(N'[dbo].[FK_resOrderDtlscInvOutDtl]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[scInvOutDtls] DROP CONSTRAINT [FK_resOrderDtlscInvOutDtl];
+GO
+IF OBJECT_ID(N'[dbo].[FK_resPreparationresPreparationDtl]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[resPrepMaterials] DROP CONSTRAINT [FK_resPreparationresPreparationDtl];
+GO
+IF OBJECT_ID(N'[dbo].[FK_resReciperesPreparation]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[resPreparations] DROP CONSTRAINT [FK_resReciperesPreparation];
+GO
+IF OBJECT_ID(N'[dbo].[FK_scItemresPreparationDtl]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[resPrepMaterials] DROP CONSTRAINT [FK_scItemresPreparationDtl];
+GO
+IF OBJECT_ID(N'[dbo].[FK_scStoreBinresPreparationDtl]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[resPrepMaterials] DROP CONSTRAINT [FK_scStoreBinresPreparationDtl];
+GO
+IF OBJECT_ID(N'[dbo].[FK_scItemresPreparation]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[resPreparations] DROP CONSTRAINT [FK_scItemresPreparation];
+GO
+IF OBJECT_ID(N'[dbo].[FK_scStoreBinresPreparation]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[resPreparations] DROP CONSTRAINT [FK_scStoreBinresPreparation];
+GO
+IF OBJECT_ID(N'[dbo].[FK_scItemscStoreBin]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[scStoreBins] DROP CONSTRAINT [FK_scItemscStoreBin];
+GO
 
 -- --------------------------------------------------
 -- Dropping existing tables
 -- --------------------------------------------------
 
+IF OBJECT_ID(N'[dbo].[scSuppliers]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[scSuppliers];
+GO
+IF OBJECT_ID(N'[dbo].[scItems]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[scItems];
+GO
+IF OBJECT_ID(N'[dbo].[scUoms]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[scUoms];
+GO
+IF OBJECT_ID(N'[dbo].[scTypes]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[scTypes];
+GO
+IF OBJECT_ID(N'[dbo].[scStorages]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[scStorages];
+GO
+IF OBJECT_ID(N'[dbo].[scStoreBins]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[scStoreBins];
+GO
+IF OBJECT_ID(N'[dbo].[scItemSuppliers]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[scItemSuppliers];
+GO
+IF OBJECT_ID(N'[dbo].[scRcvHdrs]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[scRcvHdrs];
+GO
+IF OBJECT_ID(N'[dbo].[scRcvDtls]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[scRcvDtls];
+GO
+IF OBJECT_ID(N'[dbo].[scPoHdrs]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[scPoHdrs];
+GO
+IF OBJECT_ID(N'[dbo].[scPoDtls]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[scPoDtls];
+GO
+IF OBJECT_ID(N'[dbo].[resMenus]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[resMenus];
+GO
+IF OBJECT_ID(N'[dbo].[resRecipes]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[resRecipes];
+GO
+IF OBJECT_ID(N'[dbo].[resIngredients1]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[resIngredients1];
+GO
+IF OBJECT_ID(N'[dbo].[resMenuItems1]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[resMenuItems1];
+GO
+IF OBJECT_ID(N'[dbo].[resOrderHdrs]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[resOrderHdrs];
+GO
+IF OBJECT_ID(N'[dbo].[resCustomers]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[resCustomers];
+GO
+IF OBJECT_ID(N'[dbo].[resOrderDtls]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[resOrderDtls];
+GO
+IF OBJECT_ID(N'[dbo].[resCategories]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[resCategories];
+GO
+IF OBJECT_ID(N'[dbo].[resMenuCategories]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[resMenuCategories];
+GO
+IF OBJECT_ID(N'[dbo].[resItems]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[resItems];
+GO
+IF OBJECT_ID(N'[dbo].[scInvOutHdrs]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[scInvOutHdrs];
+GO
+IF OBJECT_ID(N'[dbo].[scInvOutDtls]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[scInvOutDtls];
+GO
+IF OBJECT_ID(N'[dbo].[resPreparations]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[resPreparations];
+GO
+IF OBJECT_ID(N'[dbo].[resPrepMaterials]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[resPrepMaterials];
+GO
 
 -- --------------------------------------------------
 -- Creating all tables
@@ -30,7 +216,8 @@ GO
 -- Creating table 'scSuppliers'
 CREATE TABLE [dbo].[scSuppliers] (
     [Id] int IDENTITY(1,1) NOT NULL,
-    [Name] nvarchar(80)  NOT NULL
+    [Name] nvarchar(80)  NOT NULL,
+    [Remarks] nvarchar(250)  NULL
 );
 GO
 

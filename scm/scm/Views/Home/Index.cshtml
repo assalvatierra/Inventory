@@ -10,9 +10,19 @@
 
 <div class="row">
     <div class="col-md-4">
+        <h2>Supplier Management</h2>
+        <p>
+            Manage your Suppliers, Lead time, Purchase Orders
+        </p>
+        <p>
+            @Html.ActionLink("Suppliers", "Supplier", null, new { @class = "btn btn-default" }) 
+            @Html.ActionLink("Orders", "PurchaseOrder", null, new { @class = "btn btn-default" }) 
+        </p>
+    </div>
+    <div class="col-md-4">
         <h2>Stock Status</h2>
         <p>
-            Manage your Items, Suppliers, Inventory Count and Storage Locations, Purchase Orders, Receiving Report, Stock In/Out 
+            Manage your Items, Inventory Count and Storage Locations, Receiving Report, Stock In/Out 
         </p>
         <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
     </div>

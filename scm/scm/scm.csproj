@@ -201,7 +201,9 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\scItemsController.cs" />
+    <Compile Include="Controllers\scPoHdrsController.cs" />
     <Compile Include="Controllers\scStoragesController.cs" />
+    <Compile Include="Controllers\scSuppliersController.cs" />
     <Compile Include="Controllers\scTypesController.cs" />
     <Compile Include="Controllers\scUomsController.cs" />
     <Compile Include="Global.asax.cs">
@@ -400,6 +402,16 @@
     <Content Include="Views\scUoms\Details.cshtml" />
     <Content Include="Views\scUoms\Edit.cshtml" />
     <Content Include="Views\scUoms\Index.cshtml" />
+    <Content Include="Views\scSuppliers\Create.cshtml" />
+    <Content Include="Views\scSuppliers\Delete.cshtml" />
+    <Content Include="Views\scSuppliers\Details.cshtml" />
+    <Content Include="Views\scSuppliers\Edit.cshtml" />
+    <Content Include="Views\scSuppliers\Index.cshtml" />
+    <Content Include="Views\scPoHdrs\Create.cshtml" />
+    <Content Include="Views\scPoHdrs\Delete.cshtml" />
+    <Content Include="Views\scPoHdrs\Details.cshtml" />
+    <Content Include="Views\scPoHdrs\Edit.cshtml" />
+    <Content Include="Views\scPoHdrs\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

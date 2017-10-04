@@ -33,5 +33,13 @@ namespace scm.Controllers
             return View();
         }
 
+        public ActionResult Supplier()
+        {
+            return RedirectToAction("Index", "scSuppliers");
+        }
+        public ActionResult PurchaseOrder()
+        {
+            return RedirectToAction("Index", "scPoHdrs");
+        }
     }
 }
