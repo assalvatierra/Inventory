@@ -31,6 +31,7 @@
     <EntitySet Name="scInvOutDtls" EntityType="ScmDB.Store.scInvOutDtls" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="resPreparations" EntityType="ScmDB.Store.resPreparations" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="resPrepMaterials" EntityType="ScmDB.Store.resPrepMaterials" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="scStoreTypes" EntityType="ScmDB.Store.scStoreTypes" store:Type="Tables" Schema="dbo" />
     <AssociationSet Name="scUomscItem" Association="ScmDB.Store.scUomscItem">
       <End Role="scUom" EntitySet="scUoms" />
       <End Role="scItem" EntitySet="scItems" />
@@ -179,6 +180,10 @@
       <End Role="scItem" EntitySet="scItems" />
       <End Role="scStoreBin" EntitySet="scStoreBins" />
     </AssociationSet>
+    <AssociationSet Name="scStoreTypescStorage" Association="ScmDB.Store.scStoreTypescStorage">
+      <End Role="scStoreType" EntitySet="scStoreTypes" />
+      <End Role="scStorage" EntitySet="scStorages" />
+    </AssociationSet>
   </EntityContainer>
   <EntityType Name="scSuppliers">
     <Key>
@@ -219,6 +224,7 @@
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="80" />
+    <Property Name="scStoreTypeId" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="scStoreBins">
     <Key>
@@ -411,6 +417,13 @@
     <Property Name="scItemId" Type="int" Nullable="false" />
     <Property Name="Qty" Type="decimal" Nullable="false" />
     <Property Name="scStoreBinId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="scStoreTypes">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Type" Type="nvarchar(max)" Nullable="false" />
   </EntityType>
   <Association Name="scUomscItem">
     <End Role="scUom" Type="ScmDB.Store.scUoms" Multiplicity="1" />
@@ -856,6 +869,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="scStoreTypescStorage">
+    <End Role="scStoreType" Type="ScmDB.Store.scStoreTypes" Multiplicity="1" />
+    <End Role="scStorage" Type="ScmDB.Store.scStorages" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="scStoreType">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="scStorage">
+        <PropertyRef Name="scStoreTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
@@ -1034,6 +1059,11 @@
             <End Role="scItem" EntitySet="scItems" />
             <End Role="scStoreBin" EntitySet="scStoreBins" />
           </AssociationSet>
+          <EntitySet Name="scStoreTypes" EntityType="ScmDB.scStoreType" />
+          <AssociationSet Name="scStoreTypescStorage" Association="ScmDB.scStoreTypescStorage">
+            <End Role="scStoreType" EntitySet="scStoreTypes" />
+            <End Role="scStorage" EntitySet="scStorages" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="scSupplier">
           <Key>
@@ -1117,6 +1147,8 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" Nullable="false" MaxLength="80" />
           <NavigationProperty Name="scStoreBins" Relationship="ScmDB.scStoragescStoreBin" FromRole="scStorage" ToRole="scStoreBin" />
+          <NavigationProperty Name="scStoreType" Relationship="ScmDB.scStoreTypescStorage" FromRole="scStorage" ToRole="scStoreType" />
+          <Property Name="scStoreTypeId" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="scStoreBin">
           <Key>
@@ -1785,6 +1817,26 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="scStoreType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Type" Type="String" Nullable="false" />
+          <NavigationProperty Name="scStorages" Relationship="ScmDB.scStoreTypescStorage" FromRole="scStoreType" ToRole="scStorage" />
+        </EntityType>
+        <Association Name="scStoreTypescStorage">
+          <End Type="ScmDB.scStoreType" Role="scStoreType" Multiplicity="1" />
+          <End Type="ScmDB.scStorage" Role="scStorage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="scStoreType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="scStorage">
+              <PropertyRef Name="scStoreTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1833,6 +1885,7 @@
         <MappingFragment StoreEntitySet="scStorages">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="scStoreTypeId" ColumnName="scStoreTypeId" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -2045,6 +2098,14 @@
           <ScalarProperty Name="scItemId" ColumnName="scItemId" />
           <ScalarProperty Name="Qty" ColumnName="Qty" />
           <ScalarProperty Name="scStoreBinId" ColumnName="scStoreBinId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="scStoreTypes">
+      <EntityTypeMapping TypeName="IsTypeOf(ScmDB.scStoreType)">
+        <MappingFragment StoreEntitySet="scStoreTypes">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

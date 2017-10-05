@@ -41,5 +41,13 @@ namespace scm.Controllers
         {
             return RedirectToAction("Index", "scPoHdrs");
         }
+        public ActionResult StorageBin()
+        {
+            return RedirectToAction("Index", "scStoreBins");
+        }
+        public ActionResult StockCount()
+        {
+            return RedirectToAction("Index", "scItems");
+        }
     }
 }

@@ -50,5 +50,6 @@ namespace scm.Models
         public virtual DbSet<scInvOutDtl> scInvOutDtls { get; set; }
         public virtual DbSet<resPreparation> resPreparations { get; set; }
         public virtual DbSet<resPrepMaterial> resPrepMaterials { get; set; }
+        public virtual DbSet<scStoreType> scStoreTypes { get; set; }
     }
 }

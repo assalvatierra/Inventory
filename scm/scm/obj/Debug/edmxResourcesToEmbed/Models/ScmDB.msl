@@ -43,6 +43,7 @@
         <MappingFragment StoreEntitySet="scStorages">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="scStoreTypeId" ColumnName="scStoreTypeId" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -255,6 +256,14 @@
           <ScalarProperty Name="scItemId" ColumnName="scItemId" />
           <ScalarProperty Name="Qty" ColumnName="Qty" />
           <ScalarProperty Name="scStoreBinId" ColumnName="scStoreBinId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="scStoreTypes">
+      <EntityTypeMapping TypeName="IsTypeOf(ScmDB.scStoreType)">
+        <MappingFragment StoreEntitySet="scStoreTypes">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

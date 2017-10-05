@@ -203,6 +203,7 @@
     <Compile Include="Controllers\scItemsController.cs" />
     <Compile Include="Controllers\scPoHdrsController.cs" />
     <Compile Include="Controllers\scStoragesController.cs" />
+    <Compile Include="Controllers\scStoreBinsController.cs" />
     <Compile Include="Controllers\scSuppliersController.cs" />
     <Compile Include="Controllers\scTypesController.cs" />
     <Compile Include="Controllers\scUomsController.cs" />
@@ -291,6 +292,9 @@
       <DependentUpon>ScmDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\scStoreBin.cs">
+      <DependentUpon>ScmDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\scStoreType.cs">
       <DependentUpon>ScmDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\scSupplier.cs">
@@ -392,11 +396,6 @@
     <Content Include="Views\scTypes\Details.cshtml" />
     <Content Include="Views\scTypes\Edit.cshtml" />
     <Content Include="Views\scTypes\Index.cshtml" />
-    <Content Include="Views\scStorages\Create.cshtml" />
-    <Content Include="Views\scStorages\Delete.cshtml" />
-    <Content Include="Views\scStorages\Details.cshtml" />
-    <Content Include="Views\scStorages\Edit.cshtml" />
-    <Content Include="Views\scStorages\Index.cshtml" />
     <Content Include="Views\scUoms\Create.cshtml" />
     <Content Include="Views\scUoms\Delete.cshtml" />
     <Content Include="Views\scUoms\Details.cshtml" />
@@ -412,6 +411,16 @@
     <Content Include="Views\scPoHdrs\Details.cshtml" />
     <Content Include="Views\scPoHdrs\Edit.cshtml" />
     <Content Include="Views\scPoHdrs\Index.cshtml" />
+    <Content Include="Views\scStoreBins\Create.cshtml" />
+    <Content Include="Views\scStoreBins\Delete.cshtml" />
+    <Content Include="Views\scStoreBins\Details.cshtml" />
+    <Content Include="Views\scStoreBins\Edit.cshtml" />
+    <Content Include="Views\scStoreBins\Index.cshtml" />
+    <Content Include="Views\scStorages\Create.cshtml" />
+    <Content Include="Views\scStorages\Delete.cshtml" />
+    <Content Include="Views\scStorages\Details.cshtml" />
+    <Content Include="Views\scStorages\Edit.cshtml" />
+    <Content Include="Views\scStorages\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

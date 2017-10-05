@@ -1,0 +1,74 @@
+﻿@model scm.Models.scStoreBin
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>scStoreBin</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Code)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Code)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PostedQty)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PostedQty)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PostedDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PostedDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ExpiryDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ExpiryDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BinStatus)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BinStatus)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.scStorage.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.scStorage.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.scItem.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.scItem.Name)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

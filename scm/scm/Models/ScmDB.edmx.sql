@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 10/04/2017 12:58:46
+-- Date Created: 10/05/2017 17:46:27
 -- Generated from EDMX file: D:\Data\Real\Apps\GitHub\Inventory\scm\scm\Models\ScmDB.edmx
 -- --------------------------------------------------
 
@@ -128,6 +128,9 @@ GO
 IF OBJECT_ID(N'[dbo].[FK_scItemscStoreBin]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[scStoreBins] DROP CONSTRAINT [FK_scItemscStoreBin];
 GO
+IF OBJECT_ID(N'[dbo].[FK_scStoreTypescStorage]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[scStorages] DROP CONSTRAINT [FK_scStoreTypescStorage];
+GO
 
 -- --------------------------------------------------
 -- Dropping existing tables
@@ -208,6 +211,9 @@ GO
 IF OBJECT_ID(N'[dbo].[resPrepMaterials]', 'U') IS NOT NULL
     DROP TABLE [dbo].[resPrepMaterials];
 GO
+IF OBJECT_ID(N'[dbo].[scStoreTypes]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[scStoreTypes];
+GO
 
 -- --------------------------------------------------
 -- Creating all tables
@@ -249,7 +255,8 @@ GO
 -- Creating table 'scStorages'
 CREATE TABLE [dbo].[scStorages] (
     [Id] int IDENTITY(1,1) NOT NULL,
-    [Name] nvarchar(80)  NOT NULL
+    [Name] nvarchar(80)  NOT NULL,
+    [scStoreTypeId] int  NOT NULL
 );
 GO
 
@@ -445,6 +452,13 @@ CREATE TABLE [dbo].[resPrepMaterials] (
 );
 GO
 
+-- Creating table 'scStoreTypes'
+CREATE TABLE [dbo].[scStoreTypes] (
+    [Id] int IDENTITY(1,1) NOT NULL,
+    [Type] nvarchar(max)  NOT NULL
+);
+GO
+
 -- --------------------------------------------------
 -- Creating all PRIMARY KEY constraints
 -- --------------------------------------------------
@@ -596,6 +610,12 @@ GO
 -- Creating primary key on [Id] in table 'resPrepMaterials'
 ALTER TABLE [dbo].[resPrepMaterials]
 ADD CONSTRAINT [PK_resPrepMaterials]
+    PRIMARY KEY CLUSTERED ([Id] ASC);
+GO
+
+-- Creating primary key on [Id] in table 'scStoreTypes'
+ALTER TABLE [dbo].[scStoreTypes]
+ADD CONSTRAINT [PK_scStoreTypes]
     PRIMARY KEY CLUSTERED ([Id] ASC);
 GO
 
@@ -1156,6 +1176,21 @@ GO
 CREATE INDEX [IX_FK_scItemscStoreBin]
 ON [dbo].[scStoreBins]
     ([scItemId]);
+GO
+
+-- Creating foreign key on [scStoreTypeId] in table 'scStorages'
+ALTER TABLE [dbo].[scStorages]
+ADD CONSTRAINT [FK_scStoreTypescStorage]
+    FOREIGN KEY ([scStoreTypeId])
+    REFERENCES [dbo].[scStoreTypes]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_scStoreTypescStorage'
+CREATE INDEX [IX_FK_scStoreTypescStorage]
+ON [dbo].[scStorages]
+    ([scStoreTypeId]);
 GO
 
 -- --------------------------------------------------

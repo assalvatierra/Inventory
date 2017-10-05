@@ -26,6 +26,7 @@
     <EntitySet Name="scInvOutDtls" EntityType="ScmDB.Store.scInvOutDtls" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="resPreparations" EntityType="ScmDB.Store.resPreparations" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="resPrepMaterials" EntityType="ScmDB.Store.resPrepMaterials" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="scStoreTypes" EntityType="ScmDB.Store.scStoreTypes" store:Type="Tables" Schema="dbo" />
     <AssociationSet Name="scUomscItem" Association="ScmDB.Store.scUomscItem">
       <End Role="scUom" EntitySet="scUoms" />
       <End Role="scItem" EntitySet="scItems" />
@@ -174,6 +175,10 @@
       <End Role="scItem" EntitySet="scItems" />
       <End Role="scStoreBin" EntitySet="scStoreBins" />
     </AssociationSet>
+    <AssociationSet Name="scStoreTypescStorage" Association="ScmDB.Store.scStoreTypescStorage">
+      <End Role="scStoreType" EntitySet="scStoreTypes" />
+      <End Role="scStorage" EntitySet="scStorages" />
+    </AssociationSet>
   </EntityContainer>
   <EntityType Name="scSuppliers">
     <Key>
@@ -214,6 +219,7 @@
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="80" />
+    <Property Name="scStoreTypeId" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="scStoreBins">
     <Key>
@@ -406,6 +412,13 @@
     <Property Name="scItemId" Type="int" Nullable="false" />
     <Property Name="Qty" Type="decimal" Nullable="false" />
     <Property Name="scStoreBinId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="scStoreTypes">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Type" Type="nvarchar(max)" Nullable="false" />
   </EntityType>
   <Association Name="scUomscItem">
     <End Role="scUom" Type="ScmDB.Store.scUoms" Multiplicity="1" />
@@ -848,6 +861,18 @@
       </Principal>
       <Dependent Role="scStoreBin">
         <PropertyRef Name="scItemId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="scStoreTypescStorage">
+    <End Role="scStoreType" Type="ScmDB.Store.scStoreTypes" Multiplicity="1" />
+    <End Role="scStorage" Type="ScmDB.Store.scStorages" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="scStoreType">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="scStorage">
+        <PropertyRef Name="scStoreTypeId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

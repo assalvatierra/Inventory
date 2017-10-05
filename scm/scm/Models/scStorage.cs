@@ -22,8 +22,10 @@ namespace scm.Models
     
         public int Id { get; set; }
         public string Name { get; set; }
+        public int scStoreTypeId { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<scStoreBin> scStoreBins { get; set; }
+        public virtual scStoreType scStoreType { get; set; }
     }
 }

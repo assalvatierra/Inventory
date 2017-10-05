@@ -20,11 +20,15 @@
         </p>
     </div>
     <div class="col-md-4">
-        <h2>Stock Status</h2>
+        <h2>Store Management</h2>
         <p>
             Manage your Items, Inventory Count and Storage Locations, Receiving Report, Stock In/Out 
         </p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
+        <p>
+            @Html.ActionLink("Stock Count", "StockCount", null, new { @class = "btn btn-default" })
+            @Html.ActionLink("Store List", "Index", "scStorages", "", new { @class = "btn btn-default" })
+            @Html.ActionLink("Storage Bins", "StorageBin", null, new { @class = "btn btn-default" })
+        </p>
     </div>
     <div class="col-md-4">
         <h2>Production</h2>

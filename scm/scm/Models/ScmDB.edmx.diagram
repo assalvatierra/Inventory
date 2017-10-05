@@ -11,7 +11,7 @@
         <EntityTypeShape EntityType="ScmDB.scType" Width="1.5" PointX="5.125" PointY="0.625" />
         <AssociationConnector Association="ScmDB.scUomscItem" />
         <AssociationConnector Association="ScmDB.scTypescItem" />
-        <EntityTypeShape EntityType="ScmDB.scStorage" Width="1.5" PointX="7.125" PointY="6.25" />
+        <EntityTypeShape EntityType="ScmDB.scStorage" Width="1.5" PointX="7.125" PointY="6.375" />
         <EntityTypeShape EntityType="ScmDB.scStoreBin" Width="1.5" PointX="7.125" PointY="8.75" />
         <AssociationConnector Association="ScmDB.scStoragescStoreBin" />
         <EntityTypeShape EntityType="ScmDB.scItemSupplier" Width="1.5" PointX="9.25" PointY="3.375" />
@@ -67,6 +67,8 @@
         <AssociationConnector Association="ScmDB.scItemresPreparation" />
         <AssociationConnector Association="ScmDB.scStoreBinresPreparation" />
         <AssociationConnector Association="ScmDB.scItemscStoreBin" />
+        <EntityTypeShape EntityType="ScmDB.scStoreType" Width="1.5" PointX="7.125" PointY="4.25" />
+        <AssociationConnector Association="ScmDB.scStoreTypescStorage" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
