@@ -4,13 +4,11 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="17a01f444302494b9af90a9c84273fc2" Name="Diagram1" ZoomLevel="77" >
+      <Diagram DiagramId="17a01f444302494b9af90a9c84273fc2" Name="Diagram1" ZoomLevel="82" >
         <EntityTypeShape EntityType="ScmDB.scSupplier" Width="1.5" PointX="11.25" PointY="4.75" />
         <EntityTypeShape EntityType="ScmDB.scItem" Width="1.5" PointX="5.125" PointY="2.5" />
         <EntityTypeShape EntityType="ScmDB.scUom" Width="1.5" PointX="13.5" PointY="2.125" />
-        <EntityTypeShape EntityType="ScmDB.scType" Width="1.5" PointX="5.125" PointY="0.625" />
         <AssociationConnector Association="ScmDB.scUomscItem" />
-        <AssociationConnector Association="ScmDB.scTypescItem" />
         <EntityTypeShape EntityType="ScmDB.scStorage" Width="1.5" PointX="7.125" PointY="6.375" />
         <EntityTypeShape EntityType="ScmDB.scStoreBin" Width="1.5" PointX="7.125" PointY="8.75" />
         <AssociationConnector Association="ScmDB.scStoragescStoreBin" />
@@ -69,6 +67,10 @@
         <AssociationConnector Association="ScmDB.scItemscStoreBin" />
         <EntityTypeShape EntityType="ScmDB.scStoreType" Width="1.5" PointX="7.125" PointY="4.25" />
         <AssociationConnector Association="ScmDB.scStoreTypescStorage" />
+        <EntityTypeShape EntityType="ScmDB.scCategory" Width="1.5" PointX="2.75" PointY="1.25" />
+        <EntityTypeShape EntityType="ScmDB.scItemCategory" Width="1.5" PointX="2.75" PointY="3.25" />
+        <AssociationConnector Association="ScmDB.scCategoryscItemCategory" />
+        <AssociationConnector Association="ScmDB.scItemscItemCategory" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

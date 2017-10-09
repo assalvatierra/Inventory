@@ -4,13 +4,8 @@
     <EntitySet Name="scSuppliers" EntityType="ScmDB.scSupplier" />
     <EntitySet Name="scItems" EntityType="ScmDB.scItem" />
     <EntitySet Name="scUoms" EntityType="ScmDB.scUom" />
-    <EntitySet Name="scTypes" EntityType="ScmDB.scType" />
     <AssociationSet Name="scUomscItem" Association="ScmDB.scUomscItem">
       <End Role="scUom" EntitySet="scUoms" />
-      <End Role="scItem" EntitySet="scItems" />
-    </AssociationSet>
-    <AssociationSet Name="scTypescItem" Association="ScmDB.scTypescItem">
-      <End Role="scType" EntitySet="scTypes" />
       <End Role="scItem" EntitySet="scItems" />
     </AssociationSet>
     <EntitySet Name="scStorages" EntityType="ScmDB.scStorage" />
@@ -179,6 +174,16 @@
       <End Role="scStoreType" EntitySet="scStoreTypes" />
       <End Role="scStorage" EntitySet="scStorages" />
     </AssociationSet>
+    <EntitySet Name="scCategories" EntityType="ScmDB.scCategory" />
+    <EntitySet Name="scItemCategories" EntityType="ScmDB.scItemCategory" />
+    <AssociationSet Name="scCategoryscItemCategory" Association="ScmDB.scCategoryscItemCategory">
+      <End Role="scCategory" EntitySet="scCategories" />
+      <End Role="scItemCategory" EntitySet="scItemCategories" />
+    </AssociationSet>
+    <AssociationSet Name="scItemscItemCategory" Association="ScmDB.scItemscItemCategory">
+      <End Role="scItem" EntitySet="scItems" />
+      <End Role="scItemCategory" EntitySet="scItemCategories" />
+    </AssociationSet>
   </EntityContainer>
   <EntityType Name="scSupplier">
     <Key>
@@ -198,8 +203,6 @@
     <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="Name" Type="String" Nullable="false" MaxLength="80" />
     <NavigationProperty Name="scUom" Relationship="ScmDB.scUomscItem" FromRole="scItem" ToRole="scUom" />
-    <NavigationProperty Name="scType" Relationship="ScmDB.scTypescItem" FromRole="scItem" ToRole="scType" />
-    <Property Name="scTypeId" Type="Int32" Nullable="false" />
     <Property Name="scUomId" Type="Int32" Nullable="false" />
     <NavigationProperty Name="scItemSuppliers" Relationship="ScmDB.scItemscItemSupplier" FromRole="scItem" ToRole="scItemSupplier" />
     <NavigationProperty Name="scRcvDtls" Relationship="ScmDB.scItemscRcvDtl" FromRole="scItem" ToRole="scRcvDtl" />
@@ -211,6 +214,7 @@
     <NavigationProperty Name="resPreparationDtls" Relationship="ScmDB.scItemresPreparationDtl" FromRole="scItem" ToRole="resPreparationDtl" />
     <NavigationProperty Name="resPreparations" Relationship="ScmDB.scItemresPreparation" FromRole="scItem" ToRole="resPreparation" />
     <NavigationProperty Name="scStoreBins" Relationship="ScmDB.scItemscStoreBin" FromRole="scItem" ToRole="scStoreBin" />
+    <NavigationProperty Name="scItemCategories" Relationship="ScmDB.scItemscItemCategory" FromRole="scItem" ToRole="scItemCategory" />
   </EntityType>
   <EntityType Name="scUom">
     <Key>
@@ -223,14 +227,6 @@
     <NavigationProperty Name="scPoDtls" Relationship="ScmDB.scUomscPoDtl" FromRole="scUom" ToRole="scPoDtl" />
     <NavigationProperty Name="scItemSuppliers" Relationship="ScmDB.scUomscItemSupplier" FromRole="scUom" ToRole="scItemSupplier" />
   </EntityType>
-  <EntityType Name="scType">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Type" Type="String" Nullable="false" MaxLength="80" />
-    <NavigationProperty Name="scItems" Relationship="ScmDB.scTypescItem" FromRole="scType" ToRole="scItem" />
-  </EntityType>
   <Association Name="scUomscItem">
     <End Type="ScmDB.scUom" Role="scUom" Multiplicity="1" />
     <End Type="ScmDB.scItem" Role="scItem" Multiplicity="*" />
@@ -240,18 +236,6 @@
       </Principal>
       <Dependent Role="scItem">
         <PropertyRef Name="scUomId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="scTypescItem">
-    <End Type="ScmDB.scType" Role="scType" Multiplicity="1" />
-    <End Type="ScmDB.scItem" Role="scItem" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="scType">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="scItem">
-        <PropertyRef Name="scTypeId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -949,6 +933,48 @@
       </Principal>
       <Dependent Role="scStorage">
         <PropertyRef Name="scStoreTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="scCategory">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" />
+    <NavigationProperty Name="scItemCategories" Relationship="ScmDB.scCategoryscItemCategory" FromRole="scCategory" ToRole="scItemCategory" />
+  </EntityType>
+  <EntityType Name="scItemCategory">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <NavigationProperty Name="scCategory" Relationship="ScmDB.scCategoryscItemCategory" FromRole="scItemCategory" ToRole="scCategory" />
+    <Property Name="scCategoryId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="scItem" Relationship="ScmDB.scItemscItemCategory" FromRole="scItemCategory" ToRole="scItem" />
+    <Property Name="scItemId" Type="Int32" Nullable="false" />
+  </EntityType>
+  <Association Name="scCategoryscItemCategory">
+    <End Type="ScmDB.scCategory" Role="scCategory" Multiplicity="1" />
+    <End Type="ScmDB.scItemCategory" Role="scItemCategory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="scCategory">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="scItemCategory">
+        <PropertyRef Name="scCategoryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="scItemscItemCategory">
+    <End Type="ScmDB.scItem" Role="scItem" Multiplicity="1" />
+    <End Type="ScmDB.scItemCategory" Role="scItemCategory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="scItem">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="scItemCategory">
+        <PropertyRef Name="scItemId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

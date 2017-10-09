@@ -15,7 +15,6 @@
         <MappingFragment StoreEntitySet="scItems">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Name" ColumnName="Name" />
-          <ScalarProperty Name="scTypeId" ColumnName="scTypeId" />
           <ScalarProperty Name="scUomId" ColumnName="scUomId" />
           <ScalarProperty Name="Expirydays" ColumnName="Expirydays" />
         </MappingFragment>
@@ -27,14 +26,6 @@
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Unit" ColumnName="Unit" />
           <ScalarProperty Name="Desc" ColumnName="Desc" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="scTypes">
-      <EntityTypeMapping TypeName="IsTypeOf(ScmDB.scType)">
-        <MappingFragment StoreEntitySet="scTypes">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="Type" ColumnName="Type" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -264,6 +255,23 @@
         <MappingFragment StoreEntitySet="scStoreTypes">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Type" ColumnName="Type" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="scCategories">
+      <EntityTypeMapping TypeName="IsTypeOf(ScmDB.scCategory)">
+        <MappingFragment StoreEntitySet="scCategories">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="scItemCategories">
+      <EntityTypeMapping TypeName="IsTypeOf(ScmDB.scItemCategory)">
+        <MappingFragment StoreEntitySet="scItemCategories">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="scCategoryId" ColumnName="scCategoryId" />
+          <ScalarProperty Name="scItemId" ColumnName="scItemId" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

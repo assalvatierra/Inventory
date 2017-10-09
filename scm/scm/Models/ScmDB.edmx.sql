@@ -2,8 +2,8 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 10/05/2017 17:46:27
--- Generated from EDMX file: D:\Data\Real\Apps\GitHub\Inventory\scm\scm\Models\ScmDB.edmx
+-- Date Created: 10/09/2017 17:54:39
+-- Generated from EDMX file: C:\Data\ABEL\Projects\GitHubApps\Inventory\scm\scm\Models\ScmDB.edmx
 -- --------------------------------------------------
 
 SET QUOTED_IDENTIFIER OFF;
@@ -19,9 +19,6 @@ GO
 
 IF OBJECT_ID(N'[dbo].[FK_scUomscItem]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[scItems] DROP CONSTRAINT [FK_scUomscItem];
-GO
-IF OBJECT_ID(N'[dbo].[FK_scTypescItem]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[scItems] DROP CONSTRAINT [FK_scTypescItem];
 GO
 IF OBJECT_ID(N'[dbo].[FK_scStoragescStoreBin]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[scStoreBins] DROP CONSTRAINT [FK_scStoragescStoreBin];
@@ -131,6 +128,12 @@ GO
 IF OBJECT_ID(N'[dbo].[FK_scStoreTypescStorage]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[scStorages] DROP CONSTRAINT [FK_scStoreTypescStorage];
 GO
+IF OBJECT_ID(N'[dbo].[FK_scCategoryscItemCategory]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[scItemCategories] DROP CONSTRAINT [FK_scCategoryscItemCategory];
+GO
+IF OBJECT_ID(N'[dbo].[FK_scItemscItemCategory]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[scItemCategories] DROP CONSTRAINT [FK_scItemscItemCategory];
+GO
 
 -- --------------------------------------------------
 -- Dropping existing tables
@@ -144,9 +147,6 @@ IF OBJECT_ID(N'[dbo].[scItems]', 'U') IS NOT NULL
 GO
 IF OBJECT_ID(N'[dbo].[scUoms]', 'U') IS NOT NULL
     DROP TABLE [dbo].[scUoms];
-GO
-IF OBJECT_ID(N'[dbo].[scTypes]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[scTypes];
 GO
 IF OBJECT_ID(N'[dbo].[scStorages]', 'U') IS NOT NULL
     DROP TABLE [dbo].[scStorages];
@@ -214,6 +214,12 @@ GO
 IF OBJECT_ID(N'[dbo].[scStoreTypes]', 'U') IS NOT NULL
     DROP TABLE [dbo].[scStoreTypes];
 GO
+IF OBJECT_ID(N'[dbo].[scCategories]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[scCategories];
+GO
+IF OBJECT_ID(N'[dbo].[scItemCategories]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[scItemCategories];
+GO
 
 -- --------------------------------------------------
 -- Creating all tables
@@ -231,7 +237,6 @@ GO
 CREATE TABLE [dbo].[scItems] (
     [Id] int IDENTITY(1,1) NOT NULL,
     [Name] nvarchar(80)  NOT NULL,
-    [scTypeId] int  NOT NULL,
     [scUomId] int  NOT NULL,
     [Expirydays] int  NOT NULL
 );
@@ -242,13 +247,6 @@ CREATE TABLE [dbo].[scUoms] (
     [Id] int IDENTITY(1,1) NOT NULL,
     [Unit] nvarchar(10)  NOT NULL,
     [Desc] nvarchar(80)  NOT NULL
-);
-GO
-
--- Creating table 'scTypes'
-CREATE TABLE [dbo].[scTypes] (
-    [Id] int IDENTITY(1,1) NOT NULL,
-    [Type] nvarchar(80)  NOT NULL
 );
 GO
 
@@ -459,6 +457,21 @@ CREATE TABLE [dbo].[scStoreTypes] (
 );
 GO
 
+-- Creating table 'scCategories'
+CREATE TABLE [dbo].[scCategories] (
+    [Id] int IDENTITY(1,1) NOT NULL,
+    [Name] nvarchar(max)  NOT NULL
+);
+GO
+
+-- Creating table 'scItemCategories'
+CREATE TABLE [dbo].[scItemCategories] (
+    [Id] int IDENTITY(1,1) NOT NULL,
+    [scCategoryId] int  NOT NULL,
+    [scItemId] int  NOT NULL
+);
+GO
+
 -- --------------------------------------------------
 -- Creating all PRIMARY KEY constraints
 -- --------------------------------------------------
@@ -478,12 +491,6 @@ GO
 -- Creating primary key on [Id] in table 'scUoms'
 ALTER TABLE [dbo].[scUoms]
 ADD CONSTRAINT [PK_scUoms]
-    PRIMARY KEY CLUSTERED ([Id] ASC);
-GO
-
--- Creating primary key on [Id] in table 'scTypes'
-ALTER TABLE [dbo].[scTypes]
-ADD CONSTRAINT [PK_scTypes]
     PRIMARY KEY CLUSTERED ([Id] ASC);
 GO
 
@@ -619,6 +626,18 @@ ADD CONSTRAINT [PK_scStoreTypes]
     PRIMARY KEY CLUSTERED ([Id] ASC);
 GO
 
+-- Creating primary key on [Id] in table 'scCategories'
+ALTER TABLE [dbo].[scCategories]
+ADD CONSTRAINT [PK_scCategories]
+    PRIMARY KEY CLUSTERED ([Id] ASC);
+GO
+
+-- Creating primary key on [Id] in table 'scItemCategories'
+ALTER TABLE [dbo].[scItemCategories]
+ADD CONSTRAINT [PK_scItemCategories]
+    PRIMARY KEY CLUSTERED ([Id] ASC);
+GO
+
 -- --------------------------------------------------
 -- Creating all FOREIGN KEY constraints
 -- --------------------------------------------------
@@ -636,21 +655,6 @@ GO
 CREATE INDEX [IX_FK_scUomscItem]
 ON [dbo].[scItems]
     ([scUomId]);
-GO
-
--- Creating foreign key on [scTypeId] in table 'scItems'
-ALTER TABLE [dbo].[scItems]
-ADD CONSTRAINT [FK_scTypescItem]
-    FOREIGN KEY ([scTypeId])
-    REFERENCES [dbo].[scTypes]
-        ([Id])
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
-GO
-
--- Creating non-clustered index for FOREIGN KEY 'FK_scTypescItem'
-CREATE INDEX [IX_FK_scTypescItem]
-ON [dbo].[scItems]
-    ([scTypeId]);
 GO
 
 -- Creating foreign key on [scStorageId] in table 'scStoreBins'
@@ -1191,6 +1195,36 @@ GO
 CREATE INDEX [IX_FK_scStoreTypescStorage]
 ON [dbo].[scStorages]
     ([scStoreTypeId]);
+GO
+
+-- Creating foreign key on [scCategoryId] in table 'scItemCategories'
+ALTER TABLE [dbo].[scItemCategories]
+ADD CONSTRAINT [FK_scCategoryscItemCategory]
+    FOREIGN KEY ([scCategoryId])
+    REFERENCES [dbo].[scCategories]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_scCategoryscItemCategory'
+CREATE INDEX [IX_FK_scCategoryscItemCategory]
+ON [dbo].[scItemCategories]
+    ([scCategoryId]);
+GO
+
+-- Creating foreign key on [scItemId] in table 'scItemCategories'
+ALTER TABLE [dbo].[scItemCategories]
+ADD CONSTRAINT [FK_scItemscItemCategory]
+    FOREIGN KEY ([scItemId])
+    REFERENCES [dbo].[scItems]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_scItemscItemCategory'
+CREATE INDEX [IX_FK_scItemscItemCategory]
+ON [dbo].[scItemCategories]
+    ([scItemId]);
 GO
 
 -- --------------------------------------------------

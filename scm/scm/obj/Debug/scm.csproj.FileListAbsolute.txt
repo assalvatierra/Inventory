@@ -77,7 +77,6 @@ C:\Data\ABEL\Projects\GitHubApps\Inventory\scm\scm\bin\Microsoft.Owin.Security.O
 C:\Data\ABEL\Projects\GitHubApps\Inventory\scm\scm\bin\Microsoft.Owin.Security.Google.xml
 C:\Data\ABEL\Projects\GitHubApps\Inventory\scm\scm\bin\Microsoft.Owin.Security.Twitter.xml
 C:\Data\ABEL\Projects\GitHubApps\Inventory\scm\scm\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
-C:\Data\ABEL\Projects\GitHubApps\Inventory\scm\scm\obj\Debug\scm.csprojResolveAssemblyReference.cache
 C:\Data\ABEL\Projects\GitHubApps\Inventory\scm\scm\obj\Debug\scm.dll
 C:\Data\ABEL\Projects\GitHubApps\Inventory\scm\scm\obj\Debug\scm.pdb
 D:\Data\Real\Apps\GitHub\Inventory\scm\scm\bin\ApplicationInsights.config
@@ -161,3 +160,4 @@ D:\Data\Real\Apps\GitHub\Inventory\scm\scm\bin\Microsoft.Owin.Security.Twitter.x
 D:\Data\Real\Apps\GitHub\Inventory\scm\scm\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
 D:\Data\Real\Apps\GitHub\Inventory\scm\scm\obj\Debug\scm.dll
 D:\Data\Real\Apps\GitHub\Inventory\scm\scm\obj\Debug\scm.pdb
+C:\Data\ABEL\Projects\GitHubApps\Inventory\scm\scm\obj\Debug\scm.csprojResolveAssemblyReference.cache

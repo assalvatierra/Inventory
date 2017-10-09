@@ -17,7 +17,7 @@ namespace scm.Controllers
         // GET: scItems
         public ActionResult Index()
         {
-            var scItems = db.scItems.Include(s => s.scUom).Include(s => s.scType);
+            var scItems = db.scItems.Include(s => s.scUom);
             return View(scItems.ToList());
         }
 
@@ -40,7 +40,6 @@ namespace scm.Controllers
         public ActionResult Create()
         {
             ViewBag.scUomId = new SelectList(db.scUoms, "Id", "Unit");
-            ViewBag.scTypeId = new SelectList(db.scTypes, "Id", "Type");
             return View();
         }
 
@@ -49,7 +48,7 @@ namespace scm.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Name,scTypeId,scUomId,Expirydays")] scItem scItem)
+        public ActionResult Create([Bind(Include = "Id,Name,scUomId,Expirydays")] scItem scItem)
         {
             if (ModelState.IsValid)
             {
@@ -59,7 +58,6 @@ namespace scm.Controllers
             }
 
             ViewBag.scUomId = new SelectList(db.scUoms, "Id", "Unit", scItem.scUomId);
-            ViewBag.scTypeId = new SelectList(db.scTypes, "Id", "Type", scItem.scTypeId);
             return View(scItem);
         }
 
@@ -76,7 +74,6 @@ namespace scm.Controllers
                 return HttpNotFound();
             }
             ViewBag.scUomId = new SelectList(db.scUoms, "Id", "Unit", scItem.scUomId);
-            ViewBag.scTypeId = new SelectList(db.scTypes, "Id", "Type", scItem.scTypeId);
             return View(scItem);
         }
 
@@ -85,7 +82,7 @@ namespace scm.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Name,scTypeId,scUomId,Expirydays")] scItem scItem)
+        public ActionResult Edit([Bind(Include = "Id,Name,scUomId,Expirydays")] scItem scItem)
         {
             if (ModelState.IsValid)
             {
@@ -94,7 +91,6 @@ namespace scm.Controllers
                 return RedirectToAction("Index");
             }
             ViewBag.scUomId = new SelectList(db.scUoms, "Id", "Unit", scItem.scUomId);
-            ViewBag.scTypeId = new SelectList(db.scTypes, "Id", "Type", scItem.scTypeId);
             return View(scItem);
         }
 

@@ -28,7 +28,6 @@ namespace scm.Models
         public virtual DbSet<scSupplier> scSuppliers { get; set; }
         public virtual DbSet<scItem> scItems { get; set; }
         public virtual DbSet<scUom> scUoms { get; set; }
-        public virtual DbSet<scType> scTypes { get; set; }
         public virtual DbSet<scStorage> scStorages { get; set; }
         public virtual DbSet<scStoreBin> scStoreBins { get; set; }
         public virtual DbSet<scItemSupplier> scItemSuppliers { get; set; }
@@ -51,5 +50,7 @@ namespace scm.Models
         public virtual DbSet<resPreparation> resPreparations { get; set; }
         public virtual DbSet<resPrepMaterial> resPrepMaterials { get; set; }
         public virtual DbSet<scStoreType> scStoreTypes { get; set; }
+        public virtual DbSet<scCategory> scCategories { get; set; }
+        public virtual DbSet<scItemCategory> scItemCategories { get; set; }
     }
 }

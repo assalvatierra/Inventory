@@ -10,107 +10,107 @@ using scm.Models;
 
 namespace scm.Controllers
 {
-    public class scTypesController : Controller
+    public class scCategoriesController : Controller
     {
         private ScmDBContainer db = new ScmDBContainer();
 
-        // GET: scTypes
+        // GET: scCategories
         public ActionResult Index()
         {
-            return View(db.scTypes.ToList());
+            return View(db.scCategories.ToList());
         }
 
-        // GET: scTypes/Details/5
+        // GET: scCategories/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            scType scType = db.scTypes.Find(id);
-            if (scType == null)
+            scCategory scCategory = db.scCategories.Find(id);
+            if (scCategory == null)
             {
                 return HttpNotFound();
             }
-            return View(scType);
+            return View(scCategory);
         }
 
-        // GET: scTypes/Create
+        // GET: scCategories/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: scTypes/Create
+        // POST: scCategories/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Type")] scType scType)
+        public ActionResult Create([Bind(Include = "Id,Name")] scCategory scCategory)
         {
             if (ModelState.IsValid)
             {
-                db.scTypes.Add(scType);
+                db.scCategories.Add(scCategory);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(scType);
+            return View(scCategory);
         }
 
-        // GET: scTypes/Edit/5
+        // GET: scCategories/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            scType scType = db.scTypes.Find(id);
-            if (scType == null)
+            scCategory scCategory = db.scCategories.Find(id);
+            if (scCategory == null)
             {
                 return HttpNotFound();
             }
-            return View(scType);
+            return View(scCategory);
         }
 
-        // POST: scTypes/Edit/5
+        // POST: scCategories/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Type")] scType scType)
+        public ActionResult Edit([Bind(Include = "Id,Name")] scCategory scCategory)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(scType).State = EntityState.Modified;
+                db.Entry(scCategory).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(scType);
+            return View(scCategory);
         }
 
-        // GET: scTypes/Delete/5
+        // GET: scCategories/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            scType scType = db.scTypes.Find(id);
-            if (scType == null)
+            scCategory scCategory = db.scCategories.Find(id);
+            if (scCategory == null)
             {
                 return HttpNotFound();
             }
-            return View(scType);
+            return View(scCategory);
         }
 
-        // POST: scTypes/Delete/5
+        // POST: scCategories/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            scType scType = db.scTypes.Find(id);
-            db.scTypes.Remove(scType);
+            scCategory scCategory = db.scCategories.Find(id);
+            db.scCategories.Remove(scCategory);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

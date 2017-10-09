@@ -4,7 +4,6 @@
     <EntitySet Name="scSuppliers" EntityType="ScmDB.Store.scSuppliers" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="scItems" EntityType="ScmDB.Store.scItems" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="scUoms" EntityType="ScmDB.Store.scUoms" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="scTypes" EntityType="ScmDB.Store.scTypes" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="scStorages" EntityType="ScmDB.Store.scStorages" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="scStoreBins" EntityType="ScmDB.Store.scStoreBins" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="scItemSuppliers" EntityType="ScmDB.Store.scItemSuppliers" store:Type="Tables" Schema="dbo" />
@@ -27,12 +26,10 @@
     <EntitySet Name="resPreparations" EntityType="ScmDB.Store.resPreparations" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="resPrepMaterials" EntityType="ScmDB.Store.resPrepMaterials" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="scStoreTypes" EntityType="ScmDB.Store.scStoreTypes" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="scCategories" EntityType="ScmDB.Store.scCategories" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="scItemCategories" EntityType="ScmDB.Store.scItemCategories" store:Type="Tables" Schema="dbo" />
     <AssociationSet Name="scUomscItem" Association="ScmDB.Store.scUomscItem">
       <End Role="scUom" EntitySet="scUoms" />
-      <End Role="scItem" EntitySet="scItems" />
-    </AssociationSet>
-    <AssociationSet Name="scTypescItem" Association="ScmDB.Store.scTypescItem">
-      <End Role="scType" EntitySet="scTypes" />
       <End Role="scItem" EntitySet="scItems" />
     </AssociationSet>
     <AssociationSet Name="scStoragescStoreBin" Association="ScmDB.Store.scStoragescStoreBin">
@@ -179,6 +176,14 @@
       <End Role="scStoreType" EntitySet="scStoreTypes" />
       <End Role="scStorage" EntitySet="scStorages" />
     </AssociationSet>
+    <AssociationSet Name="scCategoryscItemCategory" Association="ScmDB.Store.scCategoryscItemCategory">
+      <End Role="scCategory" EntitySet="scCategories" />
+      <End Role="scItemCategory" EntitySet="scItemCategories" />
+    </AssociationSet>
+    <AssociationSet Name="scItemscItemCategory" Association="ScmDB.Store.scItemscItemCategory">
+      <End Role="scItem" EntitySet="scItems" />
+      <End Role="scItemCategory" EntitySet="scItemCategories" />
+    </AssociationSet>
   </EntityContainer>
   <EntityType Name="scSuppliers">
     <Key>
@@ -194,7 +199,6 @@
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="80" />
-    <Property Name="scTypeId" Type="int" Nullable="false" />
     <Property Name="scUomId" Type="int" Nullable="false" />
     <Property Name="Expirydays" Type="int" Nullable="false" />
   </EntityType>
@@ -205,13 +209,6 @@
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Unit" Type="nvarchar" Nullable="false" MaxLength="10" />
     <Property Name="Desc" Type="nvarchar" Nullable="false" MaxLength="80" />
-  </EntityType>
-  <EntityType Name="scTypes">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Type" Type="nvarchar" Nullable="false" MaxLength="80" />
   </EntityType>
   <EntityType Name="scStorages">
     <Key>
@@ -420,6 +417,21 @@
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Type" Type="nvarchar(max)" Nullable="false" />
   </EntityType>
+  <EntityType Name="scCategories">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="scItemCategories">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="scCategoryId" Type="int" Nullable="false" />
+    <Property Name="scItemId" Type="int" Nullable="false" />
+  </EntityType>
   <Association Name="scUomscItem">
     <End Role="scUom" Type="ScmDB.Store.scUoms" Multiplicity="1" />
     <End Role="scItem" Type="ScmDB.Store.scItems" Multiplicity="*" />
@@ -429,18 +441,6 @@
       </Principal>
       <Dependent Role="scItem">
         <PropertyRef Name="scUomId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="scTypescItem">
-    <End Role="scType" Type="ScmDB.Store.scTypes" Multiplicity="1" />
-    <End Role="scItem" Type="ScmDB.Store.scItems" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="scType">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="scItem">
-        <PropertyRef Name="scTypeId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -873,6 +873,30 @@
       </Principal>
       <Dependent Role="scStorage">
         <PropertyRef Name="scStoreTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="scCategoryscItemCategory">
+    <End Role="scCategory" Type="ScmDB.Store.scCategories" Multiplicity="1" />
+    <End Role="scItemCategory" Type="ScmDB.Store.scItemCategories" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="scCategory">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="scItemCategory">
+        <PropertyRef Name="scCategoryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="scItemscItemCategory">
+    <End Role="scItem" Type="ScmDB.Store.scItems" Multiplicity="1" />
+    <End Role="scItemCategory" Type="ScmDB.Store.scItemCategories" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="scItem">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="scItemCategory">
+        <PropertyRef Name="scItemId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

@@ -200,12 +200,12 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\scCategoriesController.cs" />
     <Compile Include="Controllers\scItemsController.cs" />
     <Compile Include="Controllers\scPoHdrsController.cs" />
     <Compile Include="Controllers\scStoragesController.cs" />
     <Compile Include="Controllers\scStoreBinsController.cs" />
     <Compile Include="Controllers\scSuppliersController.cs" />
-    <Compile Include="Controllers\scTypesController.cs" />
     <Compile Include="Controllers\scUomsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -249,6 +249,9 @@
     <Compile Include="Models\resRecipe.cs">
       <DependentUpon>ScmDB.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\scCategory.cs">
+      <DependentUpon>ScmDB.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\scInvOutDtl.cs">
       <DependentUpon>ScmDB.tt</DependentUpon>
     </Compile>
@@ -256,6 +259,9 @@
       <DependentUpon>ScmDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\scItem.cs">
+      <DependentUpon>ScmDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\scItemCategory.cs">
       <DependentUpon>ScmDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\scItemSupplier.cs">
@@ -300,9 +306,6 @@
     <Compile Include="Models\scSupplier.cs">
       <DependentUpon>ScmDB.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\scType.cs">
-      <DependentUpon>ScmDB.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\scUom.cs">
       <DependentUpon>ScmDB.tt</DependentUpon>
     </Compile>
@@ -327,6 +330,7 @@
       <LastGenOutput>ScmDB.cs</LastGenOutput>
       <DependentUpon>ScmDB.edmx</DependentUpon>
     </Content>
+    <Content Include="Models\ScmDB.Init.sql" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">
@@ -386,16 +390,6 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Home\MasterFiles.cshtml" />
-    <Content Include="Views\scItems\Create.cshtml" />
-    <Content Include="Views\scItems\Delete.cshtml" />
-    <Content Include="Views\scItems\Details.cshtml" />
-    <Content Include="Views\scItems\Edit.cshtml" />
-    <Content Include="Views\scItems\Index.cshtml" />
-    <Content Include="Views\scTypes\Create.cshtml" />
-    <Content Include="Views\scTypes\Delete.cshtml" />
-    <Content Include="Views\scTypes\Details.cshtml" />
-    <Content Include="Views\scTypes\Edit.cshtml" />
-    <Content Include="Views\scTypes\Index.cshtml" />
     <Content Include="Views\scUoms\Create.cshtml" />
     <Content Include="Views\scUoms\Delete.cshtml" />
     <Content Include="Views\scUoms\Details.cshtml" />
@@ -421,6 +415,16 @@
     <Content Include="Views\scStorages\Details.cshtml" />
     <Content Include="Views\scStorages\Edit.cshtml" />
     <Content Include="Views\scStorages\Index.cshtml" />
+    <Content Include="Views\scItems\Create.cshtml" />
+    <Content Include="Views\scItems\Delete.cshtml" />
+    <Content Include="Views\scItems\Details.cshtml" />
+    <Content Include="Views\scItems\Edit.cshtml" />
+    <Content Include="Views\scItems\Index.cshtml" />
+    <Content Include="Views\scCategories\Create.cshtml" />
+    <Content Include="Views\scCategories\Delete.cshtml" />
+    <Content Include="Views\scCategories\Details.cshtml" />
+    <Content Include="Views\scCategories\Edit.cshtml" />
+    <Content Include="Views\scCategories\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
