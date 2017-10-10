@@ -19,6 +19,14 @@
             @Html.DisplayFor(model => model.Name)
         </dd>
 
+        <dt>
+            @Html.DisplayNameFor(model => model.scStoreType.Type)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.scStoreType.Type)
+        </dd>
+
     </dl>
 
     @using (Html.BeginForm()) {

@@ -256,7 +256,7 @@
     <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <NavigationProperty Name="scStorage" Relationship="ScmDB.scStoragescStoreBin" FromRole="scStoreBin" ToRole="scStorage" />
     <Property Name="scStorageId" Type="Int32" Nullable="false" />
-    <Property Name="Code" Type="String" Nullable="false" />
+    <Property Name="Code" Type="String" Nullable="false" MaxLength="80" />
     <NavigationProperty Name="scRcvDtls" Relationship="ScmDB.scStoreBinscRcvDtl" FromRole="scStoreBin" ToRole="scRcvDtl" />
     <Property Name="PostedQty" Type="Decimal" Nullable="false" />
     <Property Name="PostedDate" Type="DateTime" Nullable="false" />

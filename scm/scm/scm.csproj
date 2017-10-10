@@ -410,11 +410,6 @@
     <Content Include="Views\scStoreBins\Details.cshtml" />
     <Content Include="Views\scStoreBins\Edit.cshtml" />
     <Content Include="Views\scStoreBins\Index.cshtml" />
-    <Content Include="Views\scStorages\Create.cshtml" />
-    <Content Include="Views\scStorages\Delete.cshtml" />
-    <Content Include="Views\scStorages\Details.cshtml" />
-    <Content Include="Views\scStorages\Edit.cshtml" />
-    <Content Include="Views\scStorages\Index.cshtml" />
     <Content Include="Views\scItems\Create.cshtml" />
     <Content Include="Views\scItems\Delete.cshtml" />
     <Content Include="Views\scItems\Details.cshtml" />
@@ -425,6 +420,11 @@
     <Content Include="Views\scCategories\Details.cshtml" />
     <Content Include="Views\scCategories\Edit.cshtml" />
     <Content Include="Views\scCategories\Index.cshtml" />
+    <Content Include="Views\scStorages\Create.cshtml" />
+    <Content Include="Views\scStorages\Delete.cshtml" />
+    <Content Include="Views\scStorages\Details.cshtml" />
+    <Content Include="Views\scStorages\Edit.cshtml" />
+    <Content Include="Views\scStorages\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

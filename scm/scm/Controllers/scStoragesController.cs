@@ -17,7 +17,8 @@ namespace scm.Controllers
         // GET: scStorages
         public ActionResult Index()
         {
-            return View(db.scStorages.ToList());
+            var scStorages = db.scStorages.Include(s => s.scStoreType);
+            return View(scStorages.ToList());
         }
 
         // GET: scStorages/Details/5
@@ -38,6 +39,7 @@ namespace scm.Controllers
         // GET: scStorages/Create
         public ActionResult Create()
         {
+            ViewBag.scStoreTypeId = new SelectList(db.scStoreTypes, "Id", "Type");
             return View();
         }
 
@@ -46,7 +48,7 @@ namespace scm.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Name")] scStorage scStorage)
+        public ActionResult Create([Bind(Include = "Id,Name,scStoreTypeId")] scStorage scStorage)
         {
             if (ModelState.IsValid)
             {
@@ -55,6 +57,7 @@ namespace scm.Controllers
                 return RedirectToAction("Index");
             }
 
+            ViewBag.scStoreTypeId = new SelectList(db.scStoreTypes, "Id", "Type", scStorage.scStoreTypeId);
             return View(scStorage);
         }
 
@@ -70,6 +73,7 @@ namespace scm.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.scStoreTypeId = new SelectList(db.scStoreTypes, "Id", "Type", scStorage.scStoreTypeId);
             return View(scStorage);
         }
 
@@ -78,7 +82,7 @@ namespace scm.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Name")] scStorage scStorage)
+        public ActionResult Edit([Bind(Include = "Id,Name,scStoreTypeId")] scStorage scStorage)
         {
             if (ModelState.IsValid)
             {
@@ -86,6 +90,7 @@ namespace scm.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+            ViewBag.scStoreTypeId = new SelectList(db.scStoreTypes, "Id", "Type", scStorage.scStoreTypeId);
             return View(scStorage);
         }
 

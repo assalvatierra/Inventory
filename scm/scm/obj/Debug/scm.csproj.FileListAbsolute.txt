@@ -161,3 +161,4 @@ D:\Data\Real\Apps\GitHub\Inventory\scm\scm\bin\Microsoft.Owin.Security.Microsoft
 D:\Data\Real\Apps\GitHub\Inventory\scm\scm\obj\Debug\scm.dll
 D:\Data\Real\Apps\GitHub\Inventory\scm\scm\obj\Debug\scm.pdb
 C:\Data\ABEL\Projects\GitHubApps\Inventory\scm\scm\obj\Debug\scm.csprojResolveAssemblyReference.cache
+D:\Data\Real\Apps\GitHub\Inventory\scm\scm\obj\Debug\scm.csprojResolveAssemblyReference.cache

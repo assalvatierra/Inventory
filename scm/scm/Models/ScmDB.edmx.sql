@@ -2,8 +2,8 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 10/09/2017 17:54:39
--- Generated from EDMX file: C:\Data\ABEL\Projects\GitHubApps\Inventory\scm\scm\Models\ScmDB.edmx
+-- Date Created: 10/10/2017 09:55:55
+-- Generated from EDMX file: D:\Data\Real\Apps\GitHub\Inventory\scm\scm\Models\ScmDB.edmx
 -- --------------------------------------------------
 
 SET QUOTED_IDENTIFIER OFF;
@@ -262,7 +262,7 @@ GO
 CREATE TABLE [dbo].[scStoreBins] (
     [Id] int IDENTITY(1,1) NOT NULL,
     [scStorageId] int  NOT NULL,
-    [Code] nvarchar(max)  NOT NULL,
+    [Code] nvarchar(80)  NOT NULL,
     [PostedQty] decimal(18,0)  NOT NULL,
     [PostedDate] datetime  NOT NULL,
     [ExpiryDate] datetime  NOT NULL,

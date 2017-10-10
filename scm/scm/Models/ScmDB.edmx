@@ -229,7 +229,7 @@
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="scStorageId" Type="int" Nullable="false" />
-    <Property Name="Code" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Code" Type="nvarchar" Nullable="false" MaxLength="80" />
     <Property Name="PostedQty" Type="decimal" Nullable="false" />
     <Property Name="PostedDate" Type="datetime" Nullable="false" />
     <Property Name="ExpiryDate" Type="datetime" Nullable="false" />
@@ -1165,7 +1165,7 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <NavigationProperty Name="scStorage" Relationship="ScmDB.scStoragescStoreBin" FromRole="scStoreBin" ToRole="scStorage" />
           <Property Name="scStorageId" Type="Int32" Nullable="false" />
-          <Property Name="Code" Type="String" Nullable="false" />
+          <Property Name="Code" Type="String" Nullable="false" MaxLength="80" />
           <NavigationProperty Name="scRcvDtls" Relationship="ScmDB.scStoreBinscRcvDtl" FromRole="scStoreBin" ToRole="scRcvDtl" />
           <Property Name="PostedQty" Type="Decimal" Nullable="false" />
           <Property Name="PostedDate" Type="DateTime" Nullable="false" />

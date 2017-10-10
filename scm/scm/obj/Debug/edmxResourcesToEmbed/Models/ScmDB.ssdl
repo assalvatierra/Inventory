@@ -224,7 +224,7 @@
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="scStorageId" Type="int" Nullable="false" />
-    <Property Name="Code" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Code" Type="nvarchar" Nullable="false" MaxLength="80" />
     <Property Name="PostedQty" Type="decimal" Nullable="false" />
     <Property Name="PostedDate" Type="datetime" Nullable="false" />
     <Property Name="ExpiryDate" Type="datetime" Nullable="false" />
