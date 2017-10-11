@@ -33,7 +33,7 @@ namespace scm.Controllers
             {
                 return HttpNotFound();
             }
-            return View(scPoHdr);
+            return View("~/Views/scPoForm/PoForm.cshtml", scPoHdr);
         }
 
         // GET: scPoHdrs/Create
@@ -48,7 +48,7 @@ namespace scm.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,dtPo,scSupplierId")] scPoHdr scPoHdr)
+        public ActionResult Create([Bind(Include = "Id,dtPo,scSupplierId,Remarks")] scPoHdr scPoHdr)
         {
             if (ModelState.IsValid)
             {
@@ -82,7 +82,7 @@ namespace scm.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,dtPo,scSupplierId")] scPoHdr scPoHdr)
+        public ActionResult Edit([Bind(Include = "Id,dtPo,scSupplierId,Remarks")] scPoHdr scPoHdr)
         {
             if (ModelState.IsValid)
             {

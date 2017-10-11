@@ -70,6 +70,7 @@
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="dtRcv" ColumnName="dtRcv" />
           <ScalarProperty Name="scSupplierId" ColumnName="scSupplierId" />
+          <ScalarProperty Name="Remarks" ColumnName="Remarks" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -91,6 +92,7 @@
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="dtPo" ColumnName="dtPo" />
           <ScalarProperty Name="scSupplierId" ColumnName="scSupplierId" />
+          <ScalarProperty Name="Remarks" ColumnName="Remarks" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -211,6 +213,7 @@
         <MappingFragment StoreEntitySet="scInvOutHdrs">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="dtOut" ColumnName="dtOut" />
+          <ScalarProperty Name="Remarks" ColumnName="Remarks" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

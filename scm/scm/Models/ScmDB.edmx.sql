@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 10/10/2017 09:55:55
+-- Date Created: 10/11/2017 09:38:23
 -- Generated from EDMX file: D:\Data\Real\Apps\GitHub\Inventory\scm\scm\Models\ScmDB.edmx
 -- --------------------------------------------------
 
@@ -286,7 +286,8 @@ GO
 CREATE TABLE [dbo].[scRcvHdrs] (
     [Id] int IDENTITY(1,1) NOT NULL,
     [dtRcv] datetime  NOT NULL,
-    [scSupplierId] int  NOT NULL
+    [scSupplierId] int  NOT NULL,
+    [Remarks] nvarchar(150)  NULL
 );
 GO
 
@@ -305,7 +306,8 @@ GO
 CREATE TABLE [dbo].[scPoHdrs] (
     [Id] int IDENTITY(1,1) NOT NULL,
     [dtPo] datetime  NOT NULL,
-    [scSupplierId] int  NOT NULL
+    [scSupplierId] int  NOT NULL,
+    [Remarks] nvarchar(150)  NULL
 );
 GO
 
@@ -413,7 +415,8 @@ GO
 -- Creating table 'scInvOutHdrs'
 CREATE TABLE [dbo].[scInvOutHdrs] (
     [Id] int IDENTITY(1,1) NOT NULL,
-    [dtOut] datetime  NOT NULL
+    [dtOut] datetime  NOT NULL,
+    [Remarks] nvarchar(80)  NULL
 );
 GO
 

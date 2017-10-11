@@ -15,6 +15,9 @@
             @Html.DisplayNameFor(model => model.dtPo)
         </th>
         <th>
+            @Html.DisplayNameFor(model => model.Remarks)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.scSupplier.Name)
         </th>
         <th></th>
@@ -24,6 +27,9 @@
     <tr>
         <td>
             @Html.DisplayFor(modelItem => item.dtPo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Remarks)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.scSupplier.Name)

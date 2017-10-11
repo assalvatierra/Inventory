@@ -249,6 +249,7 @@
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="dtRcv" Type="datetime" Nullable="false" />
     <Property Name="scSupplierId" Type="int" Nullable="false" />
+    <Property Name="Remarks" Type="nvarchar" Nullable="true" MaxLength="150" />
   </EntityType>
   <EntityType Name="scRcvDtls">
     <Key>
@@ -268,6 +269,7 @@
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="dtPo" Type="datetime" Nullable="false" />
     <Property Name="scSupplierId" Type="int" Nullable="false" />
+    <Property Name="Remarks" Type="nvarchar" Nullable="true" MaxLength="150" />
   </EntityType>
   <EntityType Name="scPoDtls">
     <Key>
@@ -376,6 +378,7 @@
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="dtOut" Type="datetime" Nullable="false" />
+    <Property Name="Remarks" Type="nvarchar" Nullable="true" MaxLength="80" />
   </EntityType>
   <EntityType Name="scInvOutDtls">
     <Key>

@@ -254,6 +254,7 @@
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="dtRcv" Type="datetime" Nullable="false" />
     <Property Name="scSupplierId" Type="int" Nullable="false" />
+    <Property Name="Remarks" Type="nvarchar" Nullable="true" MaxLength="150" />
   </EntityType>
   <EntityType Name="scRcvDtls">
     <Key>
@@ -273,6 +274,7 @@
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="dtPo" Type="datetime" Nullable="false" />
     <Property Name="scSupplierId" Type="int" Nullable="false" />
+    <Property Name="Remarks" Type="nvarchar" Nullable="true" MaxLength="150" />
   </EntityType>
   <EntityType Name="scPoDtls">
     <Key>
@@ -381,6 +383,7 @@
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="dtOut" Type="datetime" Nullable="false" />
+    <Property Name="Remarks" Type="nvarchar" Nullable="true" MaxLength="80" />
   </EntityType>
   <EntityType Name="scInvOutDtls">
     <Key>
@@ -1236,6 +1239,7 @@
           <NavigationProperty Name="scRcvDtls" Relationship="ScmDB.scRcvHdrscRcvDtl" FromRole="scRcvHdr" ToRole="scRcvDtl" />
           <NavigationProperty Name="scSupplier" Relationship="ScmDB.scSupplierscRcvHdr" FromRole="scRcvHdr" ToRole="scSupplier" />
           <Property Name="scSupplierId" Type="Int32" Nullable="false" />
+          <Property Name="Remarks" Type="String" Nullable="true" MaxLength="150" />
         </EntityType>
         <EntityType Name="scRcvDtl">
           <Key>
@@ -1309,6 +1313,7 @@
           <NavigationProperty Name="scPoDtls" Relationship="ScmDB.scPoHdrscPoDtl" FromRole="scPoHdr" ToRole="scPoDtl" />
           <NavigationProperty Name="scSupplier" Relationship="ScmDB.scSupplierscPoHdr" FromRole="scPoHdr" ToRole="scSupplier" />
           <Property Name="scSupplierId" Type="Int32" Nullable="false" />
+          <Property Name="Remarks" Type="String" Nullable="true" MaxLength="150" />
         </EntityType>
         <EntityType Name="scPoDtl">
           <Key>
@@ -1648,6 +1653,7 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <NavigationProperty Name="scInvOutDtls" Relationship="ScmDB.scInvOutHdrscInvOutDtl" FromRole="scInvOutHdr" ToRole="scInvOutDtl" />
           <Property Name="dtOut" Type="DateTime" Nullable="false" />
+          <Property Name="Remarks" Type="String" Nullable="true" MaxLength="80" />
         </EntityType>
         <EntityType Name="scInvOutDtl">
           <Key>
@@ -1962,6 +1968,7 @@
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="dtRcv" ColumnName="dtRcv" />
           <ScalarProperty Name="scSupplierId" ColumnName="scSupplierId" />
+          <ScalarProperty Name="Remarks" ColumnName="Remarks" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -1983,6 +1990,7 @@
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="dtPo" ColumnName="dtPo" />
           <ScalarProperty Name="scSupplierId" ColumnName="scSupplierId" />
+          <ScalarProperty Name="Remarks" ColumnName="Remarks" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -2103,6 +2111,7 @@
         <MappingFragment StoreEntitySet="scInvOutHdrs">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="dtOut" ColumnName="dtOut" />
+          <ScalarProperty Name="Remarks" ColumnName="Remarks" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

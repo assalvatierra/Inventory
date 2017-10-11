@@ -202,6 +202,7 @@
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\scCategoriesController.cs" />
     <Compile Include="Controllers\scItemsController.cs" />
+    <Compile Include="Controllers\scPoDtlsController.cs" />
     <Compile Include="Controllers\scPoHdrsController.cs" />
     <Compile Include="Controllers\scStoragesController.cs" />
     <Compile Include="Controllers\scStoreBinsController.cs" />
@@ -400,11 +401,6 @@
     <Content Include="Views\scSuppliers\Details.cshtml" />
     <Content Include="Views\scSuppliers\Edit.cshtml" />
     <Content Include="Views\scSuppliers\Index.cshtml" />
-    <Content Include="Views\scPoHdrs\Create.cshtml" />
-    <Content Include="Views\scPoHdrs\Delete.cshtml" />
-    <Content Include="Views\scPoHdrs\Details.cshtml" />
-    <Content Include="Views\scPoHdrs\Edit.cshtml" />
-    <Content Include="Views\scPoHdrs\Index.cshtml" />
     <Content Include="Views\scStoreBins\Create.cshtml" />
     <Content Include="Views\scStoreBins\Delete.cshtml" />
     <Content Include="Views\scStoreBins\Details.cshtml" />
@@ -425,6 +421,17 @@
     <Content Include="Views\scStorages\Details.cshtml" />
     <Content Include="Views\scStorages\Edit.cshtml" />
     <Content Include="Views\scStorages\Index.cshtml" />
+    <Content Include="Views\scPoHdrs\Create.cshtml" />
+    <Content Include="Views\scPoHdrs\Delete.cshtml" />
+    <Content Include="Views\scPoHdrs\Details.cshtml" />
+    <Content Include="Views\scPoHdrs\Edit.cshtml" />
+    <Content Include="Views\scPoHdrs\Index.cshtml" />
+    <Content Include="Views\scPoDtls\Create.cshtml" />
+    <Content Include="Views\scPoDtls\Delete.cshtml" />
+    <Content Include="Views\scPoDtls\Details.cshtml" />
+    <Content Include="Views\scPoDtls\Edit.cshtml" />
+    <Content Include="Views\scPoDtls\Index.cshtml" />
+    <Content Include="Views\scPoForm\PoForm.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

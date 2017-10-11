@@ -1,0 +1,58 @@
+﻿@model scm.Models.scPoDtl
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>scPoDtl</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Qty)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Qty)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UnitPrice)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UnitPrice)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.scPoHdr.Remarks)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.scPoHdr.Remarks)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.scItem.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.scItem.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.scUom.Unit)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.scUom.Unit)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
