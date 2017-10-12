@@ -433,6 +433,9 @@
     <Content Include="Views\scPoDtls\Edit.cshtml" />
     <Content Include="Views\scPoDtls\Index.cshtml" />
     <Content Include="Views\scPoForm\PoForm.cshtml" />
+    <Content Include="Views\scPoForm\AddItem.cshtml" />
+    <Content Include="Views\scPoForm\EditItem.cshtml" />
+    <Content Include="Views\scPoForm\EditHdr.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

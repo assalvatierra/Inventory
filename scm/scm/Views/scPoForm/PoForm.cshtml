@@ -32,13 +32,19 @@
         <dd>
             @Html.DisplayFor(model => model.master.scSupplier.Name)
         </dd>
+        <dt>
+            &nbsp;
+        </dt>
+
+        <dd>
+            @Html.ActionLink("Edit", "EditHdr", new { id = Model.master.Id })        
+        </dd>
+
+
 
     </dl>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.master.Id }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+
 <table class="table">
     <tr>
         <th>
@@ -72,11 +78,18 @@
                 @Html.DisplayFor(modelItem => item.UnitPrice)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-                @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                @Html.ActionLink("Edit", "EditItem", new { id = item.Id }) |
                 @Html.ActionLink("Delete", "Delete", new { id = item.Id })
             </td>
         </tr>
     }
-
+    <tr>
+        <td colspan="5">
+            @Html.ActionLink("Add Item", "AddItem")
+        </td>
+    </tr>
 </table>
+
+<p>
+    @Html.ActionLink("Back to Order List", "Index", "scPoHdrs", null, null);
+</p>
