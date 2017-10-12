@@ -24,16 +24,17 @@ namespace scm.Controllers
         // GET: scPoHdrs/Details/5
         public ActionResult Details(int? id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            scPoHdr scPoHdr = db.scPoHdrs.Find(id);
-            if (scPoHdr == null)
-            {
-                return HttpNotFound();
-            }
-            return View("~/Views/scPoForm/PoForm.cshtml", scPoHdr);
+            //if (id == null)
+            //{
+            //    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            //}
+            //scPoHdr scPoHdr = db.scPoHdrs.Find(id);
+            //if (scPoHdr == null)
+            //{
+            //    return HttpNotFound();
+            //}
+            //return View("~/Views/scPoForm/PoForm.cshtml", scPoHdr);
+            return RedirectToAction("poForm", "scPoForm", new { id = id });
         }
 
         // GET: scPoHdrs/Create

@@ -1,42 +1,82 @@
-﻿@model scm.Models.scPoHdr
-
+﻿@model scm.Controllers.poForm
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "poForm";
 }
 
-<h2>Po Form</h2>
+<h2>poForm</h2>
 
 <div>
     <h4>scPoHdr</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.dtPo)
+            @Html.DisplayNameFor(model => model.master.dtPo)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.dtPo)
+            @Html.DisplayFor(model => model.master.dtPo)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Remarks)
+            @Html.DisplayNameFor(model => model.master.Remarks)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Remarks)
+            @Html.DisplayFor(model => model.master.Remarks)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.scSupplier.Name)
+            @Html.DisplayNameFor(model => model.master.scSupplier.Name)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.scSupplier.Name)
+            @Html.DisplayFor(model => model.master.scSupplier.Name)
         </dd>
 
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Edit", "Edit", new { id = Model.master.Id }) |
     @Html.ActionLink("Back to List", "Index")
 </p>
+<table class="table">
+    <tr>
+        <th>
+            Item
+        </th>
+        <th>
+            Qty
+        </th>
+        <th>
+            Unit
+        </th>
+        <th>
+            Unit Price
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model.details)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.scItem.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Qty)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.scUom.Unit)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UnitPrice)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+            </td>
+        </tr>
+    }
+
+</table>

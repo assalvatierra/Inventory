@@ -160,4 +160,3 @@ D:\Data\Real\Apps\GitHub\Inventory\scm\scm\bin\Microsoft.Owin.Security.Twitter.x
 D:\Data\Real\Apps\GitHub\Inventory\scm\scm\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
 D:\Data\Real\Apps\GitHub\Inventory\scm\scm\obj\Debug\scm.dll
 D:\Data\Real\Apps\GitHub\Inventory\scm\scm\obj\Debug\scm.pdb
-C:\Data\ABEL\Projects\GitHubApps\Inventory\scm\scm\obj\Debug\scm.csprojResolveAssemblyReference.cache

@@ -203,6 +203,7 @@
     <Compile Include="Controllers\scCategoriesController.cs" />
     <Compile Include="Controllers\scItemsController.cs" />
     <Compile Include="Controllers\scPoDtlsController.cs" />
+    <Compile Include="Controllers\scPoFormController.cs" />
     <Compile Include="Controllers\scPoHdrsController.cs" />
     <Compile Include="Controllers\scStoragesController.cs" />
     <Compile Include="Controllers\scStoreBinsController.cs" />
