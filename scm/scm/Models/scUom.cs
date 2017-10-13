@@ -20,6 +20,7 @@ namespace scm.Models
             this.scItems = new HashSet<scItem>();
             this.scPoDtls = new HashSet<scPoDtl>();
             this.scItemSuppliers = new HashSet<scItemSupplier>();
+            this.scPrDtls = new HashSet<scPrDtl>();
         }
     
         public int Id { get; set; }
@@ -32,5 +33,7 @@ namespace scm.Models
         public virtual ICollection<scPoDtl> scPoDtls { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<scItemSupplier> scItemSuppliers { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<scPrDtl> scPrDtls { get; set; }
     }
 }

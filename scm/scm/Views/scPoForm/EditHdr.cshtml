@@ -2,6 +2,7 @@
 
 @{
     ViewBag.Title = "Edit";
+    List<scm.Models.scSupplier> supplier = (List<scm.Models.scSupplier>)ViewBag.scSuppliers;
 }
 
 <h2>Edit</h2>
@@ -56,20 +57,21 @@
 
 <!-- Dialog: Browse Supplier -->
 <div id="dialog" title="Supplier">
+
     <table>
         <tr><th>Supplier List</th></tr>
 
-        @*@foreach (var item in contacts)
-            {
-            <tr>
-                <td style="white-space:nowrap">
-                    <a href="Javascript:SetProvider('@item.ShortName','@item.Tel1')">
-                        @item.ShortName
-                    </a>
-                    @Html.DisplayFor(modelItem => item.Tel1)   @Html.DisplayFor(modelItem => item.Tel2)
-                </td>
-            </tr>
-        }*@
+        @foreach (var item in supplier)
+        {
+        <tr>
+            <td style="white-space:nowrap">
+                <a href="Javascript:SetProvider('@item.Id','@item.Name')">
+                    @item.Name
+                </a>
+                @Html.DisplayFor(modelItem => item.Remarks)
+            </td>
+        </tr>
+        }
 
         <tr><td>&nbsp;</td></tr>
     </table>
@@ -100,7 +102,6 @@
                     dlg.dialog("open");
                     event.preventDefault();
                 });
-
 
 
             });

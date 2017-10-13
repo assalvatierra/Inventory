@@ -184,6 +184,24 @@
       <End Role="scItem" EntitySet="scItems" />
       <End Role="scItemCategory" EntitySet="scItemCategories" />
     </AssociationSet>
+    <EntitySet Name="scPrHdrs" EntityType="ScmDB.scPrHdr" />
+    <EntitySet Name="scPrDtls" EntityType="ScmDB.scPrDtl" />
+    <AssociationSet Name="scPrHdrscPrDtl" Association="ScmDB.scPrHdrscPrDtl">
+      <End Role="scPrHdr" EntitySet="scPrHdrs" />
+      <End Role="scPrDtl" EntitySet="scPrDtls" />
+    </AssociationSet>
+    <AssociationSet Name="scItemscPrDtl" Association="ScmDB.scItemscPrDtl">
+      <End Role="scItem" EntitySet="scItems" />
+      <End Role="scPrDtl" EntitySet="scPrDtls" />
+    </AssociationSet>
+    <AssociationSet Name="scUomscPrDtl" Association="ScmDB.scUomscPrDtl">
+      <End Role="scUom" EntitySet="scUoms" />
+      <End Role="scPrDtl" EntitySet="scPrDtls" />
+    </AssociationSet>
+    <AssociationSet Name="scPrDtlscPoDtl" Association="ScmDB.scPrDtlscPoDtl">
+      <End Role="scPrDtl" EntitySet="scPrDtls" />
+      <End Role="scPoDtl" EntitySet="scPoDtls" />
+    </AssociationSet>
   </EntityContainer>
   <EntityType Name="scSupplier">
     <Key>
@@ -215,6 +233,7 @@
     <NavigationProperty Name="resPreparations" Relationship="ScmDB.scItemresPreparation" FromRole="scItem" ToRole="resPreparation" />
     <NavigationProperty Name="scStoreBins" Relationship="ScmDB.scItemscStoreBin" FromRole="scItem" ToRole="scStoreBin" />
     <NavigationProperty Name="scItemCategories" Relationship="ScmDB.scItemscItemCategory" FromRole="scItem" ToRole="scItemCategory" />
+    <NavigationProperty Name="scPrDtls" Relationship="ScmDB.scItemscPrDtl" FromRole="scItem" ToRole="scPrDtl" />
   </EntityType>
   <EntityType Name="scUom">
     <Key>
@@ -226,6 +245,7 @@
     <NavigationProperty Name="scItems" Relationship="ScmDB.scUomscItem" FromRole="scUom" ToRole="scItem" />
     <NavigationProperty Name="scPoDtls" Relationship="ScmDB.scUomscPoDtl" FromRole="scUom" ToRole="scPoDtl" />
     <NavigationProperty Name="scItemSuppliers" Relationship="ScmDB.scUomscItemSupplier" FromRole="scUom" ToRole="scItemSupplier" />
+    <NavigationProperty Name="scPrDtls" Relationship="ScmDB.scUomscPrDtl" FromRole="scUom" ToRole="scPrDtl" />
   </EntityType>
   <Association Name="scUomscItem">
     <End Type="ScmDB.scUom" Role="scUom" Multiplicity="1" />
@@ -417,6 +437,8 @@
     <NavigationProperty Name="scUom" Relationship="ScmDB.scUomscPoDtl" FromRole="scPoDtl" ToRole="scUom" />
     <Property Name="scUomId" Type="Int32" Nullable="false" />
     <NavigationProperty Name="scRcvDtls" Relationship="ScmDB.scPoDtlscRcvDtl" FromRole="scPoDtl" ToRole="scRcvDtl" />
+    <NavigationProperty Name="scPrDtl" Relationship="ScmDB.scPrDtlscPoDtl" FromRole="scPoDtl" ToRole="scPrDtl" />
+    <Property Name="scPrDtlId" Type="Int32" Nullable="true" />
   </EntityType>
   <Association Name="scPoHdrscPoDtl">
     <End Type="ScmDB.scPoHdr" Role="scPoHdr" Multiplicity="1" />
@@ -978,6 +1000,78 @@
       </Principal>
       <Dependent Role="scItemCategory">
         <PropertyRef Name="scItemId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="scPrHdr">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="dtPr" Type="DateTime" Nullable="false" />
+    <Property Name="Remarks" Type="String" Nullable="true" MaxLength="250" />
+    <Property Name="Status" Type="String" Nullable="false" MaxLength="5" />
+    <NavigationProperty Name="scPrDtls" Relationship="ScmDB.scPrHdrscPrDtl" FromRole="scPrHdr" ToRole="scPrDtl" />
+  </EntityType>
+  <EntityType Name="scPrDtl">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <NavigationProperty Name="scPrHdr" Relationship="ScmDB.scPrHdrscPrDtl" FromRole="scPrDtl" ToRole="scPrHdr" />
+    <Property Name="scPrHdrId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="scItem" Relationship="ScmDB.scItemscPrDtl" FromRole="scPrDtl" ToRole="scItem" />
+    <Property Name="scItemId" Type="Int32" Nullable="false" />
+    <Property Name="Qty" Type="Decimal" Nullable="false" />
+    <NavigationProperty Name="scUom" Relationship="ScmDB.scUomscPrDtl" FromRole="scPrDtl" ToRole="scUom" />
+    <Property Name="scUomId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="scPoDtls" Relationship="ScmDB.scPrDtlscPoDtl" FromRole="scPrDtl" ToRole="scPoDtl" />
+  </EntityType>
+  <Association Name="scPrHdrscPrDtl">
+    <End Type="ScmDB.scPrHdr" Role="scPrHdr" Multiplicity="1" />
+    <End Type="ScmDB.scPrDtl" Role="scPrDtl" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="scPrHdr">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="scPrDtl">
+        <PropertyRef Name="scPrHdrId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="scItemscPrDtl">
+    <End Type="ScmDB.scItem" Role="scItem" Multiplicity="1" />
+    <End Type="ScmDB.scPrDtl" Role="scPrDtl" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="scItem">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="scPrDtl">
+        <PropertyRef Name="scItemId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="scUomscPrDtl">
+    <End Type="ScmDB.scUom" Role="scUom" Multiplicity="1" />
+    <End Type="ScmDB.scPrDtl" Role="scPrDtl" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="scUom">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="scPrDtl">
+        <PropertyRef Name="scUomId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="scPrDtlscPoDtl">
+    <End Type="ScmDB.scPrDtl" Role="scPrDtl" Multiplicity="0..1" />
+    <End Type="ScmDB.scPoDtl" Role="scPoDtl" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="scPrDtl">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="scPoDtl">
+        <PropertyRef Name="scPrDtlId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

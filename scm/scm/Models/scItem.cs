@@ -27,6 +27,7 @@ namespace scm.Models
             this.resPreparations = new HashSet<resPreparation>();
             this.scStoreBins = new HashSet<scStoreBin>();
             this.scItemCategories = new HashSet<scItemCategory>();
+            this.scPrDtls = new HashSet<scPrDtl>();
         }
     
         public int Id { get; set; }
@@ -55,5 +56,7 @@ namespace scm.Models
         public virtual ICollection<scStoreBin> scStoreBins { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<scItemCategory> scItemCategories { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<scPrDtl> scPrDtls { get; set; }
     }
 }

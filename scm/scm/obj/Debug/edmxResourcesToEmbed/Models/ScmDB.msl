@@ -105,6 +105,7 @@
           <ScalarProperty Name="Qty" ColumnName="Qty" />
           <ScalarProperty Name="UnitPrice" ColumnName="UnitPrice" />
           <ScalarProperty Name="scUomId" ColumnName="scUomId" />
+          <ScalarProperty Name="scPrDtlId" ColumnName="scPrDtlId" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -275,6 +276,27 @@
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="scCategoryId" ColumnName="scCategoryId" />
           <ScalarProperty Name="scItemId" ColumnName="scItemId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="scPrHdrs">
+      <EntityTypeMapping TypeName="IsTypeOf(ScmDB.scPrHdr)">
+        <MappingFragment StoreEntitySet="scPrHdrs">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="dtPr" ColumnName="dtPr" />
+          <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="scPrDtls">
+      <EntityTypeMapping TypeName="IsTypeOf(ScmDB.scPrDtl)">
+        <MappingFragment StoreEntitySet="scPrDtls">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="scPrHdrId" ColumnName="scPrHdrId" />
+          <ScalarProperty Name="scItemId" ColumnName="scItemId" />
+          <ScalarProperty Name="Qty" ColumnName="Qty" />
+          <ScalarProperty Name="scUomId" ColumnName="scUomId" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

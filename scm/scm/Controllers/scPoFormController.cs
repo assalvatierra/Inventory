@@ -20,12 +20,176 @@ namespace scm.Controllers
         // GET: scPoForm
         private ScmDBContainer db = new ScmDBContainer();
 
+
+        #region listing
         public ActionResult Index()
+        {
+            var scPoHdrs = db.scPoHdrs.Include(s => s.scSupplier);
+            return View(scPoHdrs.ToList());
+        }
+        #endregion
+        #region Hdr CRUD
+        // GET: scPoHdrs/Create
+        public ActionResult Create()
+        {
+            ViewBag.scSupplierId = new SelectList(db.scSuppliers, "Id", "Name");
+            return View();
+        }
+
+        // POST: scPoHdrs/Create
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Create([Bind(Include = "Id,dtPo,scSupplierId,Remarks")] scPoHdr scPoHdr)
+        {
+            if (ModelState.IsValid)
+            {
+                db.scPoHdrs.Add(scPoHdr);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+
+            ViewBag.scSupplierId = new SelectList(db.scSuppliers, "Id", "Name", scPoHdr.scSupplierId);
+            return View(scPoHdr);
+        }
+
+        // GET: scPoHdrs/Edit/5
+        public ActionResult Edit(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            scPoHdr scPoHdr = db.scPoHdrs.Find(id);
+            if (scPoHdr == null)
+            {
+                return HttpNotFound();
+            }
+            ViewBag.scSupplierId = new SelectList(db.scSuppliers, "Id", "Name", scPoHdr.scSupplierId);
+            return View(scPoHdr);
+        }
+
+        // POST: scPoHdrs/Edit/5
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit([Bind(Include = "Id,dtPo,scSupplierId,Remarks")] scPoHdr scPoHdr)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Entry(scPoHdr).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            ViewBag.scSupplierId = new SelectList(db.scSuppliers, "Id", "Name", scPoHdr.scSupplierId);
+            return View(scPoHdr);
+        }
+
+        #endregion
+
+        #region Details CRUD
+        public ActionResult Details(int? id)
+        {
+            if (id == null) id = (int)Session["POHDRID"];
+            Session["POHDRID"] = id;
+
+            var data = new poForm
+            {
+                master = db.scPoHdrs.Find(id),
+                details = db.scPoDtls.Where(d => d.scPoHdrId == id).ToList()
+            };
+
+            return View(data);
+
+        }
+
+        public ActionResult AddItem()
+        {
+            int hdrid = (int)Session["POHDRID"];
+            var newitem = new scPoDtl();
+            newitem.scPoHdrId = hdrid;
+
+            ViewBag.scPoHdrId = new SelectList(db.scPoHdrs, "Id", "Remarks", hdrid);
+            ViewBag.scItemId = new SelectList(db.scItems, "Id", "Name");
+            ViewBag.scUomId = new SelectList(db.scUoms, "Id", "Unit");
+            ViewBag.scPrDtlId = new SelectList(db.scPrDtls, "Id", "Id");
+
+            return View(newitem);
+        }
+
+        // POST: scPoDtls/Create
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult AddItem([Bind(Include = "Id,scPoHdrId,scItemId,Qty,UnitPrice,scUomId")] scPoDtl scPoDtl)
+        {
+            if (ModelState.IsValid)
+            {
+                db.scPoDtls.Add(scPoDtl);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+
+            ViewBag.scPoHdrId = new SelectList(db.scPoHdrs, "Id", "Remarks", scPoDtl.scPoHdrId);
+            ViewBag.scItemId = new SelectList(db.scItems, "Id", "Name", scPoDtl.scItemId);
+            ViewBag.scUomId = new SelectList(db.scUoms, "Id", "Unit", scPoDtl.scUomId);
+            ViewBag.scPrDtlId = new SelectList(db.scPrDtls, "Id", "Id", scPoDtl.scPrDtlId);
+
+            return View(scPoDtl);
+        }
+
+        // GET: scPoDtls/Edit/5
+        public ActionResult EditItem(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            scPoDtl scPoDtl = db.scPoDtls.Find(id);
+            if (scPoDtl == null)
+            {
+                return HttpNotFound();
+            }
+            ViewBag.scPoHdrId = new SelectList(db.scPoHdrs, "Id", "Remarks", scPoDtl.scPoHdrId);
+            ViewBag.scItemId = new SelectList(db.scItems, "Id", "Name", scPoDtl.scItemId);
+            ViewBag.scUomId = new SelectList(db.scUoms, "Id", "Unit", scPoDtl.scUomId);
+            ViewBag.scPrDtlId = new SelectList(db.scPrDtls, "Id", "Id", scPoDtl.scPrDtlId);
+
+            return View(scPoDtl);
+        }
+
+        // POST: scPoDtls/Edit/5
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult EditItem([Bind(Include = "Id,scPoHdrId,scItemId,Qty,UnitPrice,scUomId")] scPoDtl scPoDtl)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Entry(scPoDtl).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            ViewBag.scPoHdrId = new SelectList(db.scPoHdrs, "Id", "Remarks", scPoDtl.scPoHdrId);
+            ViewBag.scItemId = new SelectList(db.scItems, "Id", "Name", scPoDtl.scItemId);
+            ViewBag.scUomId = new SelectList(db.scUoms, "Id", "Unit", scPoDtl.scUomId);
+            ViewBag.scPrDtlId = new SelectList(db.scPrDtls, "Id", "Id", scPoDtl.scPrDtlId);
+
+            return View(scPoDtl);
+        }
+
+        #endregion
+
+        #region UNUSED
+        public ActionResult Index1()
         {
             int poId = (int)Session["POID"];
             return RedirectToAction("poForm", new { id = poId });
         }
-
 
         public ActionResult poForm(int? id)
         {
@@ -52,6 +216,8 @@ namespace scm.Controllers
                 return HttpNotFound();
             }
             ViewBag.scSupplierId = new SelectList(db.scSuppliers, "Id", "Name", scPoHdr.scSupplierId);
+            ViewBag.scSuppliers = db.scSuppliers.ToList();
+
             return View(scPoHdr);
         }
 
@@ -69,76 +235,14 @@ namespace scm.Controllers
                 return RedirectToAction("Index");
             }
             ViewBag.scSupplierId = new SelectList(db.scSuppliers, "Id", "Name", scPoHdr.scSupplierId);
+            ViewBag.scSuppliers = db.scSuppliers.ToList();
+
             return View(scPoHdr);
         }
 
         // GET: scPoDtls/Create
-        public ActionResult AddItem()
-        {
-            ViewBag.scPoHdrId = new SelectList(db.scPoHdrs, "Id", "Remarks");
-            ViewBag.scItemId = new SelectList(db.scItems, "Id", "Name");
-            ViewBag.scUomId = new SelectList(db.scUoms, "Id", "Unit");
-            return View();
-        }
 
-        // POST: scPoDtls/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult AddItem([Bind(Include = "Id,scPoHdrId,scItemId,Qty,UnitPrice,scUomId")] scPoDtl scPoDtl)
-        {
-            if (ModelState.IsValid)
-            {
-                db.scPoDtls.Add(scPoDtl);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-
-            ViewBag.scPoHdrId = new SelectList(db.scPoHdrs, "Id", "Remarks", scPoDtl.scPoHdrId);
-            ViewBag.scItemId = new SelectList(db.scItems, "Id", "Name", scPoDtl.scItemId);
-            ViewBag.scUomId = new SelectList(db.scUoms, "Id", "Unit", scPoDtl.scUomId);
-            return View(scPoDtl);
-        }
-
-        // GET: scPoDtls/Edit/5
-        public ActionResult EditItem(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            scPoDtl scPoDtl = db.scPoDtls.Find(id);
-            if (scPoDtl == null)
-            {
-                return HttpNotFound();
-            }
-            ViewBag.scPoHdrId = new SelectList(db.scPoHdrs, "Id", "Remarks", scPoDtl.scPoHdrId);
-            ViewBag.scItemId = new SelectList(db.scItems, "Id", "Name", scPoDtl.scItemId);
-            ViewBag.scUomId = new SelectList(db.scUoms, "Id", "Unit", scPoDtl.scUomId);
-            return View(scPoDtl);
-        }
-
-        // POST: scPoDtls/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult EditItem([Bind(Include = "Id,scPoHdrId,scItemId,Qty,UnitPrice,scUomId")] scPoDtl scPoDtl)
-        {
-            if (ModelState.IsValid)
-            {
-                db.Entry(scPoDtl).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-            ViewBag.scPoHdrId = new SelectList(db.scPoHdrs, "Id", "Remarks", scPoDtl.scPoHdrId);
-            ViewBag.scItemId = new SelectList(db.scItems, "Id", "Name", scPoDtl.scItemId);
-            ViewBag.scUomId = new SelectList(db.scUoms, "Id", "Unit", scPoDtl.scUomId);
-            return View(scPoDtl);
-        }
-
-
+        #endregion
     }
 
 

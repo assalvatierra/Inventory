@@ -71,6 +71,12 @@
         <EntityTypeShape EntityType="ScmDB.scItemCategory" Width="1.5" PointX="2.75" PointY="3.25" />
         <AssociationConnector Association="ScmDB.scCategoryscItemCategory" />
         <AssociationConnector Association="ScmDB.scItemscItemCategory" />
+        <EntityTypeShape EntityType="ScmDB.scPrHdr" Width="1.5" PointX="16.125" PointY="13" />
+        <EntityTypeShape EntityType="ScmDB.scPrDtl" Width="1.5" PointX="16.125" PointY="15.75" />
+        <AssociationConnector Association="ScmDB.scPrHdrscPrDtl" />
+        <AssociationConnector Association="ScmDB.scItemscPrDtl" />
+        <AssociationConnector Association="ScmDB.scUomscPrDtl" />
+        <AssociationConnector Association="ScmDB.scPrDtlscPoDtl" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

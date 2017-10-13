@@ -205,6 +205,9 @@
     <Compile Include="Controllers\scPoDtlsController.cs" />
     <Compile Include="Controllers\scPoFormController.cs" />
     <Compile Include="Controllers\scPoHdrsController.cs" />
+    <Compile Include="Controllers\scPrDtlsController.cs" />
+    <Compile Include="Controllers\scPrFormController.cs" />
+    <Compile Include="Controllers\scPrHdrsController.cs" />
     <Compile Include="Controllers\scStoragesController.cs" />
     <Compile Include="Controllers\scStoreBinsController.cs" />
     <Compile Include="Controllers\scSuppliersController.cs" />
@@ -288,6 +291,12 @@
       <DependentUpon>ScmDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\scPoHdr.cs">
+      <DependentUpon>ScmDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\scPrDtl.cs">
+      <DependentUpon>ScmDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\scPrHdr.cs">
       <DependentUpon>ScmDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\scRcvDtl.cs">
@@ -386,7 +395,13 @@
     <Content Include="Models\ScmDB.edmx.diagram">
       <DependentUpon>ScmDB.edmx</DependentUpon>
     </Content>
+    <Content Include="Scripts\DateRangePicker\bower.json" />
+    <Content Include="Scripts\DateRangePicker\package.json" />
     <None Include="Scripts\jquery-1.12.4.intellisense.js" />
+    <Content Include="Scripts\DateRangePicker\daterangepicker.js" />
+    <Content Include="Scripts\DateRangePicker\moment.js" />
+    <Content Include="Scripts\DateRangePicker\moment.min.js" />
+    <Content Include="Scripts\DateRangePicker\package.js" />
     <Content Include="Scripts\jquery-1.12.4.js" />
     <Content Include="Scripts\jquery-1.12.4.min.js" />
     <Content Include="Scripts\jquery-1.12.4.min.map" />
@@ -471,15 +486,32 @@
     <Content Include="Views\scPoHdrs\Details.cshtml" />
     <Content Include="Views\scPoHdrs\Edit.cshtml" />
     <Content Include="Views\scPoHdrs\Index.cshtml" />
+    <Content Include="Views\scPoForm\Details.cshtml" />
+    <Content Include="Views\scPoForm\AddItem.cshtml" />
+    <Content Include="Views\scPoForm\EditItem.cshtml" />
+    <Content Include="Views\scPoForm\EditHdr.cshtml" />
+    <Content Include="Views\scPrHdrs\Create.cshtml" />
+    <Content Include="Views\scPrHdrs\Delete.cshtml" />
+    <Content Include="Views\scPrHdrs\Details.cshtml" />
+    <Content Include="Views\scPrHdrs\Edit.cshtml" />
+    <Content Include="Views\scPrHdrs\Index.cshtml" />
+    <Content Include="Views\scPrDtls\Create.cshtml" />
+    <Content Include="Views\scPrDtls\Delete.cshtml" />
+    <Content Include="Views\scPrDtls\Details.cshtml" />
+    <Content Include="Views\scPrDtls\Edit.cshtml" />
+    <Content Include="Views\scPrDtls\Index.cshtml" />
+    <Content Include="Views\scPrForm\Index.cshtml" />
+    <Content Include="Views\scPrForm\Details.cshtml" />
+    <Content Include="Views\scPrForm\CreateItem.cshtml" />
+    <Content Include="Views\scPrForm\EditItem.cshtml" />
     <Content Include="Views\scPoDtls\Create.cshtml" />
     <Content Include="Views\scPoDtls\Delete.cshtml" />
     <Content Include="Views\scPoDtls\Details.cshtml" />
     <Content Include="Views\scPoDtls\Edit.cshtml" />
     <Content Include="Views\scPoDtls\Index.cshtml" />
-    <Content Include="Views\scPoForm\PoForm.cshtml" />
-    <Content Include="Views\scPoForm\AddItem.cshtml" />
-    <Content Include="Views\scPoForm\EditItem.cshtml" />
-    <Content Include="Views\scPoForm\EditHdr.cshtml" />
+    <Content Include="Views\scPoForm\Index.cshtml" />
+    <Content Include="Views\scPoForm\Create.cshtml" />
+    <Content Include="Views\scPoForm\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

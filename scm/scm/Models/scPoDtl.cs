@@ -26,11 +26,13 @@ namespace scm.Models
         public decimal Qty { get; set; }
         public decimal UnitPrice { get; set; }
         public int scUomId { get; set; }
+        public Nullable<int> scPrDtlId { get; set; }
     
         public virtual scPoHdr scPoHdr { get; set; }
         public virtual scItem scItem { get; set; }
         public virtual scUom scUom { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<scRcvDtl> scRcvDtls { get; set; }
+        public virtual scPrDtl scPrDtl { get; set; }
     }
 }

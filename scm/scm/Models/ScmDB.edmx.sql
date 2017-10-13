@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 10/11/2017 09:38:23
+-- Date Created: 10/13/2017 09:41:31
 -- Generated from EDMX file: D:\Data\Real\Apps\GitHub\Inventory\scm\scm\Models\ScmDB.edmx
 -- --------------------------------------------------
 
@@ -318,7 +318,8 @@ CREATE TABLE [dbo].[scPoDtls] (
     [scItemId] int  NOT NULL,
     [Qty] decimal(18,0)  NOT NULL,
     [UnitPrice] decimal(18,0)  NOT NULL,
-    [scUomId] int  NOT NULL
+    [scUomId] int  NOT NULL,
+    [scPrDtlId] int  NULL
 );
 GO
 
@@ -472,6 +473,25 @@ CREATE TABLE [dbo].[scItemCategories] (
     [Id] int IDENTITY(1,1) NOT NULL,
     [scCategoryId] int  NOT NULL,
     [scItemId] int  NOT NULL
+);
+GO
+
+-- Creating table 'scPrHdrs'
+CREATE TABLE [dbo].[scPrHdrs] (
+    [Id] int IDENTITY(1,1) NOT NULL,
+    [dtPr] datetime  NOT NULL,
+    [Remarks] nvarchar(250)  NULL,
+    [Status] nvarchar(5)  NOT NULL
+);
+GO
+
+-- Creating table 'scPrDtls'
+CREATE TABLE [dbo].[scPrDtls] (
+    [Id] int IDENTITY(1,1) NOT NULL,
+    [scPrHdrId] int  NOT NULL,
+    [scItemId] int  NOT NULL,
+    [Qty] decimal(18,0)  NOT NULL,
+    [scUomId] int  NOT NULL
 );
 GO
 
@@ -638,6 +658,18 @@ GO
 -- Creating primary key on [Id] in table 'scItemCategories'
 ALTER TABLE [dbo].[scItemCategories]
 ADD CONSTRAINT [PK_scItemCategories]
+    PRIMARY KEY CLUSTERED ([Id] ASC);
+GO
+
+-- Creating primary key on [Id] in table 'scPrHdrs'
+ALTER TABLE [dbo].[scPrHdrs]
+ADD CONSTRAINT [PK_scPrHdrs]
+    PRIMARY KEY CLUSTERED ([Id] ASC);
+GO
+
+-- Creating primary key on [Id] in table 'scPrDtls'
+ALTER TABLE [dbo].[scPrDtls]
+ADD CONSTRAINT [PK_scPrDtls]
     PRIMARY KEY CLUSTERED ([Id] ASC);
 GO
 
@@ -1228,6 +1260,66 @@ GO
 CREATE INDEX [IX_FK_scItemscItemCategory]
 ON [dbo].[scItemCategories]
     ([scItemId]);
+GO
+
+-- Creating foreign key on [scPrHdrId] in table 'scPrDtls'
+ALTER TABLE [dbo].[scPrDtls]
+ADD CONSTRAINT [FK_scPrHdrscPrDtl]
+    FOREIGN KEY ([scPrHdrId])
+    REFERENCES [dbo].[scPrHdrs]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_scPrHdrscPrDtl'
+CREATE INDEX [IX_FK_scPrHdrscPrDtl]
+ON [dbo].[scPrDtls]
+    ([scPrHdrId]);
+GO
+
+-- Creating foreign key on [scItemId] in table 'scPrDtls'
+ALTER TABLE [dbo].[scPrDtls]
+ADD CONSTRAINT [FK_scItemscPrDtl]
+    FOREIGN KEY ([scItemId])
+    REFERENCES [dbo].[scItems]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_scItemscPrDtl'
+CREATE INDEX [IX_FK_scItemscPrDtl]
+ON [dbo].[scPrDtls]
+    ([scItemId]);
+GO
+
+-- Creating foreign key on [scUomId] in table 'scPrDtls'
+ALTER TABLE [dbo].[scPrDtls]
+ADD CONSTRAINT [FK_scUomscPrDtl]
+    FOREIGN KEY ([scUomId])
+    REFERENCES [dbo].[scUoms]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_scUomscPrDtl'
+CREATE INDEX [IX_FK_scUomscPrDtl]
+ON [dbo].[scPrDtls]
+    ([scUomId]);
+GO
+
+-- Creating foreign key on [scPrDtlId] in table 'scPoDtls'
+ALTER TABLE [dbo].[scPoDtls]
+ADD CONSTRAINT [FK_scPrDtlscPoDtl]
+    FOREIGN KEY ([scPrDtlId])
+    REFERENCES [dbo].[scPrDtls]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_scPrDtlscPoDtl'
+CREATE INDEX [IX_FK_scPrDtlscPoDtl]
+ON [dbo].[scPoDtls]
+    ([scPrDtlId]);
 GO
 
 -- --------------------------------------------------
