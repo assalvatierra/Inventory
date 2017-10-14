@@ -172,14 +172,14 @@ namespace scm.Controllers
         }
 
         // POST: scPrDtls/Delete/5
-        [HttpPost, ActionName("Delete")]
+        [HttpPost, ActionName("DeleteItem")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteItemConfirmed(int id)
         {
             scPrDtl scPrDtl = db.scPrDtls.Find(id);
             db.scPrDtls.Remove(scPrDtl);
             db.SaveChanges();
-            return RedirectToAction("Index");
+            return RedirectToAction("Details");
         }
 
         #endregion

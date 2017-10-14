@@ -130,7 +130,7 @@ namespace scm.Controllers
             {
                 db.scPoDtls.Add(scPoDtl);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Details");
             }
 
             ViewBag.scPoHdrId = new SelectList(db.scPoHdrs, "Id", "Remarks", scPoDtl.scPoHdrId);
@@ -198,14 +198,14 @@ namespace scm.Controllers
         }
 
         // POST: scPoDtls/Delete/5
-        [HttpPost, ActionName("Delete")]
+        [HttpPost, ActionName("DeleteItem")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteItemConfirmed(int id)
         {
             scPoDtl scPoDtl = db.scPoDtls.Find(id);
             db.scPoDtls.Remove(scPoDtl);
             db.SaveChanges();
-            return RedirectToAction("Index");
+            return RedirectToAction("Details");
         }
 
         #endregion
