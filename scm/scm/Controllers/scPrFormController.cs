@@ -20,12 +20,39 @@ namespace scm.Controllers
             return View(db.scPrHdrs.ToList());
         }
 
+        #region hdr functions
         public ActionResult Details(int? id)
         {
             if (id == null) id = (int)Session["PRHDRID"];
             Session["PRHDRID"] = id;
+
             return View(db.scPrDtls.Where(d => d.scPrHdrId == id).ToList());
         }
+        
+        // GET: scPrHdrs/Create
+        public ActionResult Create()
+        {
+            return View();
+        }
+
+        // POST: scPrHdrs/Create
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Create([Bind(Include = "Id,dtPr,Remarks,Status")] scPrHdr scPrHdr)
+        {
+            if (ModelState.IsValid)
+            {
+                db.scPrHdrs.Add(scPrHdr);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+
+            return View(scPrHdr);
+        }
+
+        #endregion
 
         #region Item Functions
         // GET: scPrDtls/Create
