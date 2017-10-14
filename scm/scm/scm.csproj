@@ -208,6 +208,9 @@
     <Compile Include="Controllers\scPrDtlsController.cs" />
     <Compile Include="Controllers\scPrFormController.cs" />
     <Compile Include="Controllers\scPrHdrsController.cs" />
+    <Compile Include="Controllers\scRcvDtlsController.cs" />
+    <Compile Include="Controllers\scRcvFormController.cs" />
+    <Compile Include="Controllers\scRcvHdrsController.cs" />
     <Compile Include="Controllers\scStoragesController.cs" />
     <Compile Include="Controllers\scStoreBinsController.cs" />
     <Compile Include="Controllers\scSuppliersController.cs" />
@@ -516,6 +519,24 @@
     <Content Include="Views\scPrForm\Edit.cshtml" />
     <Content Include="Views\scPoForm\DeleteItem.cshtml" />
     <Content Include="Views\scPrForm\DeleteItem.cshtml" />
+    <Content Include="Views\scRcvHdrs\Create.cshtml" />
+    <Content Include="Views\scRcvHdrs\Delete.cshtml" />
+    <Content Include="Views\scRcvHdrs\Details.cshtml" />
+    <Content Include="Views\scRcvHdrs\Edit.cshtml" />
+    <Content Include="Views\scRcvHdrs\Index.cshtml" />
+    <Content Include="Views\scRcvForm\Create.cshtml" />
+    <Content Include="Views\scRcvForm\Delete.cshtml" />
+    <Content Include="Views\scRcvForm\Edit.cshtml" />
+    <Content Include="Views\scRcvForm\Index.cshtml" />
+    <Content Include="Views\scRcvDtls\Create.cshtml" />
+    <Content Include="Views\scRcvDtls\Delete.cshtml" />
+    <Content Include="Views\scRcvDtls\Details.cshtml" />
+    <Content Include="Views\scRcvDtls\Edit.cshtml" />
+    <Content Include="Views\scRcvDtls\Index.cshtml" />
+    <Content Include="Views\scRcvForm\CreateItem.cshtml" />
+    <Content Include="Views\scRcvForm\EditItem.cshtml" />
+    <Content Include="Views\scRcvForm\DeleteItem.cshtml" />
+    <Content Include="Views\scRcvForm\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
