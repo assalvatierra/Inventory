@@ -514,6 +514,8 @@
     <Content Include="Views\scPoForm\Edit.cshtml" />
     <Content Include="Views\scPrForm\Create.cshtml" />
     <Content Include="Views\scPrForm\Edit.cshtml" />
+    <Content Include="Views\scPoForm\DeleteItem.cshtml" />
+    <Content Include="Views\scPrForm\DeleteItem.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

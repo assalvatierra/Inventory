@@ -182,6 +182,32 @@ namespace scm.Controllers
             return View(scPoDtl);
         }
 
+        // GET: scPoDtls/Delete/5
+        public ActionResult DeleteItem(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            scPoDtl scPoDtl = db.scPoDtls.Find(id);
+            if (scPoDtl == null)
+            {
+                return HttpNotFound();
+            }
+            return View(scPoDtl);
+        }
+
+        // POST: scPoDtls/Delete/5
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteItemConfirmed(int id)
+        {
+            scPoDtl scPoDtl = db.scPoDtls.Find(id);
+            db.scPoDtls.Remove(scPoDtl);
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
         #endregion
 
         #region UNUSED
@@ -243,6 +269,16 @@ namespace scm.Controllers
         // GET: scPoDtls/Create
 
         #endregion
+
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                db.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
     }
 
 
