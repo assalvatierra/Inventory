@@ -4,20 +4,20 @@ select * from [dbo].scItems;
 select * from [dbo].[scPrDtls];
 select * from [dbo].[scPoDtls];
 -- Purchase Request status --
-select 
-	a.scItemId,
-	MAX(d.Name) as itemname, 
-	SUM(a.Qty) as prQty, 
-	SUM(b.Qty) as poQty, 
-	SUM(c.Qty) as rcQty 
+ SELECT
+	a.scItemId Id,
+	MAX(d.Name) as Name, 
+	MAX(e.Unit) as Uom,
+	SUM( isnull(a.Qty,0) ) as prQty, 
+	SUM( IsNULL(b.Qty,0) ) as poQty, 
+	SUM( IsNULL(c.Qty,0) ) as rcQty
 	from [dbo].[scPrDtls] a
 	LEFT OUTER JOIN [dbo].[scPoDtls] b on b.scPrDtlId = a.Id
 	LEFT OUTER JOIN [dbo].[scRcvDtls] c on c.scPoDtlId = b.Id
-	LEFT OUTER JOIN [dbo].scItems d on d.Id = a.scItemId
-
+	LEFT OUTER JOIN [dbo].[scItems] d on d.Id = a.scItemId
+	LEFT OUTER JOIN [dbo].[scUoms] e on e.Id = d.scUomId
 	where a.Qty <> b.Qty OR b.Qty is null
 	OR b.Qty <> c.Qty OR c.Qty is null
-
 	Group by a.scItemId
 ;
 -- end of request status --
@@ -79,3 +79,24 @@ where a.BinStatus = 'ACT'
 
 
 -- end of bin queries --
+
+
+-- Item Query --
+
+                SELECT
+                a.Id,
+                max(isnull(a.Name, '')) itemname,
+                sum(isnull(b.Qty, 0)) ItemIn,
+                sum(isnull(c.Qty, 0)) ItemOut
+                
+                from [dbo].[scItems] a
+                left outer join[dbo].[scRcvDtls]
+                        b on b.scItemId = a.Id
+                left outer join[dbo].[scInvOutDtls]
+                        c on c.scItemId = a.Id
+
+				Group by a.Id;
+                ;
+
+
+-- end of item query

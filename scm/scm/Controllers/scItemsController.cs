@@ -17,6 +17,18 @@ namespace scm.Controllers
         // GET: scItems
         public ActionResult Index()
         {
+            return View(db.scItems.ToList());
+        }
+
+        public ActionResult ItemInventory()
+        {
+            dbClasses db1 = new dbClasses();
+            var scItems = db1.getItemInventory();
+            return View(scItems);
+        }
+
+        public ActionResult ItemOrderStatus()
+        {
             dbClasses db1 = new dbClasses();
             var scItems = db1.getOrderStatus();
             return View(scItems);

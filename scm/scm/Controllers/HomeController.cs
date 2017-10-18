@@ -51,11 +51,11 @@ namespace scm.Controllers
         }
         public ActionResult StorageBin()
         {
-            return RedirectToAction("Index", "scStoreBins");
+            return RedirectToAction("StoreBin", "scStoreBins");
         }
         public ActionResult StockCount()
         {
-            return RedirectToAction("Index", "scItems");
+            return RedirectToAction("ItemInventory", "scItems");
         }
     }
 }

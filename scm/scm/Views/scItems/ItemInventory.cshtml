@@ -1,10 +1,10 @@
-﻿@model IEnumerable<scm.Models.scItem>
+﻿@model IEnumerable<scm.Models.EntItems>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "ItemInventory";
 }
 
-<h2>Index</h2>
+<h2>ItemInventory</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
@@ -12,13 +12,13 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Name)
+            @Html.DisplayNameFor(model => model.ItemName)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Expirydays)
+            @Html.DisplayNameFor(model => model.ItemIn)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.scUom.Unit)
+            @Html.DisplayNameFor(model => model.ItemOut)
         </th>
         <th></th>
     </tr>
@@ -26,13 +26,13 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.Name)
+            @Html.DisplayFor(modelItem => item.ItemName)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Expirydays)
+            @Html.DisplayFor(modelItem => item.ItemIn)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.scUom.Unit)
+            @Html.DisplayFor(modelItem => item.ItemOut)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |

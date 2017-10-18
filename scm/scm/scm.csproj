@@ -479,7 +479,7 @@
     <Content Include="Views\scItems\Delete.cshtml" />
     <Content Include="Views\scItems\Details.cshtml" />
     <Content Include="Views\scItems\Edit.cshtml" />
-    <Content Include="Views\scItems\Index.cshtml" />
+    <Content Include="Views\scItems\ItemOrderStatus.cshtml" />
     <Content Include="Views\scCategories\Create.cshtml" />
     <Content Include="Views\scCategories\Delete.cshtml" />
     <Content Include="Views\scCategories\Details.cshtml" />
@@ -543,6 +543,9 @@
     <Content Include="Views\scRcvForm\EditItem.cshtml" />
     <Content Include="Views\scRcvForm\DeleteItem.cshtml" />
     <Content Include="Views\scRcvForm\Details.cshtml" />
+    <Content Include="Views\scStoreBins\StoreBin.cshtml" />
+    <Content Include="Views\scItems\Index.cshtml" />
+    <Content Include="Views\scItems\ItemInventory.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

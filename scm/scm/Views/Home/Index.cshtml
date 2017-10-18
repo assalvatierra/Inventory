@@ -10,7 +10,7 @@
 
 <div class="row">
     <div class="col-md-4">
-        <h2>Supplier Management</h2>
+        <h2>Supplier</h2>
         <p>
             Manage your Suppliers, Lead time, Purchase Orders
         </p>
@@ -20,13 +20,12 @@
         </p>
     </div>
     <div class="col-md-4">
-        <h2>Store Management</h2>
+        <h2>Store</h2>
         <p>
             Manage your Items, Inventory Count and Storage Locations, Receiving Report, Stock In/Out 
         </p>
         <p>
             @Html.ActionLink("Stock Count", "StockCount", null, new { @class = "btn btn-default" })
-            @Html.ActionLink("Store List", "Index", "scStorages", "", new { @class = "btn btn-default" })
             @Html.ActionLink("Storage Bins", "StorageBin", null, new { @class = "btn btn-default" })
             @Html.ActionLink("Request", "PurchaseRequest", null, new { @class = "btn btn-default" })
             @Html.ActionLink("Receiving", "InventoryReceive", null, new { @class = "btn btn-default" })

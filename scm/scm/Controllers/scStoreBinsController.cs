@@ -21,6 +21,13 @@ namespace scm.Controllers
             return View(scStoreBins.ToList());
         }
 
+        public ActionResult StoreBin()
+        {
+            dbClasses db1 = new dbClasses();
+            var data = db1.getStorageBinInventory();
+            return View(data);
+        }
+
         // GET: scStoreBins/Details/5
         public ActionResult Details(int? id)
         {

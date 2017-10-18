@@ -1,7 +1,7 @@
-﻿@model IEnumerable<scm.Models.scItem>
+﻿@model IEnumerable<scm.Models.EntOrderStatus>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Item List";
 }
 
 <h2>Index</h2>
@@ -12,13 +12,19 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Name)
+            Item
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Expirydays)
+            Unit
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.scUom.Unit)
+            Requested
+        </th>
+        <th>
+            Ordered
+        </th>
+        <th>
+            Received
         </th>
         <th></th>
     </tr>
@@ -29,10 +35,16 @@
             @Html.DisplayFor(modelItem => item.Name)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Expirydays)
+            @Html.DisplayFor(modelItem => item.Uom)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.scUom.Unit)
+            @Html.DisplayFor(modelItem => item.prQty)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.poQty)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.rcQty)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
