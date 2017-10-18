@@ -49,6 +49,10 @@ namespace scm.Controllers
         {
             return RedirectToAction("Index", "scRcvForm");
         }
+        public ActionResult InventoryOut()
+        {
+            return RedirectToAction("Index", "scInvOutForm");
+        }
         public ActionResult StorageBin()
         {
             return RedirectToAction("StoreBin", "scStoreBins");
