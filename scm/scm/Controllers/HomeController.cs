@@ -53,6 +53,10 @@ namespace scm.Controllers
         {
             return RedirectToAction("Index", "scInvOutForm");
         }
+        public ActionResult InventoryRepack()
+        {
+            return RedirectToAction("index", "resPreparationForm");
+        }
         public ActionResult StorageBin()
         {
             return RedirectToAction("StoreBin", "scStoreBins");

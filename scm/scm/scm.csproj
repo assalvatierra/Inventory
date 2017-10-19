@@ -200,6 +200,9 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\resPreparationFormController.cs" />
+    <Compile Include="Controllers\resPreparationsController.cs" />
+    <Compile Include="Controllers\resPrepMaterialsController.cs" />
     <Compile Include="Controllers\scCategoriesController.cs" />
     <Compile Include="Controllers\scInvOutDtlsController.cs" />
     <Compile Include="Controllers\scInvOutFormController.cs" />
@@ -378,10 +381,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="Models\dbo.fOrderStatus.sql" />
-    <Content Include="Models\dbo.fOrderStatus.Drop.sql" />
     <Content Include="Models\dbo.fStockCount.Queries.sql" />
-    <Content Include="Models\dbo.fStockCount.sql" />
     <Content Include="Models\ScmDB.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>ScmDB.Context.cs</LastGenOutput>
@@ -394,7 +394,6 @@
       <DependentUpon>ScmDB.edmx</DependentUpon>
     </Content>
     <Content Include="Models\ScmDB.Init.sql" />
-    <Content Include="Models\dbo.fStockCount.Drop.sql" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">
@@ -567,6 +566,25 @@
     <Content Include="Views\scInvOutForm\EditItem.cshtml" />
     <Content Include="Views\scInvOutDtls\Index - Copy.cshtml" />
     <Content Include="Views\scInvOutForm\Details.cshtml" />
+    <Content Include="Views\resPreparations\Create.cshtml" />
+    <Content Include="Views\resPreparations\Delete.cshtml" />
+    <Content Include="Views\resPreparations\Details.cshtml" />
+    <Content Include="Views\resPreparations\Edit.cshtml" />
+    <Content Include="Views\resPreparations\Index.cshtml" />
+    <Content Include="Views\resPrepMaterials\Create.cshtml" />
+    <Content Include="Views\resPrepMaterials\Delete.cshtml" />
+    <Content Include="Views\resPrepMaterials\Details.cshtml" />
+    <Content Include="Views\resPrepMaterials\Edit.cshtml" />
+    <Content Include="Views\resPrepMaterials\Index.cshtml" />
+    <Content Include="Views\resPreparationForm\Create.cshtml" />
+    <Content Include="Views\resPreparationForm\Delete.cshtml" />
+    <Content Include="Views\resPreparationForm\Edit.cshtml" />
+    <Content Include="Views\resPreparationForm\Index.cshtml" />
+    <Content Include="Views\resPreparationForm\CreateItem.cshtml" />
+    <Content Include="Views\resPreparationForm\EditItem.cshtml" />
+    <Content Include="Views\resPreparationForm\DeleteItem.cshtml" />
+    <Content Include="Views\resPrepMaterials\Index - Copy.cshtml" />
+    <Content Include="Views\resPreparationForm\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

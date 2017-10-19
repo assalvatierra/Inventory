@@ -22,9 +22,9 @@ namespace scm.Models
     
         public int Id { get; set; }
         public string dtPrepared { get; set; }
-        public int resRecipeId { get; set; }
+        public Nullable<int> resRecipeId { get; set; }
         public decimal resQty { get; set; }
-        public decimal itemty { get; set; }
+        public decimal itemQty { get; set; }
         public int scItemId { get; set; }
         public int scStoreBinId { get; set; }
     

@@ -39,7 +39,6 @@ namespace scm.Models
         Models.ScmDBContainer db = new ScmDBContainer();
         public List<EntOrderStatus> getOrderStatus()
         {
-            //string sSQL = "SELECT * FROM [dbo].[fOrderStatus]()";
             string sSQL = @"
 	        SELECT
 		        a.scItemId Id,

@@ -836,9 +836,9 @@
     <Property Name="dtPrepared" Type="String" Nullable="false" />
     <NavigationProperty Name="resPreparationDtls" Relationship="ScmDB.resPreparationresPreparationDtl" FromRole="resPreparation" ToRole="resPreparationDtl" />
     <NavigationProperty Name="resRecipe" Relationship="ScmDB.resReciperesPreparation" FromRole="resPreparation" ToRole="resRecipe" />
-    <Property Name="resRecipeId" Type="Int32" Nullable="false" />
+    <Property Name="resRecipeId" Type="Int32" Nullable="true" />
     <Property Name="resQty" Type="Decimal" Nullable="false" />
-    <Property Name="itemty" Type="Decimal" Nullable="false" />
+    <Property Name="itemQty" Type="Decimal" Nullable="false" />
     <NavigationProperty Name="scItem" Relationship="ScmDB.scItemresPreparation" FromRole="resPreparation" ToRole="scItem" />
     <Property Name="scItemId" Type="Int32" Nullable="false" />
     <NavigationProperty Name="scStoreBin" Relationship="ScmDB.scStoreBinresPreparation" FromRole="resPreparation" ToRole="scStoreBin" />
@@ -870,7 +870,7 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="resReciperesPreparation">
-    <End Type="ScmDB.resRecipe" Role="resRecipe" Multiplicity="1" />
+    <End Type="ScmDB.resRecipe" Role="resRecipe" Multiplicity="0..1" />
     <End Type="ScmDB.resPreparation" Role="resPreparation" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="resRecipe">

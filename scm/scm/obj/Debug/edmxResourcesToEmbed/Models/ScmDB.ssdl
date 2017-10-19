@@ -416,7 +416,7 @@
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="dtPrepared" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="resRecipeId" Type="int" Nullable="false" />
+    <Property Name="resRecipeId" Type="int" Nullable="true" />
     <Property Name="resQty" Type="decimal" Nullable="false" />
     <Property Name="itemty" Type="decimal" Nullable="false" />
     <Property Name="scItemId" Type="int" Nullable="false" />
@@ -834,7 +834,7 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="resReciperesPreparation">
-    <End Role="resRecipe" Type="ScmDB.Store.resRecipes" Multiplicity="1" />
+    <End Role="resRecipe" Type="ScmDB.Store.resRecipes" Multiplicity="0..1" />
     <End Role="resPreparation" Type="ScmDB.Store.resPreparations" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="resRecipe">
