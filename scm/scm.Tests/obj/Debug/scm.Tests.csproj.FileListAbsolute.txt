@@ -111,3 +111,5 @@ D:\Data\Real\Apps\GitHub\Inventory\scm\scm.Tests\bin\Debug\Microsoft.Owin.Host.S
 D:\Data\Real\Apps\GitHub\Inventory\scm\scm.Tests\obj\Debug\scm.Tests.csprojResolveAssemblyReference.cache
 D:\Data\Real\Apps\GitHub\Inventory\scm\scm.Tests\obj\Debug\scm.Tests.dll
 D:\Data\Real\Apps\GitHub\Inventory\scm\scm.Tests\obj\Debug\scm.Tests.pdb
+D:\Data\Real\Apps\GitHub\Inventory\scm\scm.Tests\bin\Debug\EntityFramework.SqlServer.dll
+D:\Data\Real\Apps\GitHub\Inventory\scm\scm.Tests\bin\Debug\EntityFramework.SqlServer.xml

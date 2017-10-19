@@ -160,4 +160,3 @@ C:\Data\ABEL\Projects\GitHubApps\Inventory\scm\scm\bin\Microsoft.Owin.Security.T
 C:\Data\ABEL\Projects\GitHubApps\Inventory\scm\scm\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
 C:\Data\ABEL\Projects\GitHubApps\Inventory\scm\scm\obj\Debug\scm.dll
 C:\Data\ABEL\Projects\GitHubApps\Inventory\scm\scm\obj\Debug\scm.pdb
-D:\Data\Real\Apps\GitHub\Inventory\scm\scm\obj\Debug\scm.csprojResolveAssemblyReference.cache

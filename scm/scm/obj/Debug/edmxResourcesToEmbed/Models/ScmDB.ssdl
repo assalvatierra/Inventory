@@ -418,7 +418,7 @@
     <Property Name="dtPrepared" Type="nvarchar(max)" Nullable="false" />
     <Property Name="resRecipeId" Type="int" Nullable="true" />
     <Property Name="resQty" Type="decimal" Nullable="false" />
-    <Property Name="itemty" Type="decimal" Nullable="false" />
+    <Property Name="itemQty" Type="decimal" Nullable="false" />
     <Property Name="scItemId" Type="int" Nullable="false" />
     <Property Name="scStoreBinId" Type="int" Nullable="false" />
   </EntityType>

@@ -423,7 +423,7 @@
     <Property Name="dtPrepared" Type="nvarchar(max)" Nullable="false" />
     <Property Name="resRecipeId" Type="int" Nullable="true" />
     <Property Name="resQty" Type="decimal" Nullable="false" />
-    <Property Name="itemty" Type="decimal" Nullable="false" />
+    <Property Name="itemQty" Type="decimal" Nullable="false" />
     <Property Name="scItemId" Type="int" Nullable="false" />
     <Property Name="scStoreBinId" Type="int" Nullable="false" />
   </EntityType>
@@ -2315,7 +2315,7 @@
           <ScalarProperty Name="dtPrepared" ColumnName="dtPrepared" />
           <ScalarProperty Name="resRecipeId" ColumnName="resRecipeId" />
           <ScalarProperty Name="resQty" ColumnName="resQty" />
-          <ScalarProperty Name="itemQty" ColumnName="itemty" />
+          <ScalarProperty Name="itemQty" ColumnName="itemQty" />
           <ScalarProperty Name="scItemId" ColumnName="scItemId" />
           <ScalarProperty Name="scStoreBinId" ColumnName="scStoreBinId" />
         </MappingFragment>

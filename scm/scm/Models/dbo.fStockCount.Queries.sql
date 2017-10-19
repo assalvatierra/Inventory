@@ -81,19 +81,23 @@ where a.BinStatus = 'ACT'
 -- end of bin queries --
 
 
--- Item Query --
+-- getItemInventory --
 
                 SELECT
                 a.Id,
                 max(isnull(a.Name, '')) itemname,
-                sum(isnull(b.Qty, 0)) ItemIn,
-                sum(isnull(c.Qty, 0)) ItemOut
+                sum(isnull(b.Qty, 0)) + sum(isnull(d.itemQty, 0)) ItemIn,
+                sum(isnull(c.Qty, 0)) + sum(isnull(e.Qty, 0)) ItemOut
                 
                 from [dbo].[scItems] a
-                left outer join[dbo].[scRcvDtls]
+                left outer join [dbo].[scRcvDtls]
                         b on b.scItemId = a.Id
-                left outer join[dbo].[scInvOutDtls]
+                left outer join [dbo].[scInvOutDtls]
                         c on c.scItemId = a.Id
+				left outer join [dbo].[resPreparations]
+						d on d.scItemId = a.Id
+				left outer join [dbo].[resPrepMaterials]
+						e on e.scItemId = a.Id
 
 				Group by a.Id;
                 ;
