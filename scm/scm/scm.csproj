@@ -208,6 +208,7 @@
     <Compile Include="Controllers\scInvOutFormController.cs" />
     <Compile Include="Controllers\scInvOutHdrsController.cs" />
     <Compile Include="Controllers\scItemsController.cs" />
+    <Compile Include="Controllers\scItemSuppliersController.cs" />
     <Compile Include="Controllers\scPoDtlsController.cs" />
     <Compile Include="Controllers\scPoFormController.cs" />
     <Compile Include="Controllers\scPoHdrsController.cs" />
@@ -468,11 +469,6 @@
     <Content Include="Views\scUoms\Details.cshtml" />
     <Content Include="Views\scUoms\Edit.cshtml" />
     <Content Include="Views\scUoms\Index.cshtml" />
-    <Content Include="Views\scSuppliers\Create.cshtml" />
-    <Content Include="Views\scSuppliers\Delete.cshtml" />
-    <Content Include="Views\scSuppliers\Details.cshtml" />
-    <Content Include="Views\scSuppliers\Edit.cshtml" />
-    <Content Include="Views\scSuppliers\Index.cshtml" />
     <Content Include="Views\scStoreBins\Create.cshtml" />
     <Content Include="Views\scStoreBins\Delete.cshtml" />
     <Content Include="Views\scStoreBins\Details.cshtml" />
@@ -586,6 +582,20 @@
     <Content Include="Views\resPreparationForm\DeleteItem.cshtml" />
     <Content Include="Views\resPrepMaterials\Index - Copy.cshtml" />
     <Content Include="Views\resPreparationForm\Details.cshtml" />
+    <Content Include="Views\scSuppliers\Create.cshtml" />
+    <Content Include="Views\scSuppliers\Delete.cshtml" />
+    <Content Include="Views\scSuppliers\Details.cshtml" />
+    <Content Include="Views\scSuppliers\Edit.cshtml" />
+    <Content Include="Views\scSuppliers\Index.cshtml" />
+    <Content Include="Views\scItemSuppliers\Create.cshtml" />
+    <Content Include="Views\scItemSuppliers\Delete.cshtml" />
+    <Content Include="Views\scItemSuppliers\Details.cshtml" />
+    <Content Include="Views\scItemSuppliers\Edit.cshtml" />
+    <Content Include="Views\scItemSuppliers\Index.cshtml" />
+    <Content Include="Views\scSuppliers\SupplierItem.cshtml" />
+    <Content Include="Views\scSuppliers\AddSupplierItem.cshtml" />
+    <Content Include="Views\scSuppliers\EditSupplierItem.cshtml" />
+    <Content Include="Views\scSuppliers\DeleteSupplierItem.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
