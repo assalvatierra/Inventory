@@ -34,6 +34,12 @@ namespace scm.Models
         public DateTime Expirydate { get; set; }
     }
 
+    public class EntItemSupplier
+    {
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public string Suppliers { get; set; }
+    }
     public class dbClasses
     {
         Models.ScmDBContainer db = new ScmDBContainer();
