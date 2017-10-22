@@ -13,6 +13,37 @@
     
     <div class="form-horizontal">
         <h4>scPoDtl</h4>
+        <table>
+            <tr>
+                <th>Item</th>
+                <th>Unit</th>
+                <th>Request</th>
+                <th>Orders</th>
+                <th>Received</th>
+            </tr>
+            @foreach (var tmp in (List<scm.Models.EntOrderStatus>)ViewBag.requestedItems)
+            {
+                <tr>
+                    <td>
+                        @tmp.Name
+                    </td>
+                    <td>
+                        @tmp.Uom
+                    </td>
+                    <td>
+                        @tmp.prQty
+                    </td>
+                    <td>
+                        @tmp.poQty
+                    </td>
+                    <td>
+                        @tmp.rcQty
+                    </td>
+                </tr>
+
+            }
+        </table>
+
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">

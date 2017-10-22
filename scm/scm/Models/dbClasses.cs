@@ -55,8 +55,8 @@ namespace scm.Models
 		        SUM( IsNULL(b.Qty,0) ) as poQty, 
 		        SUM( IsNULL(c.Qty,0) ) as rcQty
 		        from [dbo].[scPrDtls] a
-		        LEFT OUTER JOIN [dbo].[scPoDtls] b on b.scPrDtlId = a.Id
-		        LEFT OUTER JOIN [dbo].[scRcvDtls] c on c.scPoDtlId = b.Id
+		        LEFT OUTER JOIN [dbo].[scPoDtls] b on b.scPrDtlId = a.Id  and b.scItemId = a.scItemId
+		        LEFT OUTER JOIN [dbo].[scRcvDtls] c on c.scPoDtlId = b.Id and c.scItemId = a.scItemId
 		        LEFT OUTER JOIN [dbo].[scItems] d on d.Id = a.scItemId
 		        LEFT OUTER JOIN [dbo].[scUoms] e on e.Id = d.scUomId
 		        where a.Qty <> b.Qty OR b.Qty is null

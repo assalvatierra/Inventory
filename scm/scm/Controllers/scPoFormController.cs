@@ -119,7 +119,12 @@ namespace scm.Controllers
             ViewBag.scPoHdrId = new SelectList(db.scPoHdrs, "Id", "Remarks", hdrid);
             ViewBag.scItemId = new SelectList(db.scItems, "Id", "Name");
             ViewBag.scUomId = new SelectList(db.scUoms, "Id", "Unit");
-            ViewBag.scPrDtlId = new SelectList(db.scPrDtls, "Id", "Id");
+            ViewBag.scPrDtlId = new SelectList(
+                db.scPrDtls.Select(s => new { Id = s.Id, Text = s.Id + " / " + s.scItem.Name + " / " + s.Qty }
+                ), "Id", "Text", null);
+
+            Models.dbClasses db1 = new dbClasses();
+            ViewBag.requestedItems = db1.getOrderStatus();
 
             return View(newitem);
         }
@@ -129,7 +134,7 @@ namespace scm.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult AddItem([Bind(Include = "Id,scPoHdrId,scItemId,Qty,UnitPrice,scUomId")] scPoDtl scPoDtl)
+        public ActionResult AddItem([Bind(Include = "Id,scPoHdrId,scItemId,Qty,UnitPrice,scUomId,scPrDtlId")] scPoDtl scPoDtl)
         {
             if (ModelState.IsValid)
             {
@@ -141,7 +146,12 @@ namespace scm.Controllers
             ViewBag.scPoHdrId = new SelectList(db.scPoHdrs, "Id", "Remarks", scPoDtl.scPoHdrId);
             ViewBag.scItemId = new SelectList(db.scItems, "Id", "Name", scPoDtl.scItemId);
             ViewBag.scUomId = new SelectList(db.scUoms, "Id", "Unit", scPoDtl.scUomId);
-            ViewBag.scPrDtlId = new SelectList(db.scPrDtls, "Id", "Id", scPoDtl.scPrDtlId);
+            ViewBag.scPrDtlId = new SelectList(
+                db.scPrDtls.Select(s => new { Id = s.Id, Text = s.Id + " / " + s.scItem.Name + " / " + s.Qty }
+                ), "Id", "Text", scPoDtl.scPrDtlId);
+
+            Models.dbClasses db1 = new dbClasses();
+            ViewBag.requestedItems = db1.getOrderStatus();
 
             return View(scPoDtl);
         }
@@ -161,8 +171,12 @@ namespace scm.Controllers
             ViewBag.scPoHdrId = new SelectList(db.scPoHdrs, "Id", "Remarks", scPoDtl.scPoHdrId);
             ViewBag.scItemId = new SelectList(db.scItems, "Id", "Name", scPoDtl.scItemId);
             ViewBag.scUomId = new SelectList(db.scUoms, "Id", "Unit", scPoDtl.scUomId);
-            ViewBag.scPrDtlId = new SelectList(db.scPrDtls, "Id", "Id", scPoDtl.scPrDtlId);
+            ViewBag.scPrDtlId = new SelectList(
+                db.scPrDtls.Select( s => new { Id = s.Id, Text = s.Id + " / " + s.scItem.Name + " / " + s.Qty }
+                ), "Id", "Text", scPoDtl.scPrDtlId);
 
+            Models.dbClasses db1 = new dbClasses();
+            ViewBag.requestedItems = db1.getOrderStatus();
             return View(scPoDtl);
         }
 
@@ -171,7 +185,7 @@ namespace scm.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult EditItem([Bind(Include = "Id,scPoHdrId,scItemId,Qty,UnitPrice,scUomId")] scPoDtl scPoDtl)
+        public ActionResult EditItem([Bind(Include = "Id,scPoHdrId,scItemId,Qty,UnitPrice,scUomId,scPrDtlId")] scPoDtl scPoDtl)
         {
             if (ModelState.IsValid)
             {
@@ -182,8 +196,12 @@ namespace scm.Controllers
             ViewBag.scPoHdrId = new SelectList(db.scPoHdrs, "Id", "Remarks", scPoDtl.scPoHdrId);
             ViewBag.scItemId = new SelectList(db.scItems, "Id", "Name", scPoDtl.scItemId);
             ViewBag.scUomId = new SelectList(db.scUoms, "Id", "Unit", scPoDtl.scUomId);
-            ViewBag.scPrDtlId = new SelectList(db.scPrDtls, "Id", "Id", scPoDtl.scPrDtlId);
+            ViewBag.scPrDtlId = new SelectList(
+                db.scPrDtls.Select(s => new { Id = s.Id, Text = s.Id + " / " + s.scItem.Name + " / " + s.Qty }
+                ), "Id", "Text", scPoDtl.scPrDtlId);
 
+            Models.dbClasses db1 = new dbClasses();
+            ViewBag.requestedItems = db1.getOrderStatus();
             return View(scPoDtl);
         }
 
