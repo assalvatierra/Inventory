@@ -37,6 +37,10 @@ namespace scm.Controllers
         {
             return RedirectToAction("Index", "scSuppliers");
         }
+        public ActionResult SupplierByItem()
+        {
+            return RedirectToAction("SupplierByItem", "scSuppliers");
+        }
         public ActionResult PurchaseRequest()
         {
             return RedirectToAction("Index", "scPrForm");

@@ -24,7 +24,12 @@ namespace scm.Controllers
         #region listing
         public ActionResult Index()
         {
+           
             var scPoHdrs = db.scPoHdrs.Include(s => s.scSupplier);
+
+            Models.dbClasses db1 = new dbClasses();
+            ViewBag.ItemStatus = db1.getOrderStatus();
+
             return View(scPoHdrs.ToList());
         }
         #endregion

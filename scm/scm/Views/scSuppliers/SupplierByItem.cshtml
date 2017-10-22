@@ -13,13 +13,13 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Name)
+            Product
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Expirydays)
+            Suppliers
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.scUom.Unit)
+            Unit
         </th>
         <th></th>
     </tr>
@@ -35,7 +35,7 @@
             {
                 if (sSupplier.Trim() != "")
                 {
-                    sSupplier = supp.scSupplier.Name;
+                    sSupplier += supp.scSupplier.Name;
                     <span>&#44;</span>
                 }
 
@@ -57,3 +57,9 @@
 }
 
 </table>
+
+<p>
+    @Html.ActionLink("Home", "Index", "Home") |
+    @Html.ActionLink("Suppliers", "Index", "scSuppliers") |
+    @Html.ActionLink("Items", "SupplierByItem", "scSuppliers")
+</p>

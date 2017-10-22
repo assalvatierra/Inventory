@@ -1,0 +1,42 @@
+﻿@model IEnumerable<scm.Models.EntOrderStatus>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Uom)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.prQty)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.poQty)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.rcQty)
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Uom)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.prQty)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.poQty)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.rcQty)
+        </td>
+    </tr>
+}
+
+</table>

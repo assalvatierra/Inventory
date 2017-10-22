@@ -596,8 +596,8 @@
     <Content Include="Views\scSuppliers\AddSupplierItem.cshtml" />
     <Content Include="Views\scSuppliers\EditSupplierItem.cshtml" />
     <Content Include="Views\scSuppliers\DeleteSupplierItem.cshtml" />
-    <Content Include="Views\scSuppliers\SupplierByitem1.cshtml" />
     <Content Include="Views\scSuppliers\SupplierByItem.cshtml" />
+    <Content Include="Views\scPoForm\PartialView_ItemStatus.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

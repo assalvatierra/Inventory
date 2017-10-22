@@ -54,5 +54,7 @@ namespace scm.Models
         public virtual DbSet<scItemCategory> scItemCategories { get; set; }
         public virtual DbSet<scPrHdr> scPrHdrs { get; set; }
         public virtual DbSet<scPrDtl> scPrDtls { get; set; }
+
+        public System.Data.Entity.DbSet<scm.Models.EntOrderStatus> EntOrderStatus { get; set; }
     }
 }

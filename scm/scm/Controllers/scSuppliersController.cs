@@ -239,31 +239,6 @@ namespace scm.Controllers
         }
         #endregion
 
-        public ActionResult SupplierByitem1()
-        {
-            var data = db.scItemSuppliers.Include(s => s.scSupplier).Include(s => s.scItem);
-            List<EntItemSupplier> item = new List<EntItemSupplier>();
-
-            int itmpId = 0;
-            foreach (var tmp in data)
-            {
-               if(itmpId!=tmp.Id)
-                {
-                    item.Add(new EntItemSupplier() );
-                    itmpId = tmp.Id;
-                }
-
-                EntItemSupplier last = item.Last();
-                last.Id = tmp.Id;
-                last.Name = tmp.scItem.Name;
-                if (last.Suppliers.Trim() != "") last.Suppliers += ", ";
-                last.Suppliers += tmp.scSupplier.Name; 
-
-            }
-
-            return View(data);
-        }
-
         public ActionResult SupplierByItem()
         {
             var data = db.scItems.Include(d => d.scItemSuppliers);
