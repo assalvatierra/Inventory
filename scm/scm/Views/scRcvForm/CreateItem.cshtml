@@ -12,6 +12,10 @@
     
     <div class="form-horizontal">
         <h4>scRcvDtl</h4>
+
+        @{Html.RenderPartial("PartialView_ItemStatus", (List<scm.Models.EntOrderStatus>)ViewBag.requestedItems); }
+
+
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">

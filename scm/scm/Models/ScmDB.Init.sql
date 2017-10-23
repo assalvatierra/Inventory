@@ -4,8 +4,8 @@
 Insert into scCategories([Name]) values
 ('General Items'),('Dry'),('Frozen'),('Refrigerated'),('Perishable'),('Non-perishable'),('Organic');
 
-Insert into scItems([Name],[scUomId],[Expirydays]) values
-('Item101',1,5),('Item102',1,7),('Product AAA',1,10),('Product BBB',1,20);
+Insert into scItems([Name],[scUomId],[Expirydays],[LowLevel]) values
+('Item101',1,5,5),('Item102',1,7,5),('Product AAA',1,10,10),('Product BBB',1,20,10);
 
 Insert Into scItemCategories([scCategoryId],[scItemId]) values
 (1,1),(1,2),(1,3),(1,4),(2,1),(2,2),(3,3),(4,4);

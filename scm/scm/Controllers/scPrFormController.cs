@@ -13,7 +13,7 @@ namespace scm.Controllers
     public class scPrFormController : Controller
     {
         private ScmDBContainer db = new ScmDBContainer();
-
+        private Models.dbClasses db1 = new dbClasses();
         // GET: scPrForm
         public ActionResult Index()
         {
@@ -26,6 +26,7 @@ namespace scm.Controllers
             if (id == null) id = (int)Session["PRHDRID"];
             Session["PRHDRID"] = id;
 
+            ViewBag.LowLevelItems = db1.getLowLevelItems();
             return View(db.scPrDtls.Where(d => d.scPrHdrId == id).ToList());
         }
         
@@ -96,6 +97,9 @@ namespace scm.Controllers
             ViewBag.scPrHdrId = new SelectList(db.scPrHdrs, "Id", "Remarks",hdrid);
             ViewBag.scItemId = new SelectList(db.scItems, "Id", "Name");
             ViewBag.scUomId = new SelectList(db.scUoms, "Id", "Unit");
+
+            ViewBag.LowLevelItems = db1.getLowLevelItems();
+
             return View(newitem);
         }
 
@@ -116,6 +120,9 @@ namespace scm.Controllers
             ViewBag.scPrHdrId = new SelectList(db.scPrHdrs, "Id", "Remarks", scPrDtl.scPrHdrId);
             ViewBag.scItemId = new SelectList(db.scItems, "Id", "Name", scPrDtl.scItemId);
             ViewBag.scUomId = new SelectList(db.scUoms, "Id", "Unit", scPrDtl.scUomId);
+
+            ViewBag.LowLevelItems = db1.getLowLevelItems();
+
             return View(scPrDtl);
         }
 
@@ -134,6 +141,9 @@ namespace scm.Controllers
             ViewBag.scPrHdrId = new SelectList(db.scPrHdrs, "Id", "Remarks", scPrDtl.scPrHdrId);
             ViewBag.scItemId = new SelectList(db.scItems, "Id", "Name", scPrDtl.scItemId);
             ViewBag.scUomId = new SelectList(db.scUoms, "Id", "Unit", scPrDtl.scUomId);
+
+            ViewBag.LowLevelItems = db1.getLowLevelItems();
+
             return View(scPrDtl);
         }
 
@@ -153,6 +163,9 @@ namespace scm.Controllers
             ViewBag.scPrHdrId = new SelectList(db.scPrHdrs, "Id", "Remarks", scPrDtl.scPrHdrId);
             ViewBag.scItemId = new SelectList(db.scItems, "Id", "Name", scPrDtl.scItemId);
             ViewBag.scUomId = new SelectList(db.scUoms, "Id", "Unit", scPrDtl.scUomId);
+
+            ViewBag.LowLevelItems = db1.getLowLevelItems();
+
             return View(scPrDtl);
         }
 

@@ -17,7 +17,8 @@ namespace scm.Controllers
         // GET: scItems
         public ActionResult Index()
         {
-            return View(db.scItems.ToList());
+            //return View(db.scItems.ToList());
+            return RedirectToAction("ItemInventory");
         }
 
         public ActionResult ItemInventory()

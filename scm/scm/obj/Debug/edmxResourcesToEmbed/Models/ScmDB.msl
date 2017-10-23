@@ -17,6 +17,7 @@
           <ScalarProperty Name="Name" ColumnName="Name" />
           <ScalarProperty Name="scUomId" ColumnName="scUomId" />
           <ScalarProperty Name="Expirydays" ColumnName="Expirydays" />
+          <ScalarProperty Name="LowLevel" ColumnName="LowLevel" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

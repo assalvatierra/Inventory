@@ -598,6 +598,8 @@
     <Content Include="Views\scSuppliers\DeleteSupplierItem.cshtml" />
     <Content Include="Views\scSuppliers\SupplierByItem.cshtml" />
     <Content Include="Views\scPoForm\PartialView_ItemStatus.cshtml" />
+    <Content Include="Views\scPrForm\PartialView_LowLevelItems.cshtml" />
+    <Content Include="Views\scRcvForm\PartialView_ItemStatus.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

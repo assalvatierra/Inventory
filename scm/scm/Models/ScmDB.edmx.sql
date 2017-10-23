@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 10/19/2017 10:56:21
+-- Date Created: 10/23/2017 10:44:34
 -- Generated from EDMX file: D:\Data\Real\Apps\GitHub\Inventory\scm\scm\Models\ScmDB.edmx
 -- --------------------------------------------------
 
@@ -256,7 +256,8 @@ CREATE TABLE [dbo].[scItems] (
     [Id] int IDENTITY(1,1) NOT NULL,
     [Name] nvarchar(80)  NOT NULL,
     [scUomId] int  NOT NULL,
-    [Expirydays] int  NOT NULL
+    [Expirydays] int  NOT NULL,
+    [LowLevel] int  NULL
 );
 GO
 

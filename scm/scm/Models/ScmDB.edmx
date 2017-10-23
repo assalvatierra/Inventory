@@ -224,6 +224,7 @@
     <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="80" />
     <Property Name="scUomId" Type="int" Nullable="false" />
     <Property Name="Expirydays" Type="int" Nullable="false" />
+    <Property Name="LowLevel" Type="int" Nullable="true" />
   </EntityType>
   <EntityType Name="scUoms">
     <Key>
@@ -1232,6 +1233,7 @@
           <NavigationProperty Name="scStoreBins" Relationship="ScmDB.scItemscStoreBin" FromRole="scItem" ToRole="scStoreBin" />
           <NavigationProperty Name="scItemCategories" Relationship="ScmDB.scItemscItemCategory" FromRole="scItem" ToRole="scItemCategory" />
           <NavigationProperty Name="scPrDtls" Relationship="ScmDB.scItemscPrDtl" FromRole="scItem" ToRole="scPrDtl" />
+          <Property Name="LowLevel" Type="Int32" Nullable="true" />
         </EntityType>
         <EntityType Name="scUom">
           <Key>
@@ -2095,6 +2097,7 @@
           <ScalarProperty Name="Name" ColumnName="Name" />
           <ScalarProperty Name="scUomId" ColumnName="scUomId" />
           <ScalarProperty Name="Expirydays" ColumnName="Expirydays" />
+          <ScalarProperty Name="LowLevel" ColumnName="LowLevel" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

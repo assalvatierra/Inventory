@@ -53,6 +53,7 @@ Purchase Request
 
 </table>
 
+@{Html.RenderPartial("PartialView_LowLevelItems", (List<scm.Models.EntItems>)ViewBag.LowLevelItems);}
 
 <p>
     @Html.ActionLink("Back to Request List", "Index")

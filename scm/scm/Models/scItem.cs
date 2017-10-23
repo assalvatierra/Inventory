@@ -34,6 +34,7 @@ namespace scm.Models
         public string Name { get; set; }
         public int scUomId { get; set; }
         public int Expirydays { get; set; }
+        public Nullable<int> LowLevel { get; set; }
     
         public virtual scUom scUom { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

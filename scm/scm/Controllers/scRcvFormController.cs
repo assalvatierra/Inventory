@@ -112,6 +112,10 @@ namespace scm.Controllers
             Session["RCVHDRID"] = id;
 
             var scRcvDtls = db.scRcvDtls.Include(s => s.scRcvHdr).Include(s => s.scItem).Include(s => s.scStoreBin).Include(s => s.scPoDtl).Where(d=>d.scRcvHdrId==id);
+
+            Models.dbClasses db1 = new dbClasses();
+            ViewBag.requestedItems = db1.getOrderStatus();
+
             return View(scRcvDtls.ToList());
         }
 
@@ -124,6 +128,10 @@ namespace scm.Controllers
             ViewBag.scItemId = new SelectList(db.scItems, "Id", "Name");
             ViewBag.scStoreBinId = new SelectList(db.scStoreBins, "Id", "Code");
             ViewBag.scPoDtlId = new SelectList(db.scPoDtls, "Id", "Id");
+
+            Models.dbClasses db1 = new dbClasses();
+            ViewBag.requestedItems = db1.getOrderStatus();
+
             return View();
         }
 
@@ -145,6 +153,10 @@ namespace scm.Controllers
             ViewBag.scItemId = new SelectList(db.scItems, "Id", "Name", scRcvDtl.scItemId);
             ViewBag.scStoreBinId = new SelectList(db.scStoreBins, "Id", "Code", scRcvDtl.scStoreBinId);
             ViewBag.scPoDtlId = new SelectList(db.scPoDtls, "Id", "Id", scRcvDtl.scPoDtlId);
+
+            Models.dbClasses db1 = new dbClasses();
+            ViewBag.requestedItems = db1.getOrderStatus();
+
             return View(scRcvDtl);
         }
 
@@ -164,6 +176,10 @@ namespace scm.Controllers
             ViewBag.scItemId = new SelectList(db.scItems, "Id", "Name", scRcvDtl.scItemId);
             ViewBag.scStoreBinId = new SelectList(db.scStoreBins, "Id", "Code", scRcvDtl.scStoreBinId);
             ViewBag.scPoDtlId = new SelectList(db.scPoDtls, "Id", "Id", scRcvDtl.scPoDtlId);
+
+            Models.dbClasses db1 = new dbClasses();
+            ViewBag.requestedItems = db1.getOrderStatus();
+
             return View(scRcvDtl);
         }
 
@@ -184,6 +200,10 @@ namespace scm.Controllers
             ViewBag.scItemId = new SelectList(db.scItems, "Id", "Name", scRcvDtl.scItemId);
             ViewBag.scStoreBinId = new SelectList(db.scStoreBins, "Id", "Code", scRcvDtl.scStoreBinId);
             ViewBag.scPoDtlId = new SelectList(db.scPoDtls, "Id", "Id", scRcvDtl.scPoDtlId);
+
+            Models.dbClasses db1 = new dbClasses();
+            ViewBag.requestedItems = db1.getOrderStatus();
+
             return View(scRcvDtl);
         }
 

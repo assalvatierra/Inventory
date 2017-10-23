@@ -58,6 +58,10 @@ x<table class="table">
      </tr>
 </table>
 
+
+@{Html.RenderPartial("PartialView_ItemStatus", (List<scm.Models.EntOrderStatus>)ViewBag.requestedItems); }
+
+
 <p>
     @Html.ActionLink("Back to Receiving List", "Index")
 </p>

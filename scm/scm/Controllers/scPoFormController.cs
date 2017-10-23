@@ -120,7 +120,7 @@ namespace scm.Controllers
             ViewBag.scItemId = new SelectList(db.scItems, "Id", "Name");
             ViewBag.scUomId = new SelectList(db.scUoms, "Id", "Unit");
             ViewBag.scPrDtlId = new SelectList(
-                db.scPrDtls.Select(s => new { Id = s.Id, Text = s.Id + " / " + s.scItem.Name + " / " + s.Qty }
+                db.scPrDtls.Select(s => new { Id = s.Id, Text = s.Id + "-" + s.scItem.Name + " [Requested:" + s.Qty + "]"}
                 ), "Id", "Text", null);
 
             Models.dbClasses db1 = new dbClasses();
@@ -147,8 +147,8 @@ namespace scm.Controllers
             ViewBag.scItemId = new SelectList(db.scItems, "Id", "Name", scPoDtl.scItemId);
             ViewBag.scUomId = new SelectList(db.scUoms, "Id", "Unit", scPoDtl.scUomId);
             ViewBag.scPrDtlId = new SelectList(
-                db.scPrDtls.Select(s => new { Id = s.Id, Text = s.Id + " / " + s.scItem.Name + " / " + s.Qty }
-                ), "Id", "Text", scPoDtl.scPrDtlId);
+                db.scPrDtls.Select(s => new { Id = s.Id, Text = s.Id + "-" + s.scItem.Name + " [Requested:" + s.Qty + "]" }
+                ), "Id", "Text", null);
 
             Models.dbClasses db1 = new dbClasses();
             ViewBag.requestedItems = db1.getOrderStatus();
@@ -172,8 +172,8 @@ namespace scm.Controllers
             ViewBag.scItemId = new SelectList(db.scItems, "Id", "Name", scPoDtl.scItemId);
             ViewBag.scUomId = new SelectList(db.scUoms, "Id", "Unit", scPoDtl.scUomId);
             ViewBag.scPrDtlId = new SelectList(
-                db.scPrDtls.Select( s => new { Id = s.Id, Text = s.Id + " / " + s.scItem.Name + " / " + s.Qty }
-                ), "Id", "Text", scPoDtl.scPrDtlId);
+                db.scPrDtls.Select(s => new { Id = s.Id, Text = s.Id + "-" + s.scItem.Name + " [Requested:" + s.Qty + "]" }
+                ), "Id", "Text", null);
 
             Models.dbClasses db1 = new dbClasses();
             ViewBag.requestedItems = db1.getOrderStatus();
@@ -197,8 +197,8 @@ namespace scm.Controllers
             ViewBag.scItemId = new SelectList(db.scItems, "Id", "Name", scPoDtl.scItemId);
             ViewBag.scUomId = new SelectList(db.scUoms, "Id", "Unit", scPoDtl.scUomId);
             ViewBag.scPrDtlId = new SelectList(
-                db.scPrDtls.Select(s => new { Id = s.Id, Text = s.Id + " / " + s.scItem.Name + " / " + s.Qty }
-                ), "Id", "Text", scPoDtl.scPrDtlId);
+                db.scPrDtls.Select(s => new { Id = s.Id, Text = s.Id + "-" + s.scItem.Name + " [Requested:" + s.Qty + "]" }
+                ), "Id", "Text", null);
 
             Models.dbClasses db1 = new dbClasses();
             ViewBag.requestedItems = db1.getOrderStatus();

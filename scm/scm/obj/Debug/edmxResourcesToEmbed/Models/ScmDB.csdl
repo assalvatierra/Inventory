@@ -234,6 +234,7 @@
     <NavigationProperty Name="scStoreBins" Relationship="ScmDB.scItemscStoreBin" FromRole="scItem" ToRole="scStoreBin" />
     <NavigationProperty Name="scItemCategories" Relationship="ScmDB.scItemscItemCategory" FromRole="scItem" ToRole="scItemCategory" />
     <NavigationProperty Name="scPrDtls" Relationship="ScmDB.scItemscPrDtl" FromRole="scItem" ToRole="scPrDtl" />
+    <Property Name="LowLevel" Type="Int32" Nullable="true" />
   </EntityType>
   <EntityType Name="scUom">
     <Key>

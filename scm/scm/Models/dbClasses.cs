@@ -21,6 +21,7 @@ namespace scm.Models
         public string ItemName { get; set; }
         public decimal ItemIn { get; set; }
         public decimal ItemOut { get; set; }
+        public int LowLevel { get; set; }
     }
 
     public class EntStorageBin
@@ -28,6 +29,7 @@ namespace scm.Models
         public int Id { get; set; }
         public string Store { get; set; }
         public string BinCode { get; set; }
+        public int? ItemId { get; set; }
         public string ItemName { get; set; }
         public decimal ItemIn { get; set; }
         public decimal ItemOut { get; set; }
@@ -76,8 +78,8 @@ namespace scm.Models
                 a.Id,
                 max(isnull(a.Name, '')) itemname,
                 sum(isnull(b.Qty, 0)) + sum(isnull(d.itemQty, 0)) ItemIn,
-                sum(isnull(c.Qty, 0)) + sum(isnull(e.Qty, 0)) ItemOut
-                
+                sum(isnull(c.Qty, 0)) + sum(isnull(e.Qty, 0)) ItemOut,
+                Max(a.LowLevel) LowLevel
                 from [dbo].[scItems] a
                 left outer join [dbo].[scRcvDtls]
                         b on b.scItemId = a.Id
@@ -95,13 +97,20 @@ namespace scm.Models
             return list.ToList();
         }
 
-        public List<EntStorageBin> getStorageBinInventory()
+        public List<EntItems> getLowLevelItems()
+        {
+            var scItems = this.getItemInventory();
+            return scItems.Where(d => (d.ItemIn - d.ItemOut) <= d.LowLevel).ToList();
+        }
+
+        public List<EntStorageBin> getStorageBinInventory(int? id)
         {
             string sSQL = @"
                 select
                 a.Id,
                 d.Name store,
                 a.Code bincode,
+                e.Id ItemId,
                 isnull(e.Name, '') itemname,
                 isnull(b.Qty, 0) ItemIn,
                 isnull(c.Qty, 0) ItemOut,
@@ -119,6 +128,10 @@ namespace scm.Models
                 ";
 
             var list = db.Database.SqlQuery<EntStorageBin>(sSQL);
+
+            if (id != null && id > 0)
+                return list.Where(d => d.ItemId == (int)id).ToList();
+
             return list.ToList();
         }
 
