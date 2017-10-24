@@ -44,3 +44,13 @@ List
 }
 
 </table>
+
+@{Html.RenderPartial("PartialView_ItemStatus", (List<scm.Models.EntOrderStatus>)ViewBag.ItemStatus); }
+
+<p>
+    @Html.ActionLink("Home", "Index", "Home") |
+    @Html.ActionLink("Items", "ItemInventory", "scItems") |
+    @Html.ActionLink("Storage Bins", "StoreBin", "scStoreBins") |
+    @Html.ActionLink("Request", "Index", "scPrForm") |
+    Receiving
+</p>

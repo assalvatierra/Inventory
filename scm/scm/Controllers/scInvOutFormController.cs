@@ -13,10 +13,12 @@ namespace scm.Controllers
     public class scInvOutFormController : Controller
     {
         private ScmDBContainer db = new ScmDBContainer();
+        private Models.dbClasses db1 = new dbClasses();
 
         #region InvOut Hdr
         public ActionResult Index()
         {
+            ViewBag.LowLevelItems = db1.getLowLevelItems();
             return View(db.scInvOutHdrs.ToList());
         }
 
@@ -109,6 +111,8 @@ namespace scm.Controllers
         {
             if (id == null) id = (int)Session["INVOUTHDRID"];
             Session["INVOUTHDRID"] = id;
+
+            ViewBag.LowLevelItems = db1.getLowLevelItems();
             return View(db.scInvOutDtls.Where(d => d.scInvOutHdrId == id).ToList());
         }
 
@@ -119,6 +123,7 @@ namespace scm.Controllers
             ViewBag.scItemId = new SelectList(db.scItems, "Id", "Name");
             ViewBag.scStoreBinId = new SelectList(db.scStoreBins, "Id", "Code");
             ViewBag.resOrderDtlId = new SelectList(db.resOrderDtls, "Id", "Id");
+            ViewBag.LowLevelItems = db1.getLowLevelItems();
             return View();
         }
 
@@ -140,6 +145,7 @@ namespace scm.Controllers
             ViewBag.scItemId = new SelectList(db.scItems, "Id", "Name", scInvOutDtl.scItemId);
             ViewBag.scStoreBinId = new SelectList(db.scStoreBins, "Id", "Code", scInvOutDtl.scStoreBinId);
             ViewBag.resOrderDtlId = new SelectList(db.resOrderDtls, "Id", "Id", scInvOutDtl.resOrderDtlId);
+            ViewBag.LowLevelItems = db1.getLowLevelItems();
             return View(scInvOutDtl);
         }
 
@@ -159,6 +165,8 @@ namespace scm.Controllers
             ViewBag.scItemId = new SelectList(db.scItems, "Id", "Name", scInvOutDtl.scItemId);
             ViewBag.scStoreBinId = new SelectList(db.scStoreBins, "Id", "Code", scInvOutDtl.scStoreBinId);
             ViewBag.resOrderDtlId = new SelectList(db.resOrderDtls, "Id", "Id", scInvOutDtl.resOrderDtlId);
+            ViewBag.LowLevelItems = db1.getLowLevelItems();
+
             return View(scInvOutDtl);
         }
 
@@ -179,6 +187,8 @@ namespace scm.Controllers
             ViewBag.scItemId = new SelectList(db.scItems, "Id", "Name", scInvOutDtl.scItemId);
             ViewBag.scStoreBinId = new SelectList(db.scStoreBins, "Id", "Code", scInvOutDtl.scStoreBinId);
             ViewBag.resOrderDtlId = new SelectList(db.resOrderDtls, "Id", "Id", scInvOutDtl.resOrderDtlId);
+            ViewBag.LowLevelItems = db1.getLowLevelItems();
+
             return View(scInvOutDtl);
         }
 

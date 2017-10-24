@@ -13,12 +13,14 @@ namespace scm.Controllers
     public class resPreparationFormController : Controller
     {
         private ScmDBContainer db = new ScmDBContainer();
-
+        private Models.dbClasses db1 = new dbClasses();
         #region preparation header
         // GET: resPreparations
         public ActionResult Index()
         {
             var resPreparations = db.resPreparations.Include(r => r.resRecipe).Include(r => r.scItem).Include(r => r.scStoreBin);
+            ViewBag.LowLevelItems = db1.getLowLevelItems();
+
             return View(resPreparations.ToList());
         }
 
@@ -122,6 +124,7 @@ namespace scm.Controllers
         {
             if (id == null) id = (int)Session["RESPREPID"];
             Session["RESPREPID"] = id;
+            ViewBag.LowLevelItems = db1.getLowLevelItems();
             return View(db.resPrepMaterials.Where(d => d.resPreparationId == id).ToList());
         }
 
@@ -131,6 +134,8 @@ namespace scm.Controllers
             ViewBag.resPreparationId = new SelectList(db.resPreparations, "Id", "dtPrepared");
             ViewBag.scItemId = new SelectList(db.scItems, "Id", "Name");
             ViewBag.scStoreBinId = new SelectList(db.scStoreBins, "Id", "Code");
+            ViewBag.LowLevelItems = db1.getLowLevelItems();
+
             return View();
         }
 
@@ -151,6 +156,8 @@ namespace scm.Controllers
             ViewBag.resPreparationId = new SelectList(db.resPreparations, "Id", "dtPrepared", resPrepMaterial.resPreparationId);
             ViewBag.scItemId = new SelectList(db.scItems, "Id", "Name", resPrepMaterial.scItemId);
             ViewBag.scStoreBinId = new SelectList(db.scStoreBins, "Id", "Code", resPrepMaterial.scStoreBinId);
+            ViewBag.LowLevelItems = db1.getLowLevelItems();
+
             return View(resPrepMaterial);
         }
 
@@ -169,6 +176,8 @@ namespace scm.Controllers
             ViewBag.resPreparationId = new SelectList(db.resPreparations, "Id", "dtPrepared", resPrepMaterial.resPreparationId);
             ViewBag.scItemId = new SelectList(db.scItems, "Id", "Name", resPrepMaterial.scItemId);
             ViewBag.scStoreBinId = new SelectList(db.scStoreBins, "Id", "Code", resPrepMaterial.scStoreBinId);
+            ViewBag.LowLevelItems = db1.getLowLevelItems();
+
             return View(resPrepMaterial);
         }
 
@@ -188,6 +197,8 @@ namespace scm.Controllers
             ViewBag.resPreparationId = new SelectList(db.resPreparations, "Id", "dtPrepared", resPrepMaterial.resPreparationId);
             ViewBag.scItemId = new SelectList(db.scItems, "Id", "Name", resPrepMaterial.scItemId);
             ViewBag.scStoreBinId = new SelectList(db.scStoreBins, "Id", "Code", resPrepMaterial.scStoreBinId);
+            ViewBag.LowLevelItems = db1.getLowLevelItems();
+
             return View(resPrepMaterial);
         }
 

@@ -61,3 +61,10 @@
 }
 
 </table>
+
+@{Html.RenderPartial("PartialView_LowLevelItems", (List<scm.Models.EntItems>)ViewBag.LowLevelItems);}
+<p>
+    @Html.ActionLink("Home", "Index", "Home") |
+    @Html.ActionLink("Movement", "Index", "scInvOutForm") |
+    @Html.ActionLink("Repack", "index", "resPreparationForm")
+</p>

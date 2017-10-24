@@ -600,6 +600,8 @@
     <Content Include="Views\scPoForm\PartialView_ItemStatus.cshtml" />
     <Content Include="Views\scPrForm\PartialView_LowLevelItems.cshtml" />
     <Content Include="Views\scRcvForm\PartialView_ItemStatus.cshtml" />
+    <Content Include="Views\resPreparationForm\PartialView_LowLevelItems.cshtml" />
+    <Content Include="Views\scInvOutForm\PartialView_LowLevelItems.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

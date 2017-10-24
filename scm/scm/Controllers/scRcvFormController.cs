@@ -17,7 +17,10 @@ namespace scm.Controllers
         // GET: scRcvForm
         public ActionResult Index()
         {
+            Models.dbClasses db1 = new dbClasses();
             var scRcvHdrs = db.scRcvHdrs.Include(s => s.scSupplier);
+            ViewBag.ItemStatus = db1.getOrderStatus();
+
             return View(scRcvHdrs.ToList());
         }
         // GET: scRcvHdrs/Create

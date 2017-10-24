@@ -17,6 +17,7 @@ namespace scm.Controllers
         // GET: scPrForm
         public ActionResult Index()
         {
+            ViewBag.LowLevelItems = db1.getLowLevelItems();
             return View(db.scPrHdrs.ToList());
         }
 

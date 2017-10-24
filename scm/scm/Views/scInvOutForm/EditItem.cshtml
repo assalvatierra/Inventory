@@ -64,6 +64,8 @@
     </div>
 }
 
+@{Html.RenderPartial("PartialView_LowLevelItems", (List<scm.Models.EntItems>)ViewBag.LowLevelItems);}
+
 <div>
     @Html.ActionLink("Back to List", "Details")
 </div>
