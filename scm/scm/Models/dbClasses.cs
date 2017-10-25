@@ -88,7 +88,7 @@ namespace scm.Models
 				left outer join [dbo].[resPreparations]
 						d on d.scItemId = a.Id
 				left outer join [dbo].[resPrepMaterials]
-						e on e.scItemId = a.Id
+						e on e.resPreparationId = d.Id
 
 				Group by a.Id;
                 ";
