@@ -22,3 +22,9 @@ select,
 textarea {
     max-width: 280px;
 }
+
+a.btnLinks { color: #ffffff }
+a.btnLinks:active { color: #0000ff }
+a.btnLinks:link { color: #ffffff }
+a.btnLinks:visited { color: #E6E6FA }
+a.btnLinks:hover { color: #ffffff }

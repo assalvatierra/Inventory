@@ -3,45 +3,53 @@
 @{
     ViewBag.Title = "Suppliers";
 }
+<div class="container">
+    <h2>Suppliers List</h2>
 
-<h2>Suppliers</h2>
+    <p>
+        @Html.ActionLink("Create New", "Create", null,new { @class = "btn btn-success btn-sm;" })
+    </p>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th></th>
-        <th>
-            List
-        </th>
-        <th></th>
-    </tr>
+    <div class="panel panel-default">
+        <table class="table table-striped">
+            <tr>
+                <th>ID</th>
+                <th>Supplier Name</th>
+                <th>Actions</th>
+            </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>@Html.DisplayFor(modelItem => item.Id)</td>
-        <td>
-            <span style="font-weight:600">
-                @Html.DisplayFor(modelItem => item.Name)
-            </span>
-            <span style="font:normal 12px arial, verdana;color:darkgray;">
-                @Html.DisplayFor(modelItem => item.Remarks)
-            </span>
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Items", "SupplierItem", new { SupplierId = item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
-        </td>
-    </tr>
-}
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(modelItem => item.Id)</td>
+                    <td>
+                        <span style="font-weight:600">
+                            @Html.DisplayFor(modelItem => item.Name)
+                        </span>
+                        <span style="font:normal 12px arial, verdana;color:darkgray;">
+                            @Html.DisplayFor(modelItem => item.Remarks)
+                        </span>
+                    </td>
+                    <td>
+                            @Html.ActionLink("Edit", "Edit", new { id = item.Id }, new { @class = "btn btn-primary btn-sm;" }) 
+                            @Html.ActionLink("Items", "SupplierItem", new { SupplierId = item.Id }, new { @class = "btn btn-info btn-sm;" }) 
+                            @Html.ActionLink("Delete", "Delete", new { id = item.Id }, new { @class = "btn btn-danger btn-sm;" })
+</td>
+                </tr>
+            }
 
-</table>
+        </table>
+    </div>
 
-<p>
-    @Html.ActionLink("Home", "Index", "Home") |
-    Suppliers |
-    @Html.ActionLink("Orders", "Index", "scPoForm") | 
-    @Html.ActionLink("Items", "SupplierByItem", "scSuppliers")
-</p>
+    <p>
+        <a href='@Url.Action("Index", "Home")' class="btn btn-default btn-sm">Home</a>
+        <button class="btn  btn-primary  btn-sm">Suppliers</button>
+        <a href='@Url.Action("Index", "scPoForm")' class="btn btn-default btn-sm">Orders</a>
+         @Html.ActionLink("Items", "SupplierByItem", "scSuppliers", new { @class = "btn btn-default btn-sm" })
+
+        @* <a href='@Url.Action("Index", "scSuppliers")' class="btn btn-default btn-sm">Items</a>
+         @Html.ActionLink("Home", "SupplierByItem", "Home", new { @class = "btn btn-primary btn-sm" })
+            Suppliers
+            @Html.ActionLink("Orders", "Index", "scPoForm", new { @class = "btn btn-primary btn-sm" }) *@ 
+    </p>
+    </div>

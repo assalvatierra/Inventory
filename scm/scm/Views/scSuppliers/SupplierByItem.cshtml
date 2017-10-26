@@ -6,53 +6,57 @@
 }
 
 <h2>Supplier Items</h2>
+<div class="panel panel-default">
 
-<table class="table">
-    <tr>
-        <th>
-            Product
-        </th>
-        <th>
-            Suppliers
-        </th>
-        <th>
-            Unit
-        </th>
-        <th></th>
-    </tr>
+    <table class="table table-striped">
+        <tr>
+            <th>
+                Product
+            </th>
+            <th>
+                Suppliers
+            </th>
+            <th>
+                Unit
+            </th>
+        </tr>
 
-@foreach (var item in Model) {
-    sSupplier = "";
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Name)
-        </td>
-        <td>
-            @foreach (var supp in item.scItemSuppliers)
-            {
-                if (sSupplier.Trim() != "")
-                {
-                    sSupplier += supp.scSupplier.Name;
-                    <span>&#44;</span>
-                }
+        @foreach (var item in Model)
+        {
+            sSupplier = "";
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @foreach (var supp in item.scItemSuppliers)
+                    {
+                        if (sSupplier.Trim() != "")
+                        {
+                            sSupplier += supp.scSupplier.Name;
+                            <span>&#44;</span>
+                        }
 
-                <span>
-                    @Html.ActionLink(supp.scSupplier.Name,"Edit",new { Id = supp.scSupplierId})
-                </span>
-            }
+                        <span>
+                            @Html.ActionLink(supp.scSupplier.Name, "Edit", new { Id = supp.scSupplierId })
+                        </span>
+                    }
 
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.scUom.Unit)
-        </td>
-    </tr>
-}
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.scUom.Unit)
+                </td>
+            </tr>
+        }
 
-</table>
+    </table>
+
+</div>
 
 <p>
-    @Html.ActionLink("Home", "Index", "Home") |
-    @Html.ActionLink("Suppliers", "Index", "scSuppliers") |
-    @Html.ActionLink("Orders", "Index", "scPoForm") |
-    Items
+
+    <a href='@Url.Action("Index", "Home")' class="btn btn-default btn-sm">Home</a>
+    <a href='@Url.Action("Index", "scSuppliers")' class="btn btn-default btn-sm">Suppliers</a>
+    <a href='@Url.Action("Index", "scPoForm")' class="btn btn-default btn-sm">Orders</a>
+    <button class="btn  btn-primary  btn-sm">Items</button>
 </p>
