@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 10/23/2017 10:44:34
+-- Date Created: 10/26/2017 14:21:19
 -- Generated from EDMX file: D:\Data\Real\Apps\GitHub\Inventory\scm\scm\Models\ScmDB.edmx
 -- --------------------------------------------------
 
@@ -317,7 +317,7 @@ CREATE TABLE [dbo].[scRcvDtls] (
     [scItemId] int  NOT NULL,
     [Qty] decimal(18,0)  NOT NULL,
     [scStoreBinId] int  NOT NULL,
-    [scPoDtlId] int  NOT NULL
+    [scPoDtlId] int  NULL
 );
 GO
 

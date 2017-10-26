@@ -279,7 +279,7 @@
     <Property Name="scItemId" Type="int" Nullable="false" />
     <Property Name="Qty" Type="decimal" Nullable="false" />
     <Property Name="scStoreBinId" Type="int" Nullable="false" />
-    <Property Name="scPoDtlId" Type="int" Nullable="false" />
+    <Property Name="scPoDtlId" Type="int" Nullable="true" />
   </EntityType>
   <EntityType Name="scPoHdrs">
     <Key>
@@ -631,7 +631,7 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="scPoDtlscRcvDtl">
-    <End Role="scPoDtl" Type="ScmDB.Store.scPoDtls" Multiplicity="1" />
+    <End Role="scPoDtl" Type="ScmDB.Store.scPoDtls" Multiplicity="0..1" />
     <End Role="scRcvDtl" Type="ScmDB.Store.scRcvDtls" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="scPoDtl">

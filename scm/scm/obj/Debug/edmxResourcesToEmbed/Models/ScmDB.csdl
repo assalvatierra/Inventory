@@ -363,7 +363,7 @@
     <NavigationProperty Name="scStoreBin" Relationship="ScmDB.scStoreBinscRcvDtl" FromRole="scRcvDtl" ToRole="scStoreBin" />
     <Property Name="scStoreBinId" Type="Int32" Nullable="false" />
     <NavigationProperty Name="scPoDtl" Relationship="ScmDB.scPoDtlscRcvDtl" FromRole="scRcvDtl" ToRole="scPoDtl" />
-    <Property Name="scPoDtlId" Type="Int32" Nullable="false" />
+    <Property Name="scPoDtlId" Type="Int32" Nullable="true" />
   </EntityType>
   <Association Name="scRcvHdrscRcvDtl">
     <End Type="ScmDB.scRcvHdr" Role="scRcvHdr" Multiplicity="1" />
@@ -502,7 +502,7 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="scPoDtlscRcvDtl">
-    <End Type="ScmDB.scPoDtl" Role="scPoDtl" Multiplicity="1" />
+    <End Type="ScmDB.scPoDtl" Role="scPoDtl" Multiplicity="0..1" />
     <End Type="ScmDB.scRcvDtl" Role="scRcvDtl" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="scPoDtl">
