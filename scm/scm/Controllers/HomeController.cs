@@ -45,11 +45,6 @@ namespace scm.Controllers
         {
             return RedirectToAction("Index", "scPoForm");
         }
-
-        public ActionResult PurchaseRelease()
-        {
-            return RedirectToAction("Index", "scInvOutForm");
-        }
         public ActionResult StorageBin()
         {
             return RedirectToAction("Index", "scStoreBins");

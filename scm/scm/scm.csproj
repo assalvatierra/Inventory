@@ -201,9 +201,6 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\scCategoriesController.cs" />
-    <Compile Include="Controllers\scInvOutDtlsController.cs" />
-    <Compile Include="Controllers\scInvOutFormController.cs" />
-    <Compile Include="Controllers\scInvOutHdrsController.cs" />
     <Compile Include="Controllers\scItemsController.cs" />
     <Compile Include="Controllers\scPoDtlsController.cs" />
     <Compile Include="Controllers\scPoFormController.cs" />
@@ -517,24 +514,6 @@
     <Content Include="Views\scPoForm\Edit.cshtml" />
     <Content Include="Views\scPrForm\Create.cshtml" />
     <Content Include="Views\scPrForm\Edit.cshtml" />
-    <Content Include="Views\scInvOutHdrs\Create.cshtml" />
-    <Content Include="Views\scInvOutHdrs\Delete.cshtml" />
-    <Content Include="Views\scInvOutHdrs\Details.cshtml" />
-    <Content Include="Views\scInvOutHdrs\Edit.cshtml" />
-    <Content Include="Views\scInvOutHdrs\Index.cshtml" />
-    <Content Include="Views\scInvOutDtls\Create.cshtml" />
-    <Content Include="Views\scInvOutDtls\Delete.cshtml" />
-    <Content Include="Views\scInvOutDtls\Details.cshtml" />
-    <Content Include="Views\scInvOutDtls\Edit.cshtml" />
-    <Content Include="Views\scInvOutDtls\Index.cshtml" />
-    <Content Include="Views\scInvOutForm\scInvOutForm.cshtml" />
-    <Content Include="Views\scInvOutForm\AddItem.cshtml" />
-    <Content Include="Views\scInvOutForm\Create.cshtml" />
-    <Content Include="Views\scInvOutForm\Details.cshtml" />
-    <Content Include="Views\scInvOutForm\Edit.cshtml" />
-    <Content Include="Views\scInvOutForm\EditHdr.cshtml" />
-    <Content Include="Views\scInvOutForm\EditItem.cshtml" />
-    <Content Include="Views\scInvOutForm\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
