@@ -19,7 +19,7 @@ namespace scm.Models
         public int scItemId { get; set; }
         public decimal Qty { get; set; }
         public int scStoreBinId { get; set; }
-        public int scPoDtlId { get; set; }
+        public Nullable<int> scPoDtlId { get; set; }
     
         public virtual scRcvHdr scRcvHdr { get; set; }
         public virtual scItem scItem { get; set; }

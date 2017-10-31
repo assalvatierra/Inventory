@@ -219,6 +219,7 @@
     <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="80" />
     <Property Name="scUomId" Type="int" Nullable="false" />
     <Property Name="Expirydays" Type="int" Nullable="false" />
+    <Property Name="LowLevel" Type="int" Nullable="true" />
   </EntityType>
   <EntityType Name="scUoms">
     <Key>
@@ -278,7 +279,7 @@
     <Property Name="scItemId" Type="int" Nullable="false" />
     <Property Name="Qty" Type="decimal" Nullable="false" />
     <Property Name="scStoreBinId" Type="int" Nullable="false" />
-    <Property Name="scPoDtlId" Type="int" Nullable="false" />
+    <Property Name="scPoDtlId" Type="int" Nullable="true" />
   </EntityType>
   <EntityType Name="scPoHdrs">
     <Key>
@@ -416,9 +417,9 @@
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="dtPrepared" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="resRecipeId" Type="int" Nullable="false" />
+    <Property Name="resRecipeId" Type="int" Nullable="true" />
     <Property Name="resQty" Type="decimal" Nullable="false" />
-    <Property Name="itemty" Type="decimal" Nullable="false" />
+    <Property Name="itemQty" Type="decimal" Nullable="false" />
     <Property Name="scItemId" Type="int" Nullable="false" />
     <Property Name="scStoreBinId" Type="int" Nullable="false" />
   </EntityType>
@@ -630,7 +631,7 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="scPoDtlscRcvDtl">
-    <End Role="scPoDtl" Type="ScmDB.Store.scPoDtls" Multiplicity="1" />
+    <End Role="scPoDtl" Type="ScmDB.Store.scPoDtls" Multiplicity="0..1" />
     <End Role="scRcvDtl" Type="ScmDB.Store.scRcvDtls" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="scPoDtl">
@@ -834,7 +835,7 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="resReciperesPreparation">
-    <End Role="resRecipe" Type="ScmDB.Store.resRecipes" Multiplicity="1" />
+    <End Role="resRecipe" Type="ScmDB.Store.resRecipes" Multiplicity="0..1" />
     <End Role="resPreparation" Type="ScmDB.Store.resPreparations" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="resRecipe">

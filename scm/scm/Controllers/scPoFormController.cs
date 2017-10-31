@@ -24,7 +24,12 @@ namespace scm.Controllers
         #region listing
         public ActionResult Index()
         {
+           
             var scPoHdrs = db.scPoHdrs.Include(s => s.scSupplier);
+
+            Models.dbClasses db1 = new dbClasses();
+            ViewBag.ItemStatus = db1.getOrderStatus();
+
             return View(scPoHdrs.ToList());
         }
         #endregion
@@ -114,7 +119,12 @@ namespace scm.Controllers
             ViewBag.scPoHdrId = new SelectList(db.scPoHdrs, "Id", "Remarks", hdrid);
             ViewBag.scItemId = new SelectList(db.scItems, "Id", "Name");
             ViewBag.scUomId = new SelectList(db.scUoms, "Id", "Unit");
-            ViewBag.scPrDtlId = new SelectList(db.scPrDtls, "Id", "Id");
+            ViewBag.scPrDtlId = new SelectList(
+                db.scPrDtls.Select(s => new { Id = s.Id, Text = s.Id + "-" + s.scItem.Name + " [Requested:" + s.Qty + "]"}
+                ), "Id", "Text", null);
+
+            Models.dbClasses db1 = new dbClasses();
+            ViewBag.requestedItems = db1.getOrderStatus();
 
             return View(newitem);
         }
@@ -124,19 +134,24 @@ namespace scm.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult AddItem([Bind(Include = "Id,scPoHdrId,scItemId,Qty,UnitPrice,scUomId")] scPoDtl scPoDtl)
+        public ActionResult AddItem([Bind(Include = "Id,scPoHdrId,scItemId,Qty,UnitPrice,scUomId,scPrDtlId")] scPoDtl scPoDtl)
         {
             if (ModelState.IsValid)
             {
                 db.scPoDtls.Add(scPoDtl);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Details");
             }
 
             ViewBag.scPoHdrId = new SelectList(db.scPoHdrs, "Id", "Remarks", scPoDtl.scPoHdrId);
             ViewBag.scItemId = new SelectList(db.scItems, "Id", "Name", scPoDtl.scItemId);
             ViewBag.scUomId = new SelectList(db.scUoms, "Id", "Unit", scPoDtl.scUomId);
-            ViewBag.scPrDtlId = new SelectList(db.scPrDtls, "Id", "Id", scPoDtl.scPrDtlId);
+            ViewBag.scPrDtlId = new SelectList(
+                db.scPrDtls.Select(s => new { Id = s.Id, Text = s.Id + "-" + s.scItem.Name + " [Requested:" + s.Qty + "]" }
+                ), "Id", "Text", null);
+
+            Models.dbClasses db1 = new dbClasses();
+            ViewBag.requestedItems = db1.getOrderStatus();
 
             return View(scPoDtl);
         }
@@ -156,8 +171,12 @@ namespace scm.Controllers
             ViewBag.scPoHdrId = new SelectList(db.scPoHdrs, "Id", "Remarks", scPoDtl.scPoHdrId);
             ViewBag.scItemId = new SelectList(db.scItems, "Id", "Name", scPoDtl.scItemId);
             ViewBag.scUomId = new SelectList(db.scUoms, "Id", "Unit", scPoDtl.scUomId);
-            ViewBag.scPrDtlId = new SelectList(db.scPrDtls, "Id", "Id", scPoDtl.scPrDtlId);
+            ViewBag.scPrDtlId = new SelectList(
+                db.scPrDtls.Select(s => new { Id = s.Id, Text = s.Id + "-" + s.scItem.Name + " [Requested:" + s.Qty + "]" }
+                ), "Id", "Text", null);
 
+            Models.dbClasses db1 = new dbClasses();
+            ViewBag.requestedItems = db1.getOrderStatus();
             return View(scPoDtl);
         }
 
@@ -166,7 +185,7 @@ namespace scm.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult EditItem([Bind(Include = "Id,scPoHdrId,scItemId,Qty,UnitPrice,scUomId")] scPoDtl scPoDtl)
+        public ActionResult EditItem([Bind(Include = "Id,scPoHdrId,scItemId,Qty,UnitPrice,scUomId,scPrDtlId")] scPoDtl scPoDtl)
         {
             if (ModelState.IsValid)
             {
@@ -177,9 +196,39 @@ namespace scm.Controllers
             ViewBag.scPoHdrId = new SelectList(db.scPoHdrs, "Id", "Remarks", scPoDtl.scPoHdrId);
             ViewBag.scItemId = new SelectList(db.scItems, "Id", "Name", scPoDtl.scItemId);
             ViewBag.scUomId = new SelectList(db.scUoms, "Id", "Unit", scPoDtl.scUomId);
-            ViewBag.scPrDtlId = new SelectList(db.scPrDtls, "Id", "Id", scPoDtl.scPrDtlId);
+            ViewBag.scPrDtlId = new SelectList(
+                db.scPrDtls.Select(s => new { Id = s.Id, Text = s.Id + "-" + s.scItem.Name + " [Requested:" + s.Qty + "]" }
+                ), "Id", "Text", null);
 
+            Models.dbClasses db1 = new dbClasses();
+            ViewBag.requestedItems = db1.getOrderStatus();
             return View(scPoDtl);
+        }
+
+        // GET: scPoDtls/Delete/5
+        public ActionResult DeleteItem(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            scPoDtl scPoDtl = db.scPoDtls.Find(id);
+            if (scPoDtl == null)
+            {
+                return HttpNotFound();
+            }
+            return View(scPoDtl);
+        }
+
+        // POST: scPoDtls/Delete/5
+        [HttpPost, ActionName("DeleteItem")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteItemConfirmed(int id)
+        {
+            scPoDtl scPoDtl = db.scPoDtls.Find(id);
+            db.scPoDtls.Remove(scPoDtl);
+            db.SaveChanges();
+            return RedirectToAction("Details");
         }
 
         #endregion
@@ -243,6 +292,16 @@ namespace scm.Controllers
         // GET: scPoDtls/Create
 
         #endregion
+
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                db.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
     }
 
 

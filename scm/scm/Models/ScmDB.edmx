@@ -224,6 +224,7 @@
     <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="80" />
     <Property Name="scUomId" Type="int" Nullable="false" />
     <Property Name="Expirydays" Type="int" Nullable="false" />
+    <Property Name="LowLevel" Type="int" Nullable="true" />
   </EntityType>
   <EntityType Name="scUoms">
     <Key>
@@ -283,7 +284,7 @@
     <Property Name="scItemId" Type="int" Nullable="false" />
     <Property Name="Qty" Type="decimal" Nullable="false" />
     <Property Name="scStoreBinId" Type="int" Nullable="false" />
-    <Property Name="scPoDtlId" Type="int" Nullable="false" />
+    <Property Name="scPoDtlId" Type="int" Nullable="true" />
   </EntityType>
   <EntityType Name="scPoHdrs">
     <Key>
@@ -421,9 +422,9 @@
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="dtPrepared" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="resRecipeId" Type="int" Nullable="false" />
+    <Property Name="resRecipeId" Type="int" Nullable="true" />
     <Property Name="resQty" Type="decimal" Nullable="false" />
-    <Property Name="itemty" Type="decimal" Nullable="false" />
+    <Property Name="itemQty" Type="decimal" Nullable="false" />
     <Property Name="scItemId" Type="int" Nullable="false" />
     <Property Name="scStoreBinId" Type="int" Nullable="false" />
   </EntityType>
@@ -635,7 +636,7 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="scPoDtlscRcvDtl">
-    <End Role="scPoDtl" Type="ScmDB.Store.scPoDtls" Multiplicity="1" />
+    <End Role="scPoDtl" Type="ScmDB.Store.scPoDtls" Multiplicity="0..1" />
     <End Role="scRcvDtl" Type="ScmDB.Store.scRcvDtls" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="scPoDtl">
@@ -839,7 +840,7 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="resReciperesPreparation">
-    <End Role="resRecipe" Type="ScmDB.Store.resRecipes" Multiplicity="1" />
+    <End Role="resRecipe" Type="ScmDB.Store.resRecipes" Multiplicity="0..1" />
     <End Role="resPreparation" Type="ScmDB.Store.resPreparations" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="resRecipe">
@@ -1232,6 +1233,7 @@
           <NavigationProperty Name="scStoreBins" Relationship="ScmDB.scItemscStoreBin" FromRole="scItem" ToRole="scStoreBin" />
           <NavigationProperty Name="scItemCategories" Relationship="ScmDB.scItemscItemCategory" FromRole="scItem" ToRole="scItemCategory" />
           <NavigationProperty Name="scPrDtls" Relationship="ScmDB.scItemscPrDtl" FromRole="scItem" ToRole="scPrDtl" />
+          <Property Name="LowLevel" Type="Int32" Nullable="true" />
         </EntityType>
         <EntityType Name="scUom">
           <Key>
@@ -1360,7 +1362,7 @@
           <NavigationProperty Name="scStoreBin" Relationship="ScmDB.scStoreBinscRcvDtl" FromRole="scRcvDtl" ToRole="scStoreBin" />
           <Property Name="scStoreBinId" Type="Int32" Nullable="false" />
           <NavigationProperty Name="scPoDtl" Relationship="ScmDB.scPoDtlscRcvDtl" FromRole="scRcvDtl" ToRole="scPoDtl" />
-          <Property Name="scPoDtlId" Type="Int32" Nullable="false" />
+          <Property Name="scPoDtlId" Type="Int32" Nullable="true" />
         </EntityType>
         <Association Name="scRcvHdrscRcvDtl">
           <End Type="ScmDB.scRcvHdr" Role="scRcvHdr" Multiplicity="1" />
@@ -1499,7 +1501,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="scPoDtlscRcvDtl">
-          <End Type="ScmDB.scPoDtl" Role="scPoDtl" Multiplicity="1" />
+          <End Type="ScmDB.scPoDtl" Role="scPoDtl" Multiplicity="0..1" />
           <End Type="ScmDB.scRcvDtl" Role="scRcvDtl" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="scPoDtl">
@@ -1834,9 +1836,9 @@
           <Property Name="dtPrepared" Type="String" Nullable="false" />
           <NavigationProperty Name="resPreparationDtls" Relationship="ScmDB.resPreparationresPreparationDtl" FromRole="resPreparation" ToRole="resPreparationDtl" />
           <NavigationProperty Name="resRecipe" Relationship="ScmDB.resReciperesPreparation" FromRole="resPreparation" ToRole="resRecipe" />
-          <Property Name="resRecipeId" Type="Int32" Nullable="false" />
+          <Property Name="resRecipeId" Type="Int32" Nullable="true" />
           <Property Name="resQty" Type="Decimal" Nullable="false" />
-          <Property Name="itemty" Type="Decimal" Nullable="false" />
+          <Property Name="itemQty" Type="Decimal" Nullable="false" />
           <NavigationProperty Name="scItem" Relationship="ScmDB.scItemresPreparation" FromRole="resPreparation" ToRole="scItem" />
           <Property Name="scItemId" Type="Int32" Nullable="false" />
           <NavigationProperty Name="scStoreBin" Relationship="ScmDB.scStoreBinresPreparation" FromRole="resPreparation" ToRole="scStoreBin" />
@@ -1868,7 +1870,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="resReciperesPreparation">
-          <End Type="ScmDB.resRecipe" Role="resRecipe" Multiplicity="1" />
+          <End Type="ScmDB.resRecipe" Role="resRecipe" Multiplicity="0..1" />
           <End Type="ScmDB.resPreparation" Role="resPreparation" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="resRecipe">
@@ -2095,6 +2097,7 @@
           <ScalarProperty Name="Name" ColumnName="Name" />
           <ScalarProperty Name="scUomId" ColumnName="scUomId" />
           <ScalarProperty Name="Expirydays" ColumnName="Expirydays" />
+          <ScalarProperty Name="LowLevel" ColumnName="LowLevel" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -2315,7 +2318,7 @@
           <ScalarProperty Name="dtPrepared" ColumnName="dtPrepared" />
           <ScalarProperty Name="resRecipeId" ColumnName="resRecipeId" />
           <ScalarProperty Name="resQty" ColumnName="resQty" />
-          <ScalarProperty Name="itemty" ColumnName="itemty" />
+          <ScalarProperty Name="itemQty" ColumnName="itemQty" />
           <ScalarProperty Name="scItemId" ColumnName="scItemId" />
           <ScalarProperty Name="scStoreBinId" ColumnName="scStoreBinId" />
         </MappingFragment>

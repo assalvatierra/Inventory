@@ -67,7 +67,7 @@
         <AssociationConnector Association="ScmDB.scItemscStoreBin" />
         <EntityTypeShape EntityType="ScmDB.scStoreType" Width="1.5" PointX="7.125" PointY="4.25" />
         <AssociationConnector Association="ScmDB.scStoreTypescStorage" />
-        <EntityTypeShape EntityType="ScmDB.scCategory" Width="1.5" PointX="2.75" PointY="1.25" />
+        <EntityTypeShape EntityType="ScmDB.scCategory" Width="1.5" PointX="2.875" PointY="1.25" />
         <EntityTypeShape EntityType="ScmDB.scItemCategory" Width="1.5" PointX="2.75" PointY="3.25" />
         <AssociationConnector Association="ScmDB.scCategoryscItemCategory" />
         <AssociationConnector Association="ScmDB.scItemscItemCategory" />

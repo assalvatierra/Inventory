@@ -37,6 +37,10 @@ namespace scm.Controllers
         {
             return RedirectToAction("Index", "scSuppliers");
         }
+        public ActionResult SupplierByItem()
+        {
+            return RedirectToAction("SupplierByItem", "scSuppliers");
+        }
         public ActionResult PurchaseRequest()
         {
             return RedirectToAction("Index", "scPrForm");
@@ -45,13 +49,25 @@ namespace scm.Controllers
         {
             return RedirectToAction("Index", "scPoForm");
         }
+        public ActionResult InventoryReceive()
+        {
+            return RedirectToAction("Index", "scRcvForm");
+        }
+        public ActionResult InventoryOut()
+        {
+            return RedirectToAction("Index", "scInvOutForm");
+        }
+        public ActionResult InventoryRepack()
+        {
+            return RedirectToAction("index", "resPreparationForm");
+        }
         public ActionResult StorageBin()
         {
-            return RedirectToAction("Index", "scStoreBins");
+            return RedirectToAction("StoreBin", "scStoreBins");
         }
         public ActionResult StockCount()
         {
-            return RedirectToAction("Index", "scItems");
+            return RedirectToAction("ItemInventory", "scItems");
         }
     }
 }

@@ -17,6 +17,7 @@
           <ScalarProperty Name="Name" ColumnName="Name" />
           <ScalarProperty Name="scUomId" ColumnName="scUomId" />
           <ScalarProperty Name="Expirydays" ColumnName="Expirydays" />
+          <ScalarProperty Name="LowLevel" ColumnName="LowLevel" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -237,7 +238,7 @@
           <ScalarProperty Name="dtPrepared" ColumnName="dtPrepared" />
           <ScalarProperty Name="resRecipeId" ColumnName="resRecipeId" />
           <ScalarProperty Name="resQty" ColumnName="resQty" />
-          <ScalarProperty Name="itemty" ColumnName="itemty" />
+          <ScalarProperty Name="itemQty" ColumnName="itemQty" />
           <ScalarProperty Name="scItemId" ColumnName="scItemId" />
           <ScalarProperty Name="scStoreBinId" ColumnName="scStoreBinId" />
         </MappingFragment>

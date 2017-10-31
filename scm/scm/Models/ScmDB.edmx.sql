@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 10/13/2017 09:41:31
+-- Date Created: 10/26/2017 14:21:19
 -- Generated from EDMX file: D:\Data\Real\Apps\GitHub\Inventory\scm\scm\Models\ScmDB.edmx
 -- --------------------------------------------------
 
@@ -134,6 +134,18 @@ GO
 IF OBJECT_ID(N'[dbo].[FK_scItemscItemCategory]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[scItemCategories] DROP CONSTRAINT [FK_scItemscItemCategory];
 GO
+IF OBJECT_ID(N'[dbo].[FK_scPrHdrscPrDtl]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[scPrDtls] DROP CONSTRAINT [FK_scPrHdrscPrDtl];
+GO
+IF OBJECT_ID(N'[dbo].[FK_scItemscPrDtl]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[scPrDtls] DROP CONSTRAINT [FK_scItemscPrDtl];
+GO
+IF OBJECT_ID(N'[dbo].[FK_scUomscPrDtl]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[scPrDtls] DROP CONSTRAINT [FK_scUomscPrDtl];
+GO
+IF OBJECT_ID(N'[dbo].[FK_scPrDtlscPoDtl]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[scPoDtls] DROP CONSTRAINT [FK_scPrDtlscPoDtl];
+GO
 
 -- --------------------------------------------------
 -- Dropping existing tables
@@ -220,6 +232,12 @@ GO
 IF OBJECT_ID(N'[dbo].[scItemCategories]', 'U') IS NOT NULL
     DROP TABLE [dbo].[scItemCategories];
 GO
+IF OBJECT_ID(N'[dbo].[scPrHdrs]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[scPrHdrs];
+GO
+IF OBJECT_ID(N'[dbo].[scPrDtls]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[scPrDtls];
+GO
 
 -- --------------------------------------------------
 -- Creating all tables
@@ -238,7 +256,8 @@ CREATE TABLE [dbo].[scItems] (
     [Id] int IDENTITY(1,1) NOT NULL,
     [Name] nvarchar(80)  NOT NULL,
     [scUomId] int  NOT NULL,
-    [Expirydays] int  NOT NULL
+    [Expirydays] int  NOT NULL,
+    [LowLevel] int  NULL
 );
 GO
 
@@ -298,7 +317,7 @@ CREATE TABLE [dbo].[scRcvDtls] (
     [scItemId] int  NOT NULL,
     [Qty] decimal(18,0)  NOT NULL,
     [scStoreBinId] int  NOT NULL,
-    [scPoDtlId] int  NOT NULL
+    [scPoDtlId] int  NULL
 );
 GO
 
@@ -436,9 +455,9 @@ GO
 CREATE TABLE [dbo].[resPreparations] (
     [Id] int IDENTITY(1,1) NOT NULL,
     [dtPrepared] nvarchar(max)  NOT NULL,
-    [resRecipeId] int  NOT NULL,
+    [resRecipeId] int  NULL,
     [resQty] decimal(18,0)  NOT NULL,
-    [itemty] decimal(18,0)  NOT NULL,
+    [itemQty] decimal(18,0)  NOT NULL,
     [scItemId] int  NOT NULL,
     [scStoreBinId] int  NOT NULL
 );
