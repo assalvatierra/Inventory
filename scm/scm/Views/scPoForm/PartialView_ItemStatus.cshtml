@@ -1,0 +1,46 @@
+﻿@model IEnumerable<scm.Models.EntOrderStatus>
+
+<div style="background-color:lightgray;">
+    <span style="font: bold 12px arial, verdana;">Request/Order Status</span>
+    <table style="border-top:1px solid white; border-bottom:1px solid white;" cellpadding="6" ;>
+        <tr style="border-bottom:1px solid white;">
+            <th>
+                Product
+            </th>
+            <th>
+            </th>
+            <th>
+                Requested
+            </th>
+            <th>
+                Purchased
+            </th>
+            <th>
+                Received
+            </th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Uom)
+                </td>
+                <td align="right">
+                    @Html.DisplayFor(modelItem => item.prQty)
+                </td>
+                <td align="right">
+                    @Html.DisplayFor(modelItem => item.poQty)
+                </td>
+                <td align="right">
+                    @Html.DisplayFor(modelItem => item.rcQty)
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>
+<br /><br />

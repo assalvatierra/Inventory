@@ -1,0 +1,119 @@
+﻿@model scm.Models.scPoHdr
+
+@{
+    ViewBag.Title = "Edit";
+    List<scm.Models.scSupplier> supplier = (List<scm.Models.scSupplier>)ViewBag.scSuppliers;
+}
+
+<h2>Edit</h2>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>scPoHdr</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.Id)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.dtPo, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.dtPo, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.dtPo, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2"><button id="selectProvider">Provider</button></label>
+            <div class="col-md-10">
+                @Html.DropDownList("scSupplierId", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.scSupplierId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Remarks, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Remarks, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Remarks, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+
+<!-- Dialog: Browse Supplier -->
+<div id="dialog" title="Supplier">
+
+    <table>
+        <tr><th>Supplier List</th></tr>
+
+        @foreach (var item in supplier)
+        {
+        <tr>
+            <td style="white-space:nowrap">
+                <a href="Javascript:SetProvider('@item.Id','@item.Name')">
+                    @item.Name
+                </a>
+                @Html.DisplayFor(modelItem => item.Remarks)
+            </td>
+        </tr>
+        }
+
+        <tr><td>&nbsp;</td></tr>
+    </table>
+</div>
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+
+    <script>
+            var dlg;
+
+            $(function () {
+                // Initialize Dialog
+                dlg = $("#dialog").dialog({
+                    autoOpen: false,
+                    modal: true,
+                    buttons:
+                        {
+                            Close: function () {
+                                dlg.dialog("close");
+                            }
+                        }
+                });
+
+                // Initialize Controls
+                $("#selectProvider").click(function (event) {
+                    dlg.dialog("open");
+                    event.preventDefault();
+                });
+
+
+            });
+
+            function SetProvider(name, contact)
+            {
+                $("#ProviderName").val(name);
+                $("#ProviderContact").val(contact);
+            }
+
+
+    </script>
+
+
+}

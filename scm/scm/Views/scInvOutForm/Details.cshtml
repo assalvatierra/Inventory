@@ -1,0 +1,95 @@
+﻿@model scm.Controllers.poForm
+@{
+    ViewBag.Title = "poForm";
+}
+
+<h2>poForm</h2>
+
+<div>
+    <h4>scPoHdr</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.master.dtPo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.master.dtPo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.master.Remarks)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.master.Remarks)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.master.scSupplier.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.master.scSupplier.Name)
+        </dd>
+        <dt>
+            &nbsp;
+        </dt>
+
+        <dd>
+            @Html.ActionLink("Edit", "Edit", new { id = Model.master.Id })        
+        </dd>
+
+
+
+    </dl>
+</div>
+
+<table class="table">
+    <tr>
+        <th>
+            Item
+        </th>
+        <th>
+            Qty
+        </th>
+        <th>
+            Unit
+        </th>
+        <th>
+            Unit Price
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model.details)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.scItem.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Qty)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.scUom.Unit)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UnitPrice)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "EditItem", new { id = item.Id }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+            </td>
+        </tr>
+    }
+    <tr>
+        <td colspan="5">
+            @Html.ActionLink("Add Item", "AddItem")
+        </td>
+    </tr>
+</table>
+
+<p>
+    @Html.ActionLink("Back to Order List", "Index")
+</p>
