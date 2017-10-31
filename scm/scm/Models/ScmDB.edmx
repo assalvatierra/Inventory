@@ -351,6 +351,7 @@
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="resCustomerId" Type="int" Nullable="false" />
     <Property Name="dtOrder" Type="datetime" Nullable="false" />
+    <Property Name="dtDelivery" Type="nvarchar(max)" Nullable="false" />
     <Property Name="Remarks" Type="nvarchar" Nullable="true" MaxLength="250" />
   </EntityType>
   <EntityType Name="resCustomers">
@@ -359,6 +360,9 @@
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="80" />
+    <Property Name="Remarks" Type="nvarchar" Nullable="true" MaxLength="150" />
+    <Property Name="TelNo" Type="nvarchar" Nullable="true" MaxLength="150" />
+    <Property Name="Address" Type="nvarchar" Nullable="true" MaxLength="150" />
   </EntityType>
   <EntityType Name="resOrderDtls">
     <Key>
@@ -1615,6 +1619,7 @@
           <Property Name="resCustomerId" Type="Int32" Nullable="false" />
           <Property Name="dtOrder" Type="DateTime" Nullable="false" />
           <NavigationProperty Name="resCustomer" Relationship="ScmDB.resCustomerresOrderHdr" FromRole="resOrderHdr" ToRole="resCustomer" />
+          <Property Name="dtDelivery" Type="String" Nullable="false" />
           <Property Name="Remarks" Type="String" Nullable="true" MaxLength="250" />
           <NavigationProperty Name="resOrderDtls" Relationship="ScmDB.resOrderHdrresOrderDtl" FromRole="resOrderHdr" ToRole="resOrderDtl" />
         </EntityType>
@@ -1625,6 +1630,9 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" Nullable="false" MaxLength="80" />
           <NavigationProperty Name="resOrderHdrs" Relationship="ScmDB.resCustomerresOrderHdr" FromRole="resCustomer" ToRole="resOrderHdr" />
+          <Property Name="Remarks" Type="String" Nullable="true" MaxLength="150" />
+          <Property Name="TelNo" Type="String" Nullable="true" MaxLength="150" />
+          <Property Name="Address" Type="String" Nullable="true" MaxLength="150" />
         </EntityType>
         <Association Name="resCustomerresOrderHdr">
           <End Type="ScmDB.resCustomer" Role="resCustomer" Multiplicity="1" />
@@ -2237,6 +2245,7 @@
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="resCustomerId" ColumnName="resCustomerId" />
           <ScalarProperty Name="dtOrder" ColumnName="dtOrder" />
+          <ScalarProperty Name="dtDelivery" ColumnName="dtDelivery" />
           <ScalarProperty Name="Remarks" ColumnName="Remarks" />
         </MappingFragment>
       </EntityTypeMapping>
@@ -2246,6 +2255,9 @@
         <MappingFragment StoreEntitySet="resCustomers">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+          <ScalarProperty Name="TelNo" ColumnName="TelNo" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

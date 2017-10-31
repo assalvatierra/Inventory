@@ -69,5 +69,15 @@ namespace scm.Controllers
         {
             return RedirectToAction("ItemInventory", "scItems");
         }
+
+        public ActionResult CustomerList()
+        {
+            return RedirectToAction("Index", "resCustomers");
+        }
+        public ActionResult SalesOrder()
+        {
+            return RedirectToAction("Index", "resCustomers");
+        }
+
     }
 }

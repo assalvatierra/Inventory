@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 10/26/2017 14:21:19
+-- Date Created: 10/31/2017 16:03:40
 -- Generated from EDMX file: D:\Data\Real\Apps\GitHub\Inventory\scm\scm\Models\ScmDB.edmx
 -- --------------------------------------------------
 
@@ -384,6 +384,7 @@ CREATE TABLE [dbo].[resOrderHdrs] (
     [Id] int IDENTITY(1,1) NOT NULL,
     [resCustomerId] int  NOT NULL,
     [dtOrder] datetime  NOT NULL,
+    [dtDelivery] nvarchar(max)  NOT NULL,
     [Remarks] nvarchar(250)  NULL
 );
 GO
@@ -391,7 +392,10 @@ GO
 -- Creating table 'resCustomers'
 CREATE TABLE [dbo].[resCustomers] (
     [Id] int IDENTITY(1,1) NOT NULL,
-    [Name] nvarchar(80)  NOT NULL
+    [Name] nvarchar(80)  NOT NULL,
+    [Remarks] nvarchar(150)  NULL,
+    [TelNo] nvarchar(150)  NULL,
+    [Address] nvarchar(150)  NULL
 );
 GO
 

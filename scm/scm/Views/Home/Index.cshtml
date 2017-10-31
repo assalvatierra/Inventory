@@ -48,9 +48,17 @@
         -->
     <div class="col-md-4">
         <h2>Masterfiles</h2>
-        <p>on going...</p>
+        <p>Manage your Item/Products, Categories, Stores and Storages, etc</p>
         <p>@Html.ActionLink("Main", "MasterFiles", "", new { @class="btn btn-default"}) </p>
 
     </div>
+
+    <div class="col-md-4">
+        <h2>Sales Order</h2>
+        <p>Transact Sales and Ordering</p>
+        @Html.ActionLink("Clients", "CustomerList", null, new { @class = "btn btn-default" })
+        @Html.ActionLink("Sales Orders", "SalesOrder", null, new { @class = "btn btn-default" })
+    </div>
+
 
 </div>

@@ -200,6 +200,8 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\resCustomersController.cs" />
+    <Compile Include="Controllers\resOrderHdrsController.cs" />
     <Compile Include="Controllers\resPreparationFormController.cs" />
     <Compile Include="Controllers\resPreparationsController.cs" />
     <Compile Include="Controllers\resPrepMaterialsController.cs" />
@@ -605,6 +607,16 @@
     <Content Include="Views\scRcvForm\PartialView_ItemStatus.cshtml" />
     <Content Include="Views\resPreparationForm\PartialView_LowLevelItems.cshtml" />
     <Content Include="Views\scInvOutForm\PartialView_LowLevelItems.cshtml" />
+    <Content Include="Views\resCustomers\Create.cshtml" />
+    <Content Include="Views\resCustomers\Delete.cshtml" />
+    <Content Include="Views\resCustomers\Details.cshtml" />
+    <Content Include="Views\resCustomers\Edit.cshtml" />
+    <Content Include="Views\resCustomers\Index.cshtml" />
+    <Content Include="Views\resOrderHdrs\Create.cshtml" />
+    <Content Include="Views\resOrderHdrs\Delete.cshtml" />
+    <Content Include="Views\resOrderHdrs\Details.cshtml" />
+    <Content Include="Views\resOrderHdrs\Edit.cshtml" />
+    <Content Include="Views\resOrderHdrs\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

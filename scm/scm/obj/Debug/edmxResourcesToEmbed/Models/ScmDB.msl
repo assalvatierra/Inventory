@@ -157,6 +157,7 @@
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="resCustomerId" ColumnName="resCustomerId" />
           <ScalarProperty Name="dtOrder" ColumnName="dtOrder" />
+          <ScalarProperty Name="dtDelivery" ColumnName="dtDelivery" />
           <ScalarProperty Name="Remarks" ColumnName="Remarks" />
         </MappingFragment>
       </EntityTypeMapping>
@@ -166,6 +167,9 @@
         <MappingFragment StoreEntitySet="resCustomers">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+          <ScalarProperty Name="TelNo" ColumnName="TelNo" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

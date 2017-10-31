@@ -346,6 +346,7 @@
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="resCustomerId" Type="int" Nullable="false" />
     <Property Name="dtOrder" Type="datetime" Nullable="false" />
+    <Property Name="dtDelivery" Type="nvarchar(max)" Nullable="false" />
     <Property Name="Remarks" Type="nvarchar" Nullable="true" MaxLength="250" />
   </EntityType>
   <EntityType Name="resCustomers">
@@ -354,6 +355,9 @@
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="80" />
+    <Property Name="Remarks" Type="nvarchar" Nullable="true" MaxLength="150" />
+    <Property Name="TelNo" Type="nvarchar" Nullable="true" MaxLength="150" />
+    <Property Name="Address" Type="nvarchar" Nullable="true" MaxLength="150" />
   </EntityType>
   <EntityType Name="resOrderDtls">
     <Key>

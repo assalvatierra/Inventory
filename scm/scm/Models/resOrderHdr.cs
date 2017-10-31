@@ -23,6 +23,7 @@ namespace scm.Models
         public int Id { get; set; }
         public int resCustomerId { get; set; }
         public System.DateTime dtOrder { get; set; }
+        public string dtDelivery { get; set; }
         public string Remarks { get; set; }
     
         public virtual resCustomer resCustomer { get; set; }
