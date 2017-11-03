@@ -28,13 +28,13 @@ List
         @foreach (var item in Model)
         {
             <tr>
-                <td>
+                <td >
                     @Html.DisplayFor(modelItem => item.dtRcv)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Remarks)
                 </td>
-                <td>
+                <td class="itemName" >
                     @Html.DisplayFor(modelItem => item.scSupplier.Name)
                 </td>
                 <td>

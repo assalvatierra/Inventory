@@ -31,6 +31,14 @@ textarea {
 .itemName{
     font-weight:600;
 }
+
+.textRemarks{
+    font:normal 12px arial, veranda;
+    color:darkgray;
+}
+.textName{
+    font-weight:600;
+}
 .tblHeader{
     font:600 12px;
 }
