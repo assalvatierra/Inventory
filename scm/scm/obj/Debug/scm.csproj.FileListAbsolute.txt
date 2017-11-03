@@ -243,3 +243,4 @@ C:\Users\VILLOSA\Desktop\Inventory\scm\scm\bin\Microsoft.Owin.Security.Microsoft
 C:\Users\VILLOSA\Desktop\Inventory\scm\scm\obj\Debug\scm.csprojResolveAssemblyReference.cache
 C:\Users\VILLOSA\Desktop\Inventory\scm\scm\obj\Debug\scm.dll
 C:\Users\VILLOSA\Desktop\Inventory\scm\scm\obj\Debug\scm.pdb
+D:\Data\Real\Apps\GitHub\Inventory\scm\scm\obj\Debug\scm.csprojResolveAssemblyReference.cache

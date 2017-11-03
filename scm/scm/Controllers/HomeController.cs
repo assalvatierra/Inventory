@@ -76,7 +76,7 @@ namespace scm.Controllers
         }
         public ActionResult SalesOrder()
         {
-            return RedirectToAction("Index", "resCustomers");
+            return RedirectToAction("Index", "resOrderSales");
         }
 
     }

@@ -1,0 +1,64 @@
+﻿@model scm.Models.resOrderDtl
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>resOrderDtl</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Qty)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Qty)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UnitPrice)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UnitPrice)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.resOrderHdr.dtDelivery)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.resOrderHdr.dtDelivery)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.resMenu.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.resMenu.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.resItem.Description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.resItem.Description)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

@@ -201,7 +201,9 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\resCustomersController.cs" />
+    <Compile Include="Controllers\resOrderDtlsController.cs" />
     <Compile Include="Controllers\resOrderHdrsController.cs" />
+    <Compile Include="Controllers\resOrderSalesController.cs" />
     <Compile Include="Controllers\resPreparationFormController.cs" />
     <Compile Include="Controllers\resPreparationsController.cs" />
     <Compile Include="Controllers\resPrepMaterialsController.cs" />
@@ -620,9 +622,26 @@
     <Content Include="Views\resOrderHdrs\Details.cshtml" />
     <Content Include="Views\resOrderHdrs\Edit.cshtml" />
     <Content Include="Views\resOrderHdrs\Index.cshtml" />
+    <Content Include="Views\resOrderDtls\Create.cshtml" />
+    <Content Include="Views\resOrderDtls\Delete.cshtml" />
+    <Content Include="Views\resOrderDtls\Details.cshtml" />
+    <Content Include="Views\resOrderDtls\Edit.cshtml" />
+    <Content Include="Views\resOrderDtls\Index.cshtml" />
+    <Content Include="Views\resOrderSales\Index.cshtml" />
+    <Content Include="Views\resOrderSales\Edit.cshtml" />
+    <Content Include="Views\resOrderSales\Create.cshtml" />
+    <Content Include="Views\resOrderSales\Delete.cshtml" />
+    <Content Include="Views\resOrderDtls\CreateItem.cshtml" />
+    <Content Include="Views\resOrderDtls\EditItem.cshtml" />
+    <Content Include="Views\resOrderDtls\DeleteItem.cshtml" />
+    <Content Include="Views\resOrderSales\EditItem.cshtml" />
+    <Content Include="Views\resOrderSales\DeleteItem.cshtml" />
+    <Content Include="Views\resOrderSales\CreateItem.cshtml" />
+    <Content Include="Views\resOrderSales\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\resSalesOrder\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
