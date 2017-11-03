@@ -433,6 +433,9 @@
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\scm\scPoForm.js" />
+    <Content Include="Scripts\scm\scPrForm.js" />
+    <Content Include="Scripts\scm\scRvForm.js" />
+    <Content Include="Scripts\scm\scStorageBins.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">

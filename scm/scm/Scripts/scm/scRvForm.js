@@ -1,8 +1,8 @@
 ﻿/* ********************************************************
 * By Abel S. Salvatierra
 * @ SCM Inventory Sytem
-* 
-*********************************************************** */
+*
+************************************************************/
 
 $(document).ready(function () {
     InitDatePicker();
@@ -11,9 +11,9 @@ $(document).ready(function () {
 
 
 function InitDatePicker() {
-    var ddd1 = $('input[name="dtPo"]').val();
+    var ddd1 = $('input[name="dtRcv"]').val();
 
-    $('input[name="dtPo"]').daterangepicker(
+    $('input[name="dtRcv"]').daterangepicker(
     {
         timePicker: false,
         timePickerIncrement: 30,
@@ -30,7 +30,7 @@ function InitDatePicker() {
     );
 
 
-    $('input[name="dtPo"]').val(ddd1.substr(0, ddd1.indexOf(" ")));
+    $('input[name="dtRcv"]').val(ddd1.substr(0, ddd1.indexOf(" ")));
 
 
 }
