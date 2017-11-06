@@ -201,6 +201,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\resCustomersController.cs" />
+    <Compile Include="Controllers\resItemsController.cs" />
     <Compile Include="Controllers\resOrderDtlsController.cs" />
     <Compile Include="Controllers\resOrderHdrsController.cs" />
     <Compile Include="Controllers\resOrderSalesController.cs" />
@@ -638,6 +639,7 @@
     <Content Include="Views\resOrderSales\DeleteItem.cshtml" />
     <Content Include="Views\resOrderSales\CreateItem.cshtml" />
     <Content Include="Views\resOrderSales\Details.cshtml" />
+    <Content Include="Views\resItems\EditItem.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
