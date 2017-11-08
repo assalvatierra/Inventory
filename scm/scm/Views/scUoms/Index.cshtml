@@ -9,7 +9,7 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
-<div class="panel">
+<div class="panel panel-default">
     <table class="table table-striped">
         <tr>
             <th>
@@ -24,10 +24,10 @@
         @foreach (var item in Model)
         {
             <tr>
-                <td>
+                <td class="itemName">
                     @Html.DisplayFor(modelItem => item.Unit)
                 </td>
-                <td>
+                <td class="itemRemarks">
                     @Html.DisplayFor(modelItem => item.Desc)
                 </td>
                 <td>
@@ -40,3 +40,11 @@
 
     </table>
 </div>
+
+<p>
+    @Html.ActionLink("Home", "Index", "Home") |
+    @Html.ActionLink("Items", "ItemInventory", "scItems") |
+    @Html.ActionLink("Categories", "Index", "scCategories") |
+    @Html.ActionLink("Storage list", "Index", "scStorages") |
+    Unit of Measure
+</p>

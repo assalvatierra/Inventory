@@ -1,24 +1,26 @@
 ﻿@model IEnumerable<scm.Models.EntOrderStatus>
 
-<div class="pv_bg">
-    <span class="itemRemarks">Request/Order Status</span>
-    <table class="pv_tbl" >
-        <tr class="pv_tblRow">
-            <th>
-                Product
-            </th>
-            <th>
-            </th>
-            <th>
-                Requested
-            </th>
-            <th>
-                Purchased
-            </th>
-            <th>
-                Received
-            </th>
-        </tr>
+
+<div class="panel panel-default">
+    <h4 class="itemheader">Request/Order Status</h4>
+    <table class="table table-striped">
+
+            <tr>
+                <th>
+                    Product
+                </th>
+                <th>
+                </th>
+                <th>
+                    Requested
+                </th>
+                <th>
+                    Purchased
+                </th>
+                <th>
+                    Received
+                </th>
+            </tr>
 
         @foreach (var item in Model)
         {
@@ -43,4 +45,5 @@
 
     </table>
 </div>
+
 <br /><br />

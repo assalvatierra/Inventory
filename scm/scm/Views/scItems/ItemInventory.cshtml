@@ -27,7 +27,7 @@
         @foreach (var item in Model)
         {
             <tr>
-                <td>
+                <td class="itemName">
                     @Html.DisplayFor(modelItem => item.ItemName)
                 </td>
                 <td>
@@ -50,7 +50,7 @@
     <p>
         @Html.ActionLink("Home", "Index", "Home") |
         Items |
-        @Html.ActionLink("Storage Bins", "StoreBin", "scStoreBins") |
-        @Html.ActionLink("Request", "Index", "scPrForm") |
-        @Html.ActionLink("Receiving", "Index", "scRcvForm")
+        @Html.ActionLink("Categories", "Index", "scCategories") |
+        @Html.ActionLink("Storage list", "Index", "scStorages") |
+        @Html.ActionLink("Unit of Measure", "Index", "scUoms")
     </p>
