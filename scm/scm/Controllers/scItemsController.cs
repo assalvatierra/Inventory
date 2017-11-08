@@ -134,6 +134,78 @@ namespace scm.Controllers
             return RedirectToAction("Index");
         }
 
+        #region retail item
+        public ActionResult RetailItem(int? id)
+        {
+            Models.scItem item = db.scItems.Find(id);
+            Models.resItem data = db.resItems.Where(d => d.scItemId == id).FirstOrDefault();
+            if (data == null)
+                return RedirectToAction("CreateRetailItem", new { id = (int)id } );
+            else
+                return RedirectToAction("EditRetailItem", new { id = data.Id });
+        }
+
+        public ActionResult CreateRetailItem(int? id)
+        {
+            Models.scItem item = db.scItems.Find(id);
+
+            var data = new resItem();
+            data.scItemId = (int)id;
+            data.Description = item.Name;
+            data.resQty = 1;
+            return View(data);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult CreateRetailItem([Bind(Include = "Id,scItemId,Description,Price,barcode,resQty")] resItem resItem)
+        {
+            if (ModelState.IsValid)
+            {
+                db.resItems.Add(resItem);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+
+            return View(resItem);
+        }
+
+        // GET: resItems/Edit/5
+        public ActionResult EditRetailItem(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            resItem resItem = db.resItems.Find(id);
+            if (resItem == null)
+            {
+                return HttpNotFound();
+            }
+//            ViewBag.scItemId = new SelectList(db.scItems, "Id", "Name", resItem.scItemId);
+            return View(resItem);
+        }
+
+        // POST: resItems/Edit/5
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult EditRetailItem([Bind(Include = "Id,scItemId,Description,Price,barcode,resQty")] resItem resItem)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Entry(resItem).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            //ViewBag.scItemId = new SelectList(db.scItems, "Id", "Name", resItem.scItemId);
+            return View(resItem);
+        }
+
+
+        #endregion
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)

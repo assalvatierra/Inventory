@@ -639,7 +639,13 @@
     <Content Include="Views\resOrderSales\DeleteItem.cshtml" />
     <Content Include="Views\resOrderSales\CreateItem.cshtml" />
     <Content Include="Views\resOrderSales\Details.cshtml" />
-    <Content Include="Views\resItems\EditItem.cshtml" />
+    <Content Include="Views\scItems\EditRetailItem.cshtml" />
+    <Content Include="Views\scItems\CreateRetailItem.cshtml" />
+    <Content Include="Views\resItems\Create.cshtml" />
+    <Content Include="Views\resItems\Delete.cshtml" />
+    <Content Include="Views\resItems\Details.cshtml" />
+    <Content Include="Views\resItems\Edit.cshtml" />
+    <Content Include="Views\resItems\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

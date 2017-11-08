@@ -39,7 +39,7 @@
                 <td>
                     @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
                     @Html.ActionLink("Storage Bins", "StoreBin", "scStoreBins", new { id = item.Id }, null) |
-                    @Html.ActionLink("Retail", "EditItem", "resItems", new { id = item.Id }, null) |
+                    @Html.ActionLink("Retail", "RetailItem", new { id = item.Id }) |
                     @Html.ActionLink("Delete", "Delete", new { id = item.Id })
                 </td>
             </tr>
