@@ -79,7 +79,7 @@ namespace scm.Models
                 max(isnull(a.Name, '')) itemname,
                 sum(isnull(b.Qty, 0)) + sum(isnull(d.itemQty, 0)) ItemIn,
                 sum(isnull(c.Qty, 0)) + sum(isnull(e.Qty, 0)) ItemOut,
-                Max(a.LowLevel) LowLevel
+                Max(isnull(a.LowLevel,0)) LowLevel
                 from [dbo].[scItems] a
                 left outer join [dbo].[scRcvDtls]
                         b on b.scItemId = a.Id

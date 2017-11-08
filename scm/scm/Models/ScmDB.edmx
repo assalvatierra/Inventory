@@ -223,7 +223,7 @@
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="80" />
     <Property Name="scUomId" Type="int" Nullable="false" />
-    <Property Name="Expirydays" Type="int" Nullable="false" />
+    <Property Name="Expirydays" Type="int" Nullable="true" />
     <Property Name="LowLevel" Type="int" Nullable="true" />
   </EntityType>
   <EntityType Name="scUoms">
@@ -1230,7 +1230,7 @@
           <NavigationProperty Name="scPoDtls" Relationship="ScmDB.scItemscPoDtl" FromRole="scItem" ToRole="scPoDtl" />
           <NavigationProperty Name="resIngredients" Relationship="ScmDB.scItemresIngredients" FromRole="scItem" ToRole="resIngredients" />
           <NavigationProperty Name="resItems" Relationship="ScmDB.scItemresItem" FromRole="scItem" ToRole="resItem" />
-          <Property Name="Expirydays" Type="Int32" Nullable="false" />
+          <Property Name="Expirydays" Type="Int32" Nullable="true" />
           <NavigationProperty Name="scInvOutDtls" Relationship="ScmDB.scItemscInvOutDtl" FromRole="scItem" ToRole="scInvOutDtl" />
           <NavigationProperty Name="resPreparationDtls" Relationship="ScmDB.scItemresPreparationDtl" FromRole="scItem" ToRole="resPreparationDtl" />
           <NavigationProperty Name="resPreparations" Relationship="ScmDB.scItemresPreparation" FromRole="scItem" ToRole="resPreparation" />

@@ -218,7 +218,7 @@
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="80" />
     <Property Name="scUomId" Type="int" Nullable="false" />
-    <Property Name="Expirydays" Type="int" Nullable="false" />
+    <Property Name="Expirydays" Type="int" Nullable="true" />
     <Property Name="LowLevel" Type="int" Nullable="true" />
   </EntityType>
   <EntityType Name="scUoms">
