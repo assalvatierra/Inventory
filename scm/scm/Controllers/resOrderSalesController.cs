@@ -146,7 +146,7 @@ namespace scm.Controllers
             {
                 db.resOrderDtls.Add(resOrderDtl);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Details");
             }
 
             ViewBag.resOrderHdrId = new SelectList(db.resOrderHdrs, "Id", "dtDelivery", resOrderDtl.resOrderHdrId);
@@ -184,7 +184,7 @@ namespace scm.Controllers
             {
                 db.Entry(resOrderDtl).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Details");
             }
             ViewBag.resOrderHdrId = new SelectList(db.resOrderHdrs, "Id", "dtDelivery", resOrderDtl.resOrderHdrId);
             ViewBag.resMenuId = new SelectList(db.resMenus, "Id", "Name", resOrderDtl.resMenuId);
@@ -215,7 +215,7 @@ namespace scm.Controllers
             resOrderDtl resOrderDtl = db.resOrderDtls.Find(id);
             db.resOrderDtls.Remove(resOrderDtl);
             db.SaveChanges();
-            return RedirectToAction("Index");
+            return RedirectToAction("Details");
         }
         #endregion
     }
