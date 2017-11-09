@@ -14,6 +14,14 @@ namespace scm.Controllers
     {
         private ScmDBContainer db = new ScmDBContainer();
         private Models.dbClasses db1 = new dbClasses();
+        SelectList slStatus = new SelectList(new List<SelectListItem>
+            {
+                new SelectListItem { Text = "NEW", Value = "NEW", Selected=true },
+                new SelectListItem { Text = "APPROVED", Value = "APP", Selected=false },
+                new SelectListItem { Text = "CANCELLED", Value = "CAN", Selected=false }
+
+            }, "Text", "Value" );
+        
         // GET: scPrForm
         public ActionResult Index()
         {
@@ -28,12 +36,14 @@ namespace scm.Controllers
             Session["PRHDRID"] = id;
 
             ViewBag.LowLevelItems = db1.getLowLevelItems();
+
             return View(db.scPrDtls.Where(d => d.scPrHdrId == id).ToList());
         }
         
         // GET: scPrHdrs/Create
         public ActionResult Create()
         {
+            ViewBag.Status = this.slStatus;
             return View();
         }
 
@@ -66,6 +76,7 @@ namespace scm.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.Status = this.slStatus;
             return View(scPrHdr);
         }
 
@@ -82,6 +93,7 @@ namespace scm.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+            ViewBag.Status = this.slStatus;
             return View(scPrHdr);
         }
 
