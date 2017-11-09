@@ -1,9 +1,48 @@
 ﻿@model IEnumerable<scm.Models.EntItems>
 
-<div style="background-color:lightgray;">
+@*<div style="background-color:lightgray;">
     <span style="font: bold 12px arial, verdana;">Low Level Items</span>
     <table cellpadding="5">
         <tr style="border-bottom:1px solid white;">
+            <th>
+                Product/Item
+            </th>
+            <th>
+                Current
+            </th>
+            <th>
+                Low Level
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ItemName)
+                </td>
+                <td>
+                    @(item.ItemIn - item.ItemOut)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LowLevel)
+                </td>
+            </tr>
+        }
+
+    </table>
+
+    <br />
+</div>
+
+<br />*@
+
+@* edit by jahdiel *@
+<div class="panel panel-default">
+    <h4 class="itemheader">Low Level Items</h4>
+    <table class="table table-striped">
+        <tr >
             <th>
                 Product/Item
             </th>

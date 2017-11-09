@@ -11,9 +11,9 @@ $(document).ready(function () {
 
 
 function InitDatePicker() {
-    var ddd1 = $('input[name="dtPo"]').val();
+    var ddd1 = $('input[name="dtOut"]').val();
 
-    $('input[name="dtPo"]').daterangepicker(
+    $('input[name="dtOut"]').daterangepicker(
     {
         timePicker: false,
         timePickerIncrement: 30,
@@ -30,7 +30,7 @@ function InitDatePicker() {
     );
 
 
-    $('input[name="dtPo"]').val(ddd1.substr(0, ddd1.indexOf(" ")));
+    $('input[name="dtOut"]').val(ddd1.substr(0, ddd1.indexOf(" ")));
 
 
 }

@@ -48,3 +48,10 @@ textarea {
 .pv_bg {
    background-color:lightgray;
 }
+
+.itemheader {
+    font:normal 17px arial, veranda;
+    color:Black;
+    font-weight:600;
+    margin-left:10px;
+}

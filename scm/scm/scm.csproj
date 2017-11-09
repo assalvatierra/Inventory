@@ -435,6 +435,9 @@
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\scm\resOrderSales.js" />
+    <Content Include="Scripts\scm\resPreparationForm.js" />
+    <Content Include="Scripts\scm\scInvOutForm.js" />
     <Content Include="Scripts\scm\scPoForm.js" />
     <Content Include="Scripts\scm\scPrForm.js" />
     <Content Include="Scripts\scm\scRvForm.js" />

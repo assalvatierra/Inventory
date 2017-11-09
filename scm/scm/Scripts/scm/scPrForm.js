@@ -1,7 +1,7 @@
 ﻿/* ********************************************************
 * By Abel S. Salvatierra
 * @ SCM Inventory Sytem
-*
+* edited by jahdiel
 ************************************************************/
 
 $(document).ready(function () {
