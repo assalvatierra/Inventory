@@ -293,6 +293,7 @@
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="dtPo" Type="datetime" Nullable="false" />
     <Property Name="scSupplierId" Type="int" Nullable="false" />
+    <Property Name="dtDelivery" Type="datetime" Nullable="true" />
     <Property Name="Remarks" Type="nvarchar" Nullable="true" MaxLength="150" />
   </EntityType>
   <EntityType Name="scPoDtls">
@@ -1425,6 +1426,7 @@
           <NavigationProperty Name="scPoDtls" Relationship="ScmDB.scPoHdrscPoDtl" FromRole="scPoHdr" ToRole="scPoDtl" />
           <NavigationProperty Name="scSupplier" Relationship="ScmDB.scSupplierscPoHdr" FromRole="scPoHdr" ToRole="scSupplier" />
           <Property Name="scSupplierId" Type="Int32" Nullable="false" />
+          <Property Name="dtDelivery" Type="DateTime" Nullable="true" />
           <Property Name="Remarks" Type="String" Nullable="true" MaxLength="150" />
         </EntityType>
         <EntityType Name="scPoDtl">
@@ -2181,6 +2183,7 @@
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="dtPo" ColumnName="dtPo" />
           <ScalarProperty Name="scSupplierId" ColumnName="scSupplierId" />
+          <ScalarProperty Name="dtDelivery" ColumnName="dtDelivery" />
           <ScalarProperty Name="Remarks" ColumnName="Remarks" />
         </MappingFragment>
       </EntityTypeMapping>

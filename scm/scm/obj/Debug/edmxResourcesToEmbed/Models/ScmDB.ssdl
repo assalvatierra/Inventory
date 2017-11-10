@@ -288,6 +288,7 @@
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="dtPo" Type="datetime" Nullable="false" />
     <Property Name="scSupplierId" Type="int" Nullable="false" />
+    <Property Name="dtDelivery" Type="datetime" Nullable="true" />
     <Property Name="Remarks" Type="nvarchar" Nullable="true" MaxLength="150" />
   </EntityType>
   <EntityType Name="scPoDtls">

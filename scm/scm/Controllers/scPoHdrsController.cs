@@ -49,7 +49,7 @@ namespace scm.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,dtPo,scSupplierId,Remarks")] scPoHdr scPoHdr)
+        public ActionResult Create([Bind(Include = "Id,dtPo,scSupplierId,dtDelivery,Remarks")] scPoHdr scPoHdr)
         {
             if (ModelState.IsValid)
             {
@@ -83,7 +83,7 @@ namespace scm.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,dtPo,scSupplierId,Remarks")] scPoHdr scPoHdr)
+        public ActionResult Edit([Bind(Include = "Id,dtPo,scSupplierId,dtDelivery,Remarks")] scPoHdr scPoHdr)
         {
             if (ModelState.IsValid)
             {

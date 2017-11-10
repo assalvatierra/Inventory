@@ -93,6 +93,7 @@
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="dtPo" ColumnName="dtPo" />
           <ScalarProperty Name="scSupplierId" ColumnName="scSupplierId" />
+          <ScalarProperty Name="dtDelivery" ColumnName="dtDelivery" />
           <ScalarProperty Name="Remarks" ColumnName="Remarks" />
         </MappingFragment>
       </EntityTypeMapping>
