@@ -418,6 +418,7 @@
     <Content Include="Scripts\DateRangePicker\package.json" />
     <Content Include="Content\daterangepicker.scss" />
     <Content Include="Models\dbo.itemInventory2.sql" />
+    <Content Include="Controllers\eBay.lnk" />
     <None Include="Scripts\jquery-1.12.4.intellisense.js" />
     <Content Include="Scripts\DateRangePicker\daterangepicker.js" />
     <Content Include="Scripts\DateRangePicker\moment.js" />
@@ -650,6 +651,7 @@
     <Content Include="Views\resItems\Details.cshtml" />
     <Content Include="Views\resItems\Edit.cshtml" />
     <Content Include="Views\resItems\Index.cshtml" />
+    <Content Include="Views\scItems\ItemInventory2.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
