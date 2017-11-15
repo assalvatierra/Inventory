@@ -1,0 +1,156 @@
+﻿@model IEnumerable<scm.Models.EntItems2>
+
+@{
+    ViewBag.Title = "ItemInventory2";
+}
+
+<h2>ItemInventory2</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            Current
+        </th>
+        <th align="center">
+            Day 1
+            <br />In | Out | Bal
+        </th>
+        <th>
+            Day 2
+            <br />In | Out | Bal
+        </th>
+        <th>
+            Day 3
+            <br />In | Out | Bal
+        </th>
+        <th>
+            Day 4
+            <br />In | Out | Bal
+        </th>
+        <th>
+            Day 5
+            <br />In | Out | Bal
+        </th>
+        <th>
+            day 6
+            <br />In | Out | Bal
+        </th>
+        <th>
+            Day 7
+            <br />In | Out | Bal
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @{ decimal iVal = (item.p0 - item.s0); }
+
+            @if (iVal == 0)
+            {
+                <span> - </span>
+            }
+            else
+            {
+                <span>@item.p0 | @item.s0 | </span><span style="font:600;"> @iVal </span>
+            }
+
+        </td>
+        <td>
+            @{ decimal iVal1 = (item.p1 - item.s1); }
+
+            @if (iVal1 == 0)
+            {
+                <span> - </span>
+            }
+            else
+            {
+                <span>@item.p1 | @item.s1 | </span><span style="font:600;"> @iVal1 </span>
+            }
+
+        </td>
+        <td>
+            @{ decimal iVal2 = (item.p2 - item.s2); }
+
+            @if (iVal2 == 0)
+            {
+                <span> - </span>
+            }
+            else
+            {
+                <span> @iVal2 </span>
+            }
+        </td>
+        <td>
+            @{ decimal iVal3 = (item.p3 - item.s3); }
+
+            @if (iVal3 == 0)
+            {
+                <span> - </span>
+            }
+            else
+            {
+                <span> @iVal3 </span>
+            }
+        </td>
+        <td>
+            @{ decimal iVal4 = (item.p4 - item.s4); }
+
+            @if (iVal4 == 0)
+            {
+                <span> - </span>
+            }
+            else
+            {
+                <span> @iVal4 </span>
+            }
+        </td>
+        <td>
+            @{ decimal iVal5 = (item.p5 - item.s5); }
+
+            @if (iVal5 == 0)
+            {
+                <span> - </span>
+            }
+            else
+            {
+                <span> @iVal5 </span>
+            }
+        </td>
+        <td>
+            @{ decimal iVal6 = (item.p6 - item.s6); }
+
+            @if (iVal6 == 0)
+            {
+                <span> - </span>
+            }
+            else
+            {
+                <span> @iVal6 </span>
+            }
+        </td>
+        <td>
+            @{ decimal iVal7 = (item.p7 - item.s7); }
+
+            @if (iVal7 == 0)
+            {
+                <span> - </span>
+            }
+            else
+            {
+                <span> @iVal7 </span>
+            }
+        </td>
+    </tr>
+}
+
+</table>

@@ -28,6 +28,13 @@ namespace scm.Controllers
             return View(scItems);
         }
 
+        public ActionResult ItemInventory2()
+        {
+            dbClasses db1 = new dbClasses();
+            var scItems = db1.getItemInventory2();
+            return View(scItems);
+        }
+
         public ActionResult ItemOrderStatus()
         {
             dbClasses db1 = new dbClasses();

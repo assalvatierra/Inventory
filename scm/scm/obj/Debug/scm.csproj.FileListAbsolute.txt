@@ -242,6 +242,7 @@ D:\Data\Real\Apps\GitHub\Inventory\scm\scm\bin\Microsoft.Owin.Security.Twitter.x
 D:\Data\Real\Apps\GitHub\Inventory\scm\scm\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
 D:\Data\Real\Apps\GitHub\Inventory\scm\scm\obj\Debug\scm.dll
 D:\Data\Real\Apps\GitHub\Inventory\scm\scm\obj\Debug\scm.pdb
+<<<<<<< HEAD
 D:\Data\Real\Apps\GitHub\Inventory\scm\scm\obj\Debug\scm.csprojResolveAssemblyReference.cache
 C:\Users\CHING25\Documents\GitHub\Inventory\scm\scm\bin\ApplicationInsights.config
 C:\Users\CHING25\Documents\GitHub\Inventory\scm\scm\bin\roslyn\csc.exe
@@ -325,3 +326,5 @@ C:\Users\CHING25\Documents\GitHub\Inventory\scm\scm\bin\Microsoft.Owin.Security.
 C:\Users\CHING25\Documents\GitHub\Inventory\scm\scm\obj\Debug\scm.csprojResolveAssemblyReference.cache
 C:\Users\CHING25\Documents\GitHub\Inventory\scm\scm\obj\Debug\scm.dll
 C:\Users\CHING25\Documents\GitHub\Inventory\scm\scm\obj\Debug\scm.pdb
+=======
+>>>>>>> refs/remotes/origin/master
