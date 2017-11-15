@@ -5,58 +5,59 @@
 }
 
 <h2>Index</h2>
+<div class="panel panel-default">
+    <table class="table table-listing">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Qty)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.scInvOutHdr.Remarks)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.scItem.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.scStoreBin.Code)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.resOrderDtl.Id)
+            </th>
+            <th></th>
+        </tr>
 
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Qty)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.scInvOutHdr.Remarks)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.scItem.Name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.scStoreBin.Code)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.resOrderDtl.Id)
-        </th>
-        <th></th>
-    </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Qty)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.scInvOutHdr.Remarks)
+                </td>
+                <td class="itemName">
+                    @Html.DisplayFor(modelItem => item.scItem.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.scStoreBin.Code)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.resOrderDtl.Id)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "EditItem", new { id = item.Id }) |
+                    @Html.ActionLink("Delete", "DeleteItem", new { id = item.Id })
+                </td>
+            </tr>
+        }
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Qty)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.scInvOutHdr.Remarks)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.scItem.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.scStoreBin.Code)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.resOrderDtl.Id)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "EditItem", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "DeleteItem", new { id=item.Id })
-        </td>
-    </tr>
-}
-
-    <tr>
-        <td colspan="6">
-            @Html.ActionLink("Add Item", "CreateItem")
-        </td>
-    </tr>
-</table>
-
+        <tr>
+            <td colspan="6">
+                @Html.ActionLink("Add Item", "CreateItem")
+            </td>
+        </tr>
+    </table>
+</div>
 @{Html.RenderPartial("PartialView_LowLevelItems", (List<scm.Models.EntItems>)ViewBag.LowLevelItems);}
 
 <div>

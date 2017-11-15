@@ -15,12 +15,12 @@ function InitDatePicker() {
 
     $('input[name="dtOrder"]').daterangepicker(
     {
-        timePicker: true,
+        timePicker: false,
         timePickerIncrement: 30,
         singleDatePicker: true,
         showDropdowns: true,
         locale: {
-            format: 'MM/DD/YYYY hh:mm:ss A'
+            format: 'MM/DD/YYYY'
         }
     },
     function (start, end, label) {

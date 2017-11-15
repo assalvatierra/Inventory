@@ -9,7 +9,7 @@
 <p>
     @Html.ActionLink("Add New Item", "AddSupplierItem", new { SupplierId = ViewBag.SupplierId } ,null)
 </p>
-<table class="table">
+<table class="table table-listing">
     <tr>
         <th>
             <span class="tblHeader">
@@ -27,7 +27,7 @@
 
 @foreach (var item in Model) {
     <tr>
-        <td>
+        <td class="itemName">
             @Html.DisplayFor(modelItem => item.scItem.Name)
         </td>
         <td>

@@ -5,9 +5,9 @@
 
 <h2>PO Form</h2>
 
-<div>
+<div class="panel">
     <h4>Purchase Order</h4>
-    <hr />
+    <hr /> 
     <dl class="dl-horizontal">
         <dt>
             @Html.DisplayNameFor(model => model.master.dtPo)
@@ -44,8 +44,8 @@
 
     </dl>
 </div>
-
-<table class="table">
+<div class="panel panel-default">
+<table class="table table-details">
     <tr>
         <th>
             Item
@@ -65,7 +65,7 @@
     @foreach (var item in Model.details)
     {
         <tr>
-            <td>
+            <td class="itemName">
                 @Html.DisplayFor(modelItem => item.scItem.Name)
             </td>
             <td>
@@ -89,7 +89,7 @@
         </td>
     </tr>
 </table>
-
+</div>
 <p>
     @Html.ActionLink("Back to Order List", "Index")
 </p>

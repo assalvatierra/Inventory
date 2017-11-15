@@ -55,3 +55,11 @@ textarea {
     font-weight:600;
     margin-left:10px;
 }
+
+.table-listing{
+  	background-color:white;
+}
+
+.table-details{
+  	background-color:whitesmoke;
+}

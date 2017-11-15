@@ -6,35 +6,37 @@
 
 <h2>Details</h2>
 
-<div>
-    <h4>scItem</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
+<div class="panel panel-default">
+        <h4 class="itemheader">scItem</h4>
+        <hr />
+        <table class="table table-listing">
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Name)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Name)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.Name)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Expirydays)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.Expirydays)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Expirydays)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.Expirydays)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.scUom.Unit)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.scUom.Unit)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.scUom.Unit)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.scUom.Unit)
+            </dd>
 
-    </dl>
+        </dl>
+    </table>
 </div>
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
