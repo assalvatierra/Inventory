@@ -77,6 +77,5 @@ D:\Data\Real\Apps\GitHub\Inventory\scm\scm\bin\Microsoft.Owin.Security.OAuth.xml
 D:\Data\Real\Apps\GitHub\Inventory\scm\scm\bin\Microsoft.Owin.Security.Google.xml
 D:\Data\Real\Apps\GitHub\Inventory\scm\scm\bin\Microsoft.Owin.Security.Twitter.xml
 D:\Data\Real\Apps\GitHub\Inventory\scm\scm\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
-D:\Data\Real\Apps\GitHub\Inventory\scm\scm\obj\Debug\scm.csprojResolveAssemblyReference.cache
 D:\Data\Real\Apps\GitHub\Inventory\scm\scm\obj\Debug\scm.dll
 D:\Data\Real\Apps\GitHub\Inventory\scm\scm\obj\Debug\scm.pdb

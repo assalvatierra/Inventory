@@ -67,7 +67,7 @@ namespace scm.Controllers
         }
         public ActionResult StockCount()
         {
-            return RedirectToAction("ItemInventory", "scItems");
+            return RedirectToAction("ItemInventory2", "scItems");
         }
 
         public ActionResult CustomerList()
