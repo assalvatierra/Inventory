@@ -71,7 +71,16 @@ namespace scm.Controllers
             {
                 return HttpNotFound();
             }
+
             ViewBag.scSupplierId = new SelectList(db.scSuppliers, "Id", "Name", scPoHdr.scSupplierId);
+
+
+            var scPoHdrs = db.scPoHdrs.Include(s => s.scSupplier);
+
+            IEnumerable<scSupplier> mysuppliers = db.scSuppliers.ToList();
+            ViewBag.scSuppliers = mysuppliers;
+
+
             return View(scPoHdr);
         }
 
@@ -89,6 +98,14 @@ namespace scm.Controllers
                 return RedirectToAction("Index");
             }
             ViewBag.scSupplierId = new SelectList(db.scSuppliers, "Id", "Name", scPoHdr.scSupplierId);
+
+            var scPoHdrs = db.scPoHdrs.Include(s => s.scSupplier);
+
+
+            IEnumerable<scSupplier> mysuppliers = db.scSuppliers.ToList();
+            ViewBag.scSuppliers = mysuppliers;
+
+
             return View(scPoHdr);
         }
 
