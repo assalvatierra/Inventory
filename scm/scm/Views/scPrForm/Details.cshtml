@@ -6,53 +6,55 @@
 
 <h2>Items</h2>
 Purchase Request
-<table class="table table-details">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Qty)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.scPrHdr.Remarks)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.scItem.Name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.scUom.Unit)
-        </th>
-        <th></th>
-    </tr>
+<div class="panel panel-default">
+    <table class="table table-responsive">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Qty)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.scPrHdr.Remarks)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.scItem.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.scUom.Unit)
+            </th>
+            <th></th>
+        </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Qty)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.scPrHdr.Remarks)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.scItem.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.scUom.Unit)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "EditItem", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "DeleteItem", new { id=item.Id })
-        </td>
-    </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Qty)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.scPrHdr.Remarks)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.scItem.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.scUom.Unit)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "EditItem", new { id = item.Id }) |
+                    @Html.ActionLink("Delete", "DeleteItem", new { id = item.Id })
+                </td>
+            </tr>
+        }
 
 
-    <tr>
-        <td colspan="5">
-            @Html.ActionLink("Add New", "CreateItem")
-        </td>
-    </tr>
+        <tr>
+            <td colspan="5">
+                @Html.ActionLink("Add New", "CreateItem")
+            </td>
+        </tr>
 
-</table>
-
+    </table>
+</div>
 @{Html.RenderPartial("PartialView_LowLevelItems", (List<scm.Models.EntItems>)ViewBag.LowLevelItems);}
 
 <p>

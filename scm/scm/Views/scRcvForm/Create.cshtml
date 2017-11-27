@@ -51,8 +51,56 @@
 </div>
 
 
+@* added by joy  *@
+<div class="modal fade" id="SupplierModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <a href="#" class="close" data-dissmiss="modal">&times;</a>
+                <h4 id="ModalTitle"></h4>
+            </div>
+            <div class="modal-body">
+                <form id="form">
+                    @foreach (var mysuppliers in ViewBag.scSuppliers)
+                    {
+                        <p>
+                            <button class="btn btn-info" onclick="getSelectedSupplier()" style="width:100%;" id="@mysuppliers.Name" value="@mysuppliers.Name">  @mysuppliers.Name </button>
+                        </p>
+                    }
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
 @section Scripts {
+
     @Scripts.Render("~/bundles/jqueryval")
     <script type="text/javascript" src="~/Scripts/scm/scRvForm.js"></script>
 
+    <script>
+
+        function SelectSupplier() {
+            $("#form")[0].reset();
+            $("#ModalTitle").html("Select Supplier");
+            $("#SupplierModal").modal();
+        }
+
+        function getSelectedSupplier() {
+            $("button").click(function () {
+
+                var supplierList = document.getElementById("supplierid-textbox");
+                for (var i = 0; i < supplierList.options.length; i++) {
+                    if (supplierList.options[i].text == this.id.toString()) {
+                        //alert(i + 1);
+                        document.getElementById("supplierid-textbox").value = i + 1; //set the index of dropdown by selected item
+                    }
+                }
+                //alert(document.getElementById("supplierid-textbox").options[1].text);
+                $('#SupplierModal').modal('hide');
+            });
+        }
+
+    </script>
 }

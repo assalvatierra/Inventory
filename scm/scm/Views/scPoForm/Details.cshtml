@@ -5,44 +5,46 @@
 
 <h2>PO Form</h2>
 
-<div class="panel">
-    <h4>Purchase Order</h4>
-    <hr /> 
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.master.dtPo)
-        </dt>
+<div class="panel panel-default">
+    <div class="table table-striped">
+        <h4>Purchase Order</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.master.dtPo)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.master.dtPo)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.master.dtPo)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.master.Remarks)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.master.Remarks)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.master.Remarks)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.master.Remarks)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.master.scSupplier.Name)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.master.scSupplier.Name)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.master.scSupplier.Name)
-        </dd>
-        <dt>
-            &nbsp;
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.master.scSupplier.Name)
+            </dd>
+            <dt>
+                &nbsp;
+            </dt>
 
-        <dd>
-            @Html.ActionLink("Edit", "Edit", new { id = Model.master.Id })        
-        </dd>
+            <dd>
+                @Html.ActionLink("Edit", "Edit", new { id = Model.master.Id })
+            </dd>
 
 
 
-    </dl>
+        </dl>
+    </div>
 </div>
 <div class="panel panel-default">
 <table class="table table-details">

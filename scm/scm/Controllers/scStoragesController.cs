@@ -74,6 +74,11 @@ namespace scm.Controllers
                 return HttpNotFound();
             }
             ViewBag.scStoreTypeId = new SelectList(db.scStoreTypes, "Id", "Type", scStorage.scStoreTypeId);
+
+            // added by joy  - for modal object
+            IEnumerable<scStoreType> myscStoreTypes = db.scStoreTypes.ToList();
+            ViewBag.scStoreTypes = myscStoreTypes;
+
             return View(scStorage);
         }
 
