@@ -23,11 +23,7 @@
                 @Html.ValidationMessageFor(model => model.dtRcv, "", new { @class = "text-danger" })
             </div>
         </div>
-<<<<<<< HEAD
-        @* editted by joy for modal*@
-=======
-        @*}*@
->>>>>>> origin/joyBranch2
+
         <div class="form-group">
             @Html.LabelFor(model => model.scSupplierId, "scSupplierId", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-4">
@@ -71,7 +67,7 @@
             </div>
             <div class="modal-body">
                 <form id="form">
-<<<<<<< HEAD
+
                     <div class="panel panel-default">
                         <table class="table table-responsive">
                             <tr>
@@ -93,14 +89,6 @@
                         </table>
                     </div>
 
-=======
-                    @foreach (var mysuppliers in ViewBag.scSuppliers)
-                    {
-                        <p>
-                            <button class="btn btn-info" onclick="getSelectedSupplier()" style="width:100%;" id="@mysuppliers.Name" value="@mysuppliers.Name">  @mysuppliers.Name </button>
-                        </p>
-                    }
->>>>>>> origin/joyBranch2
                 </form>
             </div>
         </div>
