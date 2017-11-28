@@ -71,6 +71,7 @@
             </div>
             <div class="modal-body">
                 <form id="form">
+<<<<<<< HEAD
                     <div class="panel panel-default">
                         <table class="table table-responsive">
                             <tr>
@@ -92,6 +93,14 @@
                         </table>
                     </div>
 
+=======
+                    @foreach (var mysuppliers in ViewBag.scSuppliers)
+                    {
+                        <p>
+                            <button class="btn btn-info" onclick="getSelectedSupplier()" style="width:100%;" id="@mysuppliers.Name" value="@mysuppliers.Name">  @mysuppliers.Name </button>
+                        </p>
+                    }
+>>>>>>> origin/joyBranch2
                 </form>
             </div>
         </div>

@@ -85,11 +85,27 @@ namespace scm.Controllers
 
             ViewBag.scSupplierId = new SelectList(db.scSuppliers, "Id", "Name", scPoHdr.scSupplierId);
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> origin/joyBranch2
             // added by joy  - for modal object
             var scPoHdrs = db.scPoHdrs.Include(s => s.scSupplier);
             IEnumerable<scSupplier> mysuppliers = db.scSuppliers.ToList();
             ViewBag.scSuppliers = mysuppliers;
             
+<<<<<<< HEAD
+=======
+=======
+
+            var scPoHdrs = db.scPoHdrs.Include(s => s.scSupplier);
+
+            IEnumerable<scSupplier> mysuppliers = db.scSuppliers.ToList();
+            ViewBag.scSuppliers = mysuppliers;
+
+
+>>>>>>> origin/joyBranch2
+>>>>>>> origin/joyBranch2
             return View(scPoHdr);
         }
 
