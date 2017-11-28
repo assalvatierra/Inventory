@@ -21,12 +21,15 @@
                 @Html.ValidationMessageFor(model => model.dtRcv, "", new { @class = "text-danger" })
             </div>
         </div>
-
+        @* editted by joy for modal*@
         <div class="form-group">
             @Html.LabelFor(model => model.scSupplierId, "scSupplierId", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("scSupplierId", null, htmlAttributes: new { @class = "form-control" })
+            <div class="col-md-4">
+                @Html.DropDownList("scSupplierId", null, htmlAttributes: new { @class = "form-control", @id = "supplierid-textbox" })
                 @Html.ValidationMessageFor(model => model.scSupplierId, "", new { @class = "text-danger" })
+            </div>
+            <div class="col-md-offset-4">
+                <a href="#" class="btn btn-info" onclick="SelectSupplier()" style="align-content:flex-end">Supplier list</a>
             </div>
         </div>
 
@@ -51,8 +54,72 @@
 </div>
 
 
+@* added by joy  *@
+<div class="modal fade" id="SupplierModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <a href="#" class="close" data-dissmiss="modal">&times;</a>
+                <h4 id="ModalTitle"></h4>
+            </div>
+            <div class="modal-body">
+                <form id="form">
+
+                    <div class="panel panel-default">
+                        <table class="table table-responsive">
+                            <tr>
+                                <th> Supplier Name </th>
+
+                                <th> Action </th>
+                            </tr>
+                            @foreach (var mysuppliers in ViewBag.scSuppliers)
+                            {
+                                <tr>
+                                    <td> <h4>@mysuppliers.Name </h4></td>
+                                    <td>
+                                        <button class="btn btn-info" onclick="getSelectedSupplier()" style="width:100%;" id="@mysuppliers.Name" value="@mysuppliers.Name"> Select </button>
+
+                                    </td>
+                                </tr>
+
+                            }
+                        </table>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
 @section Scripts {
+
     @Scripts.Render("~/bundles/jqueryval")
     <script type="text/javascript" src="~/Scripts/scm/scRvForm.js"></script>
 
+    <script>
+
+        function SelectSupplier() {
+            $("#form")[0].reset();
+            $("#ModalTitle").html("Select Supplier");
+            $("#SupplierModal").modal();
+        }
+
+        function getSelectedSupplier() {
+            $("button").click(function () {
+
+                var supplierList = document.getElementById("supplierid-textbox");
+                for (var i = 0; i < supplierList.options.length; i++) {
+                    if (supplierList.options[i].text == this.id.toString()) {
+                        //alert(i + 1);
+                        document.getElementById("supplierid-textbox").value = i + 1; //set the index of dropdown by selected item
+                    }
+                }
+                //alert(document.getElementById("supplierid-textbox").options[1].text);
+                $('#SupplierModal').modal('hide');
+            });
+        }
+
+    </script>
 }

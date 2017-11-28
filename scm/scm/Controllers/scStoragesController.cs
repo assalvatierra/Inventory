@@ -40,6 +40,11 @@ namespace scm.Controllers
         public ActionResult Create()
         {
             ViewBag.scStoreTypeId = new SelectList(db.scStoreTypes, "Id", "Type");
+
+            // added by joy  - for modal object
+            IEnumerable<scStoreType> myscStoreTypes = db.scStoreTypes.ToList();
+            ViewBag.scStoreTypes = myscStoreTypes;
+
             return View();
         }
 
@@ -74,6 +79,11 @@ namespace scm.Controllers
                 return HttpNotFound();
             }
             ViewBag.scStoreTypeId = new SelectList(db.scStoreTypes, "Id", "Type", scStorage.scStoreTypeId);
+
+            // added by joy  - for modal object
+            IEnumerable<scStoreType> myscStoreTypes = db.scStoreTypes.ToList();
+            ViewBag.scStoreTypes = myscStoreTypes;
+
             return View(scStorage);
         }
 

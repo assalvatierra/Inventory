@@ -60,6 +60,12 @@ namespace scm.Controllers
         // GET: scItems/Create
         public ActionResult Create()
         {
+
+            // added by joy  - for modal object
+            IEnumerable<scUom> myUnits = db.scUoms.ToList();
+            ViewBag.scUoms = myUnits;
+
+
             ViewBag.scUomId = new SelectList(db.scUoms, "Id", "Unit");
             return View();
         }
@@ -95,6 +101,11 @@ namespace scm.Controllers
                 return HttpNotFound();
             }
             ViewBag.scUomId = new SelectList(db.scUoms, "Id", "Unit", scItem.scUomId);
+
+            // added by joy  - for modal object
+            IEnumerable<scUom> myUnits = db.scUoms.ToList();
+            ViewBag.scUoms = myUnits;
+
             return View(scItem);
         }
 

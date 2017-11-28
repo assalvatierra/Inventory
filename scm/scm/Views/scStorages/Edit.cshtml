@@ -27,10 +27,16 @@
 
         <div class="form-group">
             @Html.LabelFor(model => model.scStoreTypeId, "scStoreTypeId", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("scStoreTypeId", null, htmlAttributes: new { @class = "form-control" })
+            <div class="col-md-4">
+                @Html.DropDownList("scStoreTypeId", null, htmlAttributes: new { @class = "form-control", @id = "StoreTypeid-dropdown" })
                 @Html.ValidationMessageFor(model => model.scStoreTypeId, "", new { @class = "text-danger" })
             </div>
+
+            @*added by joy*@
+            <div class="col-md-offset-4">
+                <a href="#" class="btn btn-info" onclick="SelectStoreType()" style="align-content:flex-end">Supplier list</a>
+            </div>
+            @* end add *@
         </div>
 
         <div class="form-group">
@@ -44,7 +50,74 @@
 <div>
     @Html.ActionLink("Back to List", "Index")
 </div>
+@* added by joy
+    modal form
+*@
+<div class="modal fade" id="SupplierModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <a href="#" class="close" data-dissmiss="modal">&times;</a>
+                <h4 id="ModalTitle"></h4>
+            </div>
+            <div class="modal-body">
+                <form id="form">
+                    @*CREATE TABLE*@
+                    <div class="panel panel-default">
+                        <table class="table table-responsive">
+                            <tr>
+                                <th> Storage Type </th>
+
+                                <th> Action </th>
+                            </tr>
+                            @foreach (var myscStoreTypes in ViewBag.scStoreTypes)
+                            {
+                                <tr>
+                                    <td> <h4>@myscStoreTypes.Type </h4></td>
+                                    <td>
+                                        <button class="btn btn-info" onclick="getSelectedStoreType()" style="width:100%;" id="@myscStoreTypes.Type" value="@myscStoreTypes.Type">  Select </button>
+
+                                    </td>
+                                </tr>
+
+                            }
+                        </table>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
 
 @section Scripts {
+
     @Scripts.Render("~/bundles/jqueryval")
+    @* added by joy - for modal *@
+    <script>
+        //show the modal form
+        function SelectStoreType() {
+            $("#form")[0].reset();
+            $("#ModalTitle").html("Select Storage Type");
+            $("#SupplierModal").modal();
+        }
+
+        //get and set the selected item to the dropdown list
+        function getSelectedStoreType() {
+            $("button").click(function () {
+
+                var supplierList = document.getElementById("StoreTypeid-dropdown");
+                for (var i = 0; i < supplierList.options.length; i++) {
+                    if (supplierList.options[i].text == this.id.toString()) {
+                        //alert(i + 1);
+                        document.getElementById("StoreTypeid-dropdown").value = i + 1; //set the index of dropdown by selected item
+                    }
+                }
+                //alert(document.getElementById("supplierid-textbox").options[1].text);
+                $('#SupplierModal').modal('hide');
+            });
+        }
+
+    </script>
 }

@@ -27,6 +27,11 @@ namespace scm.Controllers
         public ActionResult Create()
         {
             ViewBag.scSupplierId = new SelectList(db.scSuppliers, "Id", "Name");
+
+            // added by joy  - for modal object
+            IEnumerable<scSupplier> mysuppliers = db.scSuppliers.ToList();
+            ViewBag.scSuppliers = mysuppliers;
+
             return View();
         }
 
@@ -61,6 +66,11 @@ namespace scm.Controllers
                 return HttpNotFound();
             }
             ViewBag.scSupplierId = new SelectList(db.scSuppliers, "Id", "Name", scRcvHdr.scSupplierId);
+
+            // added by joy  - for modal object
+            IEnumerable<scSupplier> mysuppliers = db.scSuppliers.ToList();
+            ViewBag.scSuppliers = mysuppliers;
+
             return View(scRcvHdr);
         }
 
