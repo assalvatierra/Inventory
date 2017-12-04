@@ -161,3 +161,4 @@ C:\Users\VILLOSA\Desktop\New folder (3)\Inventory\scm\scm\bin\Microsoft.Owin.Sec
 C:\Users\VILLOSA\Desktop\New folder (3)\Inventory\scm\scm\obj\Debug\scm.csprojResolveAssemblyReference.cache
 C:\Users\VILLOSA\Desktop\New folder (3)\Inventory\scm\scm\obj\Debug\scm.dll
 C:\Users\VILLOSA\Desktop\New folder (3)\Inventory\scm\scm\obj\Debug\scm.pdb
+D:\Data\Real\Apps\GitHub\Inventory\scm\scm\obj\Debug\scm.csprojResolveAssemblyReference.cache
