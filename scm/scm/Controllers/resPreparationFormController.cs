@@ -30,6 +30,13 @@ namespace scm.Controllers
             ViewBag.resRecipeId = new SelectList(db.resRecipes, "Id", "Name");
             ViewBag.scItemId = new SelectList(db.scItems, "Id", "Name");
             ViewBag.scStoreBinId = new SelectList(db.scStoreBins, "Id", "Code");
+
+            // added by joy  - for modal object
+            var resPreparations = db.scItems.Include(s => s.Name);
+            IEnumerable<scItem> myscItems = db.scItems.ToList();
+            ViewBag.scItems = myscItems;
+            IEnumerable<scStoreBin> myscStorages = db.scStoreBins.ToList();
+            ViewBag.scStoreBins = myscStorages;
             return View();
         }
 
@@ -50,6 +57,12 @@ namespace scm.Controllers
             ViewBag.resRecipeId = new SelectList(db.resRecipes, "Id", "Name", resPreparation.resRecipeId);
             ViewBag.scItemId = new SelectList(db.scItems, "Id", "Name", resPreparation.scItemId);
             ViewBag.scStoreBinId = new SelectList(db.scStoreBins, "Id", "Code", resPreparation.scStoreBinId);
+
+            // added by joy  - for modal object
+            var resPreparations = db.scItems.Include(s => s.Name);
+            IEnumerable<scItem> myscItems = db.scItems.ToList();
+            ViewBag.scItems = myscItems;
+
             return View(resPreparation);
         }
 
@@ -68,6 +81,13 @@ namespace scm.Controllers
             ViewBag.resRecipeId = new SelectList(db.resRecipes, "Id", "Name", resPreparation.resRecipeId);
             ViewBag.scItemId = new SelectList(db.scItems, "Id", "Name", resPreparation.scItemId);
             ViewBag.scStoreBinId = new SelectList(db.scStoreBins, "Id", "Code", resPreparation.scStoreBinId);
+            
+
+            // added by joy  - for modal object
+            var resPreparations = db.scItems.Include(s => s.Name);
+            IEnumerable<scItem> myscItems = db.scItems.ToList();
+            ViewBag.scItems = myscItems;
+
             return View(resPreparation);
         }
 

@@ -48,17 +48,25 @@
 
         <div class="form-group">
             @Html.LabelFor(model => model.scItemId, "scItemId", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("scItemId", null, htmlAttributes: new { @class = "form-control" })
+            <div class="col-md-4">
+                @Html.DropDownList("scItemId", null, htmlAttributes: new { @class = "form-control", @id = "item-dropdown" })
                 @Html.ValidationMessageFor(model => model.scItemId, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="col-md-offset-4">
+                <a href="#" class="btn btn-info" onclick="selectItem()" style="align-content:flex-end">Item list</a>
             </div>
         </div>
 
         <div class="form-group">
             @Html.LabelFor(model => model.scStoreBinId, "scStoreBinId", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("scStoreBinId", null, htmlAttributes: new { @class = "form-control" })
+            <div class="col-md-4">
+                @Html.DropDownList("scStoreBinId", null, htmlAttributes: new { @class = "form-control", @id = "storage-dropdown" })
                 @Html.ValidationMessageFor(model => model.scStoreBinId, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="col-md-offset-4">
+                <a href="#" class="btn btn-info" onclick="selectStorage()" style="align-content:flex-end">Storage list</a>
             </div>
         </div>
 
@@ -75,8 +83,131 @@
 </div>
 
 
+
+<div class="modal fade" id="itemModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <a href="#" class="close" data-dissmiss="modal">&times;</a>
+                <h4 id="ModalTitle"></h4>
+            </div>
+            <div class="modal-body">
+                <form id="form">
+
+
+                    <div class="panel panel-default">
+                        <table class="table table-responsive">
+                            <tr>
+                                <th> Status </th>
+
+                                <th> Action </th>
+                            </tr>
+                            @foreach (var myscItems in ViewBag.scItems)
+                            {
+                                <tr>
+                                    <td> <h5>@myscItems.Name</h5></td>
+                                    <td>
+                                         <button class="btn btn-info" onclick="getSelectedItem()" style="width:100%;" id="@myscItems.Name" value="@myscItems.Name"> Select </button>
+
+                                    </td>
+                                </tr>
+                            }
+                        </table>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="modal fade" id="storageModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <a href="#" class="close" data-dissmiss="modal">&times;</a>
+                <h4 id="ModalTitle"></h4>
+            </div>
+            <div class="modal-body">
+                <form id="form">
+
+
+                    <div class="panel panel-default">
+                        <table class="table table-responsive">
+                            <tr>
+                                <th> Status </th>
+
+                                <th> Action </th>
+                            </tr>
+                            @foreach (var myscStorages in ViewBag.scStoreBins)
+                            {
+                                <tr>
+                                    <td> <h5>@myscStorages.Code</h5></td>
+                                    <td>
+                                        <button class="btn btn-info" onclick="getSelectedStorage()" style="width:100%;" id="@myscStorages.Code" value="@myscStorages.Code"> Select </button>
+
+                                    </td>
+                                </tr>
+                            }
+                        </table>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
+
     <script type="text/javascript" src="~/Scripts/scm/resPreparationForm.js"></script>
 
+    <script>
+        function selectStorage() {
+            $("#form")[0].reset();
+            $("#ModalTitle").html("Select Storage");
+            $("#storageModal").modal();
+        }
+
+        function getSelectedStorage() {
+            $("button").click(function () {
+
+                var supplierList = document.getElementById("storage-dropdown");
+                for (var i = 0; i < supplierList.options.length; i++) {
+                    if (supplierList.options[i].text == this.id.toString()) {
+                        //alert(i + 1);
+                        document.getElementById("storage-dropdown").value = i + 1; //set the index of dropdown by selected item
+                    }
+                }
+                $('#storageModal').modal('hide');
+            });
+        }
+
+        function selectItem() {
+            $("#form")[0].reset();
+            $("#ModalTitle").html("Select Item");
+            $("#itemModal").modal();
+        }
+
+        function getSelectedItem() {
+            $("button").click(function () {
+
+                var supplierList = document.getElementById("item-dropdown");
+                for (var i = 0; i < supplierList.options.length; i++) {
+                    if (supplierList.options[i].text == this.id.toString()) {
+                        //alert(i + 1);
+                        document.getElementById("item-dropdown").value = i + 1; //set the index of dropdown by selected item
+                    }
+                }
+                $('#itemModal').modal('hide');
+            });
+        }
+
+    </script>
 }
+

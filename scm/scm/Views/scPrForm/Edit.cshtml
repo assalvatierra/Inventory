@@ -34,9 +34,12 @@
 
         <div class="form-group">
             @Html.LabelFor(model => model.Status, "Status", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("Status", null, htmlAttributes: new { @class = "form-control" })
+            <div class="col-md-4">
+                @Html.DropDownList("Status", null, htmlAttributes: new { @class = "form-control", @id = "supplierid-textbox" })
                 @Html.ValidationMessageFor(model => model.Status, "", new { @class = "text-danger" })
+            </div>
+            <div class="col-md-offset-4">
+                <a href="#" class="btn btn-info" onclick="SelectStatus()" style="align-content:flex-end">Status list</a>
             </div>
         </div>
 
@@ -51,3 +54,73 @@
 <div>
     @Html.ActionLink("Back to List", "Index")
 </div>
+
+
+
+<div class="modal fade" id="SupplierModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <a href="#" class="close" data-dissmiss="modal">&times;</a>
+                <h4 id="ModalTitle"></h4>
+            </div>
+            <div class="modal-body">
+                <form id="form">
+
+
+                    <div class="panel panel-default">
+                        <table class="table table-responsive">
+                            <tr>
+                                <th> Status </th>
+
+                                <th> Action </th>
+                            </tr>
+
+                           @foreach (var myscPrHdrs in ViewBag.scPrHdrs)
+                           {
+                                <tr>
+                                    <td> <h5>@myscPrHdrs.Status</h5></td>
+                                    <td>
+                                      <button class="btn btn-info" onclick="getSelectedStatus()" style="width:100%;" id="@myscPrHdrs.Status" value="@myscPrHdrs.Status"> Select </button>
+                                       
+                                    </td>
+                                </tr>
+                            }
+                        </table>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+
+    <script>
+        function SelectStatus() {
+            $("#form")[0].reset();
+            $("#ModalTitle").html("Select Status");
+            $("#SupplierModal").modal();
+        }
+
+        function getSelectedStatus() {
+            $("button").click(function () {
+
+                var supplierList = document.getElementById("supplierid-textbox");
+                for (var i = 0; i < supplierList.options.length; i++) {
+                    if (supplierList.options[i].text == this.id.toString()) {
+                        //alert(i + 1);
+                        document.getElementById("supplierid-textbox").value = i + 1; //set the index of dropdown by selected item
+                    }
+                }
+                $('#SupplierModal').modal('hide');
+            });
+        }
+
+    </script>
+}
+

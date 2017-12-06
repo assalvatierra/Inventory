@@ -77,6 +77,13 @@ namespace scm.Controllers
                 return HttpNotFound();
             }
             ViewBag.Status = this.slStatus;
+
+
+            // added by joy  - for modal object
+            var scPrHdrs = db.scPrHdrs.Include(s => s.Status);
+            IEnumerable<scPrHdr> myscPrHdr = db.scPrHdrs.ToList();
+            ViewBag.scPrHdrs = myscPrHdr;
+           
             return View(scPrHdr);
         }
 
